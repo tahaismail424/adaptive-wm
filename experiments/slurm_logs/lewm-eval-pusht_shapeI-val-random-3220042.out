@@ -2,3 +2,56 @@ host=fc101 job=3220042 gpus=0 cpus=8
 Tesla T4, 16384 MiB
 /scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/stable_worldmodel/envs/__init__.py:215: UserWarning: ale-py not found; ALE/* envs are unavailable. Install with: pip install 'stable-worldmodel[env]' or pip install ale-py.
   from stable_worldmodel.envs import ale  # noqa: F401
+23:59:57 | INFO  | atomic_chec~| [atomic_save] installed crash-safe checkpoint plugin (write to sibling .tmp + fsync + atomic rename)
+[2026-10-25 23:59:59,647][root][INFO] - Cached 'action' from '/scratch/user/tahaismail424/.stable_wm/datasets/varied_pusht/pusht_v0_only_shape_I_val.h5'
+[2026-10-26 00:00:00,666][root][INFO] - Cached 'proprio' from '/scratch/user/tahaismail424/.stable_wm/datasets/varied_pusht/pusht_v0_only_shape_I_val.h5'
+[2026-10-26 00:00:01,989][root][INFO] - Cached 'state' from '/scratch/user/tahaismail424/.stable_wm/datasets/varied_pusht/pusht_v0_only_shape_I_val.h5'
+[2026-10-26 00:00:10,231][root][INFO] - Cached 'action' from '/scratch/user/tahaismail424/.stable_wm/datasets/varied_pusht/pusht_v0_only_shape_I_train.h5'
+[2026-10-26 00:00:19,347][root][INFO] - Cached 'proprio' from '/scratch/user/tahaismail424/.stable_wm/datasets/varied_pusht/pusht_v0_only_shape_I_train.h5'
+[2026-10-26 00:00:27,909][root][INFO] - Cached 'state' from '/scratch/user/tahaismail424/.stable_wm/datasets/varied_pusht/pusht_v0_only_shape_I_train.h5'
+932 valid starting points found for evaluation.
+2 envs have fewer than 10 valid starts (env, n): [(9, 7), (23, 8)]
+245 eval episodes
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/gymnasium/spaces/box.py:486: UserWarning: [33mWARN: Casting input x to numpy array.[0m
+  gym.logger.warn("Casting input x to numpy array.")
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/gymnasium/utils/passive_env_checker.py:243: UserWarning: [33mWARN: The infos returned by `reset` and the following `step` share an object, therefore, modifying one will modify the other. Environments should return new info data on every call as users commonly keep the data returned to them.[0m
+  logger.warn(
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/gymnasium/utils/passive_env_checker.py:243: UserWarning: [33mWARN: The infos returned by `step` and the following `step` share an object, therefore, modifying one will modify the other. Environments should return new info data on every call as users commonly keep the data returned to them.[0m
+  logger.warn(
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/lance/__init__.py:358: UserWarning: lance is not fork-safe. If you are using multiprocessing, use spawn or forkserver instead.
+  warnings.warn(
+chunk 1/4: 0/25 successes
+chunk 2/4: 1/100 successes
+chunk 3/4: 0/100 successes
+chunk 4/4: 0/20 successes
+success_rate: 0.4% over 245 episodes
+env_id  success      name
+     0   0/10   0.0%  mass-light.friction-low.color-default.shape-T
+     2   0/10   0.0%  mass-light.friction-low.color-warm.shape-T
+     9   0/7    0.0%  mass-light.friction-high.color-warm.shape-plus
+    13   0/10   0.0%  mass-light.friction-stop.color-default.shape-plus
+    14   0/10   0.0%  mass-light.friction-stop.color-warm.shape-T
+    17   0/10   0.0%  mass-light.friction-stop.color-night.shape-plus
+    22   0/10   0.0%  mass-normal.friction-low.color-night.shape-T
+    23   0/8    0.0%  mass-normal.friction-low.color-night.shape-plus
+    24   0/10   0.0%  mass-normal.friction-high.color-default.shape-T
+    27   0/10   0.0%  mass-normal.friction-high.color-warm.shape-plus
+    28   1/10  10.0%  mass-normal.friction-high.color-night.shape-T
+    29   0/10   0.0%  mass-normal.friction-high.color-night.shape-plus
+    30   0/10   0.0%  mass-normal.friction-stop.color-default.shape-T
+    34   0/10   0.0%  mass-normal.friction-stop.color-night.shape-T
+    36   0/10   0.0%  mass-heavy.friction-low.color-default.shape-T
+    38   0/10   0.0%  mass-heavy.friction-low.color-warm.shape-T
+    39   0/10   0.0%  mass-heavy.friction-low.color-warm.shape-plus
+    42   0/10   0.0%  mass-heavy.friction-high.color-default.shape-T
+    45   0/10   0.0%  mass-heavy.friction-high.color-warm.shape-plus
+    46   0/10   0.0%  mass-heavy.friction-high.color-night.shape-T
+    48   0/10   0.0%  mass-heavy.friction-stop.color-default.shape-T
+    49   0/10   0.0%  mass-heavy.friction-stop.color-default.shape-plus
+    50   0/10   0.0%  mass-heavy.friction-stop.color-warm.shape-T
+    51   0/10   0.0%  mass-heavy.friction-stop.color-warm.shape-plus
+    52   0/10   0.0%  mass-heavy.friction-stop.color-night.shape-T
+by color: default 0/80, night 1/78, warm 0/87
+by friction: high 1/77, low 0/68, stop 0/100
+by mass: heavy 0/110, light 0/57, normal 1/78
+by shape: T 1/150, plus 0/95

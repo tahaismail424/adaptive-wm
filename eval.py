@@ -254,6 +254,18 @@ def per_env_results(dataset, rows, successes, manifest=None):
     return {"by_env": by_env, "by_factor": dict(by_factor)}
 
 
+def output_filename(filename, policy):
+    """Results file name for one eval: the configured name plus the checkpoint,
+    e.g. pusht_shapeI_val_results.txt + lewm_pusht_shapeI/weights_epoch_5.pt
+    -> pusht_shapeI_val_results_weights_epoch_5.txt. Checkpoints of one run share
+    a results dir, so this keeps their txt/json/videos apart. Random: unchanged."""
+    if not policy or policy == "random":
+        return filename
+    name = Path(filename)
+    tag = Path(str(policy).rstrip("/")).stem
+    return f"{name.stem}_{tag}{name.suffix}"
+
+
 def format_per_env(results):
     lines = ["env_id  success      name"]
     for env_id, r in results["by_env"].items():
@@ -335,7 +347,8 @@ def run(cfg: DictConfig):
 
     results_path.mkdir(parents=True, exist_ok=True)
     # one video dir per eval (test / val / ...) so runs of the same model do not overwrite each other
-    video_dir = results_path / f"videos_{Path(cfg.output.filename).stem}"
+    out_name = output_filename(cfg.output.filename, cfg.policy)
+    video_dir = results_path / f"videos_{Path(out_name).stem}"
 
     callables = cfg.eval.get("callables")
     start_time = time.time()
@@ -377,7 +390,7 @@ def run(cfg: DictConfig):
         with (video_dir / "index.json").open("w") as f:
             json.dump(index, f, indent=2)
 
-    results_path = results_path / cfg.output.filename
+    results_path = results_path / out_name
     results_path.parent.mkdir(parents=True, exist_ok=True)
 
     with results_path.open("a") as f:

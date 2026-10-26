@@ -9,20 +9,20 @@
 #
 # Results (metrics txt + videos) land next to the policy: $STABLEWM_HOME/<policy dir>/
 #
-#SBATCH --job-name=lewm-eval-pusht_shapeI-val-random
+#SBATCH --job-name=lewm-eval-pusht_shapeI-trained-val-early
 #SBATCH --partition=gpu
 #SBATCH --gres=gpu:t4:1
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=64G
-#SBATCH --time=012:00:00
+#SBATCH --time=04:00:00
 #SBATCH --output=experiments/slurm_logs/%x-%j.out
 
 source scripts/slurm/env.sh   # before set -u: Lmod's module() trips on unbound vars
 set -euo pipefail
 
 CONFIG=${CONFIG:-pusht_shapeI_val}
-POLICY=${POLICY:-random}
+POLICY=${POLICY:-lewm_pusht_shapeI/weights_epoch_5.pt}
 
 python eval.py --config-name=$CONFIG.yaml policy=$POLICY "$@"

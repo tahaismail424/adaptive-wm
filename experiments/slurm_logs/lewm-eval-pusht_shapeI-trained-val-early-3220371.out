@@ -1,0 +1,2 @@
+host=fc101 job=3220371 gpus=0 cpus=8
+Tesla T4, 16384 MiB

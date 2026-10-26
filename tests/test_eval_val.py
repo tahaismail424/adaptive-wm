@@ -10,7 +10,7 @@ import pytest
 import stable_worldmodel as swm
 
 from conftest import ROOT, STABLEWM_HOME, VARIED_PUSHT, write_h5
-from eval import sample_eval_starts
+from eval import output_filename, sample_eval_starts
 
 #           episode: 0   1   2   3   4   5
 EP_LENS =         [40, 40, 40, 30, 60, 22]
@@ -153,3 +153,25 @@ def test_val_sampling_on_real_exports(tag):
     with h5py.File(STABLEWM_HOME / "datasets" / f"{cfg.train.dataset_name}.h5") as f:
         train_envs = set(f["env_id"][:][f["ep_offset"][:]].tolist())
     assert set(expected) <= train_envs  # val demos come from training envs only
+
+
+# ---------------------------------------------------------------- output names
+
+
+def test_output_filename_adds_checkpoint():
+    f = "pusht_shapeI_val_results.txt"
+    assert output_filename(f, "lewm_pusht_shapeI/weights_epoch_5.pt") == "pusht_shapeI_val_results_weights_epoch_5.txt"
+    assert output_filename(f, "lewm_pusht_shapeI/weights_epoch_30.pt") == "pusht_shapeI_val_results_weights_epoch_30.txt"
+    assert output_filename(f, "random") == f  # random has no checkpoint; unchanged
+    assert output_filename(f, "my_run/") == "pusht_shapeI_val_results_my_run.txt"  # folder form
+    assert output_filename(f, "quentinll/lewm-pusht") == "pusht_shapeI_val_results_lewm-pusht.txt"  # HF repo
+
+
+@pytest.mark.parametrize("tag", TAGS)
+def test_checkpoints_and_splits_never_share_outputs(tag):
+    names = {
+        output_filename(compose_eval(cfg).output.filename, policy)
+        for cfg in (f"pusht_{tag}", f"pusht_{tag}_val")
+        for policy in ("lewm/weights_epoch_5.pt", "lewm/weights_epoch_30.pt", "random")
+    }
+    assert len(names) == 6
