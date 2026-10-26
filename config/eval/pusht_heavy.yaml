@@ -1,0 +1,48 @@
+defaults:
+  - launcher: local
+  - solver: cem
+  - _self_
+
+solver:
+  batch_size: ${eval.chunk_size}  # CEM plans a whole chunk in one GPU batch
+
+world:
+  env_name: pusht_scenarios.env:pts/PushTBounded-v0
+  num_envs: ${eval.num_eval}  # overridden per chunk by eval.py
+  max_episode_steps: ??? # make sure it's >= eval_budget
+
+dataset:
+  keys_to_cache:
+    - action
+    - proprio
+    - state
+
+seed: 42
+policy: random # ckpt name or random
+
+plan_config:
+  horizon: 5
+  receding_horizon: 5
+  action_block: 5 # frameskip
+
+# evaluation from dataset (replay expert trajectories)
+eval:
+  num_eval: 50          # only used when per_env is null (uniform over rows, LeWM's protocol)
+  per_env: 20           # starts per test env, spread over each env's demos
+  chunk_size: 100       # envs per World / world.evaluate call (bounds memory)
+  video: sample         # full | none | sample (videos_per_env per test env)
+  videos_per_env: 1
+  only_original: false # test_eval files hold only recorded demos anyway
+  allow_fewer: false   # error if a test env has fewer than per_env valid starts
+  goal_offset_steps: 25
+  eval_budget: 50
+  img_size: 224
+  dataset_name: varied_pusht/pusht_v0_combo_heavy_stop_test_eval
+  # no callables: pts envs define reset_options_from_dataset, which swm calls to
+  # restore each episode's physics/colors/shape, start state and goal state
+
+# normalization stats come from the training file (as in train.py)
+train:
+  dataset_name: varied_pusht/pusht_v0_combo_heavy_stop_train
+output:
+  filename: pusht_heavy_results.txt

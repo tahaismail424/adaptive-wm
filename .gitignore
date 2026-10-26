@@ -1,0 +1,5 @@
+.venv/
+scripts/slurm/experiments/
+outputs/
+wandb/
+__pycache__/

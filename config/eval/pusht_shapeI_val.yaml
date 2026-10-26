@@ -1,0 +1,50 @@
+defaults:
+  - launcher: local
+  - solver: cem
+  - _self_
+
+solver:
+  batch_size: ${eval.chunk_size}  # CEM plans a whole chunk in one GPU batch
+
+world:
+  env_name: pusht_scenarios.env:pts/PushTBounded-v0
+  num_envs: ${eval.num_eval}  # overridden per chunk by eval.py
+  max_episode_steps: ??? # make sure it's >= eval_budget
+
+dataset:
+  keys_to_cache:
+    - action
+    - proprio
+    - state
+
+seed: 42
+policy: random # ckpt name or random
+
+plan_config:
+  horizon: 5
+  receding_horizon: 5
+  action_block: 5 # frameskip
+
+# IN-DISTRIBUTION planning eval: training envs, held-out demos (<name>_val.h5).
+# Compare with pusht_shapeI.yaml (held-out test envs) to separate
+# 'cannot plan on this data' from 'does not generalize to the held-out envs'.
+eval:
+  num_eval: 50          # only used when per_env is null (uniform over rows, LeWM's protocol)
+  per_env: 10           # up to 10 starts per training env that has val demos
+  chunk_size: 100       # envs per World / world.evaluate call (bounds memory)
+  video: sample         # full | none | sample (videos_per_env per test env)
+  videos_per_env: 1
+  only_original: true  # recorded val demos only, not their augmented copies
+  allow_fewer: true    # val has 1-3 demos per env (some short): take what exists
+  goal_offset_steps: 25
+  eval_budget: 50
+  img_size: 224
+  dataset_name: varied_pusht/pusht_v0_only_shape_I_val
+  # no callables: pts envs define reset_options_from_dataset, which swm calls to
+  # restore each episode's physics/colors/shape, start state and goal state
+
+# normalization stats come from the training file (as in train.py)
+train:
+  dataset_name: varied_pusht/pusht_v0_only_shape_I_train
+output:
+  filename: pusht_shapeI_val_results.txt

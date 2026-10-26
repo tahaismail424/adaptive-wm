@@ -1,0 +1,24 @@
+[project]
+name = "adaptive-wm"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "imageio[ffmpeg]>=2.38.1",
+    "pusht-scenarios",
+    "scikit-learn>=1.9.1",
+    "stable-worldmodel[train]",
+]
+
+[tool.uv.sources]
+stable-worldmodel = { git = "https://github.com/galilai-group/stable-worldmodel.git", rev = "21446f1ede6d5284e981bd7b47f432b994e6d812" }
+pusht-scenarios = { git = "https://github.com/tahaismail424/pusht-scenarios", rev = "79feeb661c8c98babe704046fd384e1245ce3a86" }
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

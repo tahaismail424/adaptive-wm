@@ -1,0 +1,1912 @@
+host=fc026 job=3219921 gpus=0 cpus=24
+NVIDIA A100-PCIE-40GB, 40960 MiB
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/stable_worldmodel/envs/__init__.py:215: UserWarning: ale-py not found; ALE/* envs are unavailable. Install with: pip install 'stable-worldmodel[env]' or pip install ale-py.
+  from stable_worldmodel.envs import ale  # noqa: F401
+20:23:39 | INFO  | atomic_chec~| [atomic_save] installed crash-safe checkpoint plugin (write to sibling .tmp + fsync + atomic rename)
+[2026-10-25 20:23:57,554][root][INFO] - Cached 'action' from '/scratch/user/tahaismail424/.stable_wm/datasets/varied_pusht/pusht_v0_only_shape_I_train.h5'
+[2026-10-25 20:24:08,552][root][INFO] - Cached 'proprio' from '/scratch/user/tahaismail424/.stable_wm/datasets/varied_pusht/pusht_v0_only_shape_I_train.h5'
+[2026-10-25 20:24:20,651][root][INFO] - Cached 'state' from '/scratch/user/tahaismail424/.stable_wm/datasets/varied_pusht/pusht_v0_only_shape_I_train.h5'
+[2026-10-25 20:24:22,089][root][INFO] - Cached 'action' from '/scratch/user/tahaismail424/.stable_wm/datasets/varied_pusht/pusht_v0_only_shape_I_val.h5'
+[2026-10-25 20:24:23,582][root][INFO] - Cached 'proprio' from '/scratch/user/tahaismail424/.stable_wm/datasets/varied_pusht/pusht_v0_only_shape_I_val.h5'
+[2026-10-25 20:24:25,444][root][INFO] - Cached 'state' from '/scratch/user/tahaismail424/.stable_wm/datasets/varied_pusht/pusht_v0_only_shape_I_val.h5'
+20:24:27 | INFO  | utils.py    | Created ViT-tiny from scratch with config: {'hidden_size': 192, 'num_hidden_layers': 12, 'num_attention_heads': 3, 'intermediate_size': 768, 'image_size': 224, 'patch_size': 14}
+20:24:27 | INFO  | module.py   | Setting up DataModule
+20:24:32 | INFO  | utils.py    | ── Module ────────────────────────────────────────
+20:24:32 | WARN  | module.py   | ! No hyperparameters provided - hyperparameter logging is disabled.
+20:24:32 | INFO  | module.py   |   Setting custom forward method.
+20:24:32 | INFO  | module.py   |   Setting attribute: self.model = <class 'jepa.JEPA'>
+20:24:32 | INFO  | module.py   |   Setting attribute: self.sigreg = <class 'module.SIGReg'>
+20:24:32 | INFO  | module.py   |   Setting attribute: self.optim = <class 'dict'>
+20:24:32 | INFO  | module.py   |   No metrics configuration provided - automatic metric tracking is disabled.
+wandb: WARNING The anonymous setting has no effect and will be removed in a future version.
+wandb: [wandb.login()] Loaded credentials for https://api.forge.coreweave.com from /home/tahaismail424/.netrc.
+wandb: Currently logged in as: tahaismail424 (tahaismail424-texas-a-m-university) to https://api.forge.coreweave.com. Use `wandb login --relogin` to force relogin
+wandb: setting up run lewm_pusht_shapeI
+wandb: Tracking run with wandb version 0.31.0
+wandb: Run data is saved locally in wandb/run-20261025_202439-lewm_pusht_shapeI
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Resuming run lewm_pusht_shapeI
+wandb: ⭐️ View project at https://forge.coreweave.com/wandb/tahaismail424-texas-a-m-university/lewm
+wandb: 🚀 View run at https://forge.coreweave.com/wandb/tahaismail424-texas-a-m-university/lewm/runs/lewm_pusht_shapeI
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/lightning/fabric/connector.py:571: `precision=bf16` is supported for historical reasons but its usage is discouraged. Please set your precision to bf16-mixed instead!
+Using bfloat16 Automatic Mixed Precision (AMP)
+20:24:46 | INFO  | env_info.py |   EnvironmentDumpCallback initialized (filename=environment.json, async=True)
+20:24:46 | INFO  | utils.py    | ── HuggingFaceCheckpoint ─────────────────────────
+20:24:47 | INFO  | hf_models.py|   save_dir: <cyan>hf_exports</cyan>
+20:24:47 | INFO  | hf_models.py|   per_step: <cyan>False</cyan>  (False ⇒ overwrite single 'last/' subdir; True ⇒ keep step_N/)
+Adding 14 callbacks from entry point 'stablepretraining_callbacks': PrintProgressBar, ModuleRegistryCallback, LoggingCallback, EnvironmentDumpCallback, TrainerInfo, SklearnCheckpoint, WandbCheckpoint, TrackioCheckpoint, SwanLabCheckpoint, ModuleSummary, SLURMInfo, LogUnusedParametersOnce, HuggingFaceCheckpointCallback, HardwareMonitor
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.
+20:24:48 | INFO  | utils.py    | ── SIGTERM preempt handler — install ─────────────
+20:24:48 | INFO  | manager.py  |   SLURM_JOB_ID         = '3219921'
+20:24:48 | INFO  | manager.py  |   SLURM_RESTART_COUNT  = '0'
+20:24:48 | INFO  | manager.py  |   SLURM_PROCID         = '0'
+20:24:48 | INFO  | manager.py  |   SLURM_NODEID         = '0'
+20:24:48 | INFO  | manager.py  |   submitit preempt signal = SIGUSR2 (signum=12; source: submitit default (USR2))
+20:24:48 | INFO  | manager.py  |   prior SIGTERM handler   = SIG_DFL (default OS action — terminate process)
+20:24:48 | INFO  | manager.py  |   prior SIGUSR2 handler   = SIG_DFL (default OS action — terminate process)
+20:24:48 | WARN  | manager.py  |   ! SIGUSR2 has no callable handler — submitit may not have installed its SignalHandler yet. Forwarding SIGTERM to it will hit the OS default action instead of checkpoint_and_try_requeue. Requeue will likely NOT happen.
+20:24:48 | OK    | manager.py  |   ✓ Installed pre-fit SIGTERM handler: <stable_pretraining.manager._install_sigterm_preempt_handler.<locals>._handler> [spt]
+20:24:48 | INFO  | manager.py  |     → forwards to SIGUSR2 on receipt; lightning's _SignalConnector will compose this handler into its chain (notifier → bypass → ours) when Trainer.fit() runs.
+20:24:48 | WARN  | manager.py  | User didn't specify seed, runs won't be exactly reproducible!
+20:24:48 | INFO  | manager.py  |   Manager init: ckpt_path=None, weights_only=True
+20:24:48 | INFO  | utils.py    | ── WorkingDirectory ──────────────────────────────
+20:24:48 | INFO  | manager.py  |   cwd: /scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm
+20:24:48 | INFO  | utils.py    | ── Seed ──────────────────────────────────────────
+20:24:48 | INFO  | manager.py  |   seed: None
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/stable_pretraining/manager.py:1871: UserWarning: No seed found, seed set to 0
+  seed_everything(self.seed, workers=True)
+20:24:48 | INFO  | distributed~| Seed set to 0
+20:24:48 | INFO  | utils.py    | ── RunDirectory ──────────────────────────────────
+20:24:48 | INFO  | manager.py  |   cache_dir = /scratch/user/tahaismail424/.stable_wm/spt_runs
+20:24:48 | INFO  | manager.py  |   ddp: launch_key=slurm-3219921 rank=0 is_rank_zero=True
+20:24:48 | INFO  | utils.py    | ── RunDirectory: requeue probe ───────────────────
+20:24:48 | INFO  | manager.py  |   SLURM session key   = 3219921
+20:24:48 | INFO  | manager.py  |   SLURM_RESTART_COUNT = 0
+20:24:48 | INFO  | manager.py  |   in_requeue          = False
+20:24:48 | INFO  | utils.py    | ── RunDirectory: fresh ───────────────────────────
+20:24:48 | INFO  | manager.py  |   no user ckpt_path — training from scratch / pretrained backbone.
+20:24:48 | INFO  | manager.py  |   created run_dir = /scratch/user/tahaismail424/.stable_wm/spt_runs/runs/20261025/202448/b0123be2dc88
+20:24:48 | INFO  | manager.py  |   wrote run_meta.json with run_id=b0123be2dc88
+20:24:48 | INFO  | manager.py  |   SLURM index = /scratch/user/tahaismail424/.stable_wm/spt_runs/.slurm_index/3219921 → /scratch/user/tahaismail424/.stable_wm/spt_runs/runs/20261025/202448/b0123be2dc88
+20:24:48 | INFO  | manager.py  |   rank-0 published handoff → /scratch/user/tahaismail424/.stable_wm/spt_runs/.rank_handoff/slurm-3219921
+20:24:48 | INFO  | manager.py  |   → future SLURM requeue (SLURM_RESTART_COUNT ≥ 1) for key '3219921' will resume into this directory via the index entry written above.
+20:24:48 | WARN  | manager.py  | ! cache_dir is set but the Trainer was passed as an already-instantiated object. Cannot override default_root_dir cleanly. Consider passing the trainer as a config dict instead.
+20:24:48 | WARN  | manager.py  | ! Hydra run.dir='outputs/2026-10-25/20-23-41' will be ignored for trainer outputs (cache_dir takes precedence).
+20:24:48 | WARN  | manager.py  | ! Hydra sweep.dir='multirun/2026-10-25/20-23-41' will be ignored for trainer outputs (cache_dir takes precedence).
+20:24:49 | INFO  | logger.py   | [RegistryLogger] run_id=b0123be2dc88 run_dir=/scratch/user/tahaismail424/.stable_wm/spt_runs/runs/20261025/202448/b0123be2dc88 — sidecar.json + summary.json + metrics.csv will live here
+20:24:49 | INFO  | utils.py    | ── RegistryLogger ────────────────────────────────
+20:24:49 | INFO  | manager.py  |   run_dir: /scratch/user/tahaismail424/.stable_wm/spt_runs/runs/20261025/202448/b0123be2dc88
+20:24:49 | INFO  | manager.py  |   run_id:  b0123be2dc88
+20:24:49 | INFO  | utils.py    | ── Wandb ─────────────────────────────────────────
+20:24:49 | INFO  | manager.py  |   a Wandb config is provided, not uploading Hydra's:
+20:24:49 | INFO  | utils.py    | ── CSVLogger ─────────────────────────────────────
+20:24:49 | INFO  | manager.py  |   root_dir: /scratch/user/tahaismail424/.stable_wm/spt_runs/runs/20261025/202448/b0123be2dc88/
+20:24:49 | INFO  | manager.py  |   save_dir: /scratch/user/tahaismail424/.stable_wm/spt_runs/runs/20261025/202448/b0123be2dc88
+20:24:49 | INFO  | manager.py  |   log_dir: /scratch/user/tahaismail424/.stable_wm/spt_runs/runs/20261025/202448/b0123be2dc88/
+20:24:49 | INFO  | utils.py    | ── SignalHandlers (after submitit setup (spt SIGTERM installed in __init__)) ──
+20:24:49 | INFO  | manager.py  |   SIGUSR1  → SIG_DFL (default OS action — terminate process)
+20:24:49 | INFO  | manager.py  |   SIGUSR2  → SIG_DFL (default OS action — terminate process)
+20:24:49 | INFO  | manager.py  |   SIGCONT  → SIG_DFL (default OS action — terminate process)
+20:24:49 | INFO  | manager.py  |   SIGTERM  → <stable_pretraining.manager._install_sigterm_preempt_handler.<locals>._handler> [spt]
+20:24:49 | INFO  | utils.py    | ── Callbacks ─────────────────────────────────────
+20:24:49 | INFO  | manager.py  |   count: 19
+20:24:49 | INFO  | utils.py    | ── CacheDirCheckpointing ─────────────────────────
+20:24:49 | INFO  | manager.py  |   Saving checkpoints to: /scratch/user/tahaismail424/.stable_wm/spt_runs/runs/20261025/202448/b0123be2dc88/checkpoints
+20:24:49 | WARN  | manager.py  |   Redirecting HuggingFaceCheckpointCallback from 'hf_exports' to '/scratch/user/tahaismail424/.stable_wm/spt_runs/runs/20261025/202448/b0123be2dc88/hf_exports' (cache_dir is active — prevents races on a shared cache)
+20:24:49 | INFO  | manager.py  |   Added requeue checkpoint (filename='last', every_n_train_steps=None)
+20:24:49 | INFO  | utils.py    | ── LoadPath resolution ───────────────────────────
+20:24:49 | INFO  | manager.py  |   in_requeue = False
+20:24:49 | INFO  | manager.py  |   user ckpt_path = None
+20:24:49 | INFO  | manager.py  |   user weights_only = True
+20:24:49 | INFO  | manager.py  |   → no ckpt_path; training from scratch.
+20:24:49 | INFO  | manager.py  |   manual-opt: moved gradient_clip_val=1.0 (algorithm=None) onto trainer.gradient_clip_val_; Module.training_step applies it via self.clip_gradients().
+20:24:49 | INFO  | utils.py    | ── TrainerFit ────────────────────────────────────
+20:24:49 | INFO  | manager.py  |   ckpt_path:     None
+20:24:49 | INFO  | manager.py  |   weights_only:  None
+20:24:49 | INFO  | utils.py    | ── SignalHandlers (before Trainer.fit() (handler installed in __init__)) ──
+20:24:49 | INFO  | manager.py  |   SIGUSR1  → SIG_DFL (default OS action — terminate process)
+20:24:49 | INFO  | manager.py  |   SIGUSR2  → SIG_DFL (default OS action — terminate process)
+20:24:49 | INFO  | manager.py  |   SIGCONT  → SIG_DFL (default OS action — terminate process)
+20:24:49 | INFO  | manager.py  |   SIGTERM  → <stable_pretraining.manager._install_sigterm_preempt_handler.<locals>._handler> [spt]
+20:24:49 | INFO  | manager.py  |   → entering Trainer.fit(); lightning's _SignalConnector will now register its own handlers. SIGTERM will become _HandlersCompose([_sigterm_notifier_fn, _sigterm_handler_fn, spt._handler]); USR-sig binding from submitit is preserved (lightning skips USR registration when one already exists).
+💡 Tip: For seamless cloud uploads and versioning, try installing [litmodels](https://pypi.org/project/litmodels/) to enable LitModelCheckpoint, which syncs automatically with the Lightning model registry.
+You are using a CUDA device ('NVIDIA A100-PCIE-40GB') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+20:24:50 | OK    | module.py   | ✓ dataset for TrainerFn.FITTING loaded
+20:24:50 | INFO  | module.py   |   setup was done by user
+20:24:50 | INFO  | utils.py    | ── EnvironmentDump ───────────────────────────────
+20:24:50 | INFO  | env_info.py |   log_dir: /scratch/user/tahaismail424/.stable_wm/spt_runs
+20:24:50 | INFO  | env_info.py |   Running environment dump in background thread (non-blocking)
+20:24:50 | INFO  | env_info.py |   Collecting environment information...
+20:24:50 | OK    | env_info.py | ✓ Python 3.13.12
+20:24:50 | OK    | env_info.py | ✓ System: Linux 4.18.0-553.124.1.el8_10.x86_64 (x86_64)
+20:24:50 | INFO  | env_info.py |   Hostname: fc026
+20:24:50 | OK    | env_info.py | ✓ Background thread started successfully
+20:24:50 | INFO  | trainer_inf~|   linking trainer to DataModule
+20:24:50 | INFO  | utils.py    | ── Callbacks (in order) ──────────────────────────
+20:24:50 | INFO  | utils.py    |     [ 0] SaveCkptCallback
+20:24:50 | INFO  | utils.py    |     [ 1] RichProgressBar
+20:24:50 | INFO  | utils.py    |     [ 2] RichModelSummary
+20:24:50 | INFO  | utils.py    |     [ 3] PrintProgressBar
+20:24:50 | INFO  | utils.py    |     [ 4] ModuleRegistryCallback
+20:24:50 | INFO  | utils.py    |     [ 5] LoggingCallback
+20:24:50 | INFO  | utils.py    |     [ 6] EnvironmentDumpCallback
+20:24:50 | INFO  | utils.py    |     [ 7] TrainerInfo
+20:24:50 | INFO  | utils.py    |     [ 8] SklearnCheckpoint
+20:24:50 | INFO  | utils.py    |     [ 9] WandbCheckpoint
+20:24:50 | INFO  | utils.py    |     [10] TrackioCheckpoint
+20:24:50 | INFO  | utils.py    |     [11] SwanLabCheckpoint
+20:24:50 | INFO  | utils.py    |     [12] ModuleSummary
+20:24:50 | INFO  | utils.py    |     [13] SLURMInfo
+20:24:50 | INFO  | utils.py    |     [14] LogUnusedParametersOnce
+20:24:50 | INFO  | utils.py    |     [15] HuggingFaceCheckpointCallback
+20:24:50 | INFO  | utils.py    |     [16] HardwareMonitor
+20:24:50 | INFO  | utils.py    |     [17] ModelCheckpoint
+20:24:50 | INFO  | utils.py    |     [18] _RunDirCallback
+20:24:50 | INFO  | utils.py    |     [19] ModelCheckpoint
+20:24:50 | INFO  | utils.py    |   ⚑ marks order-sensitive callbacks; see AGENTS.md → Callback ordering for the full rules.
+20:24:50 | INFO  | utils.py    | ── SklearnCheckpoint ─────────────────────────────
+20:24:50 | INFO  | checkpoint_~|   Sklearn Modules:
+20:24:50 | INFO  | checkpoint_~| 
+┏━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┓
+┃ Module   ┃ Name   ┃ Type   ┃
+┣━━━━━━━━━━╋━━━━━━━━╋━━━━━━━━┫
+┗━━━━━━━━━━┻━━━━━━━━┻━━━━━━━━┛
+20:24:50 | INFO  | utils.py    | ── WandbCheckpoint ───────────────────────────────
+20:24:50 | INFO  | utils.py    | ── TrackioCheckpoint ─────────────────────────────
+20:24:50 | INFO  | utils.py    | ── SwanLabCheckpoint ─────────────────────────────
+20:24:50 | INFO  | utils.py    | ── PyTorch Modules ───────────────────────────────
+20:24:50 | WARN  | module.py   | ! You are calling self.parameters which also gives callbacks parameters, to remove them, pass `with_callbacks=False`
+20:24:50 | INFO  | trainer_inf~| \n+---------------------------------------------------------+----------------------+--------------------------+--------------------------+---------+
+| Module                                                  | Trainable parameters | Non Trainable parameters | Uninitialized parameters | Buffers |
++---------------------------------------------------------+----------------------+--------------------------+--------------------------+---------+
+|                                                         |             18034478 |                        0 |                        0 |    8245 |
+| callbacks_modules                                       |                    0 |                        0 |                        0 |       0 |
+| callbacks_metrics                                       |                    0 |                        0 |                        0 |       0 |
+| model                                                   |             18034478 |                        0 |                        0 |    8194 |
+| model.encoder                                           |              5501376 |                        0 |                        0 |       0 |
+| model.encoder.embeddings                                |               162624 |                        0 |                        0 |       0 |
+| model.encoder.embeddings.patch_embeddings               |               113088 |                        0 |                        0 |       0 |
+| model.encoder.embeddings.patch_embeddings.projection    |               113088 |                        0 |                        0 |       0 |
+| model.encoder.embeddings.dropout                        |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers                                    |              5338368 |                        0 |                        0 |       0 |
+| model.encoder.layers.0                                  |               444864 |                        0 |                        0 |       0 |
+| model.encoder.layers.0.attention                        |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.0.attention.q_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.0.attention.k_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.0.attention.v_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.0.attention.o_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.0.layernorm_before                 |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.0.layernorm_after                  |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.0.mlp                              |               295872 |                        0 |                        0 |       0 |
+| model.encoder.layers.0.mlp.activation_fn                |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.0.mlp.fc1                          |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.0.mlp.fc2                          |               147648 |                        0 |                        0 |       0 |
+| model.encoder.layers.0.dropout                          |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.1                                  |               444864 |                        0 |                        0 |       0 |
+| model.encoder.layers.1.attention                        |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.1.attention.q_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.1.attention.k_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.1.attention.v_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.1.attention.o_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.1.layernorm_before                 |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.1.layernorm_after                  |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.1.mlp                              |               295872 |                        0 |                        0 |       0 |
+| model.encoder.layers.1.mlp.activation_fn                |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.1.mlp.fc1                          |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.1.mlp.fc2                          |               147648 |                        0 |                        0 |       0 |
+| model.encoder.layers.1.dropout                          |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.2                                  |               444864 |                        0 |                        0 |       0 |
+| model.encoder.layers.2.attention                        |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.2.attention.q_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.2.attention.k_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.2.attention.v_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.2.attention.o_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.2.layernorm_before                 |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.2.layernorm_after                  |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.2.mlp                              |               295872 |                        0 |                        0 |       0 |
+| model.encoder.layers.2.mlp.activation_fn                |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.2.mlp.fc1                          |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.2.mlp.fc2                          |               147648 |                        0 |                        0 |       0 |
+| model.encoder.layers.2.dropout                          |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.3                                  |               444864 |                        0 |                        0 |       0 |
+| model.encoder.layers.3.attention                        |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.3.attention.q_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.3.attention.k_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.3.attention.v_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.3.attention.o_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.3.layernorm_before                 |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.3.layernorm_after                  |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.3.mlp                              |               295872 |                        0 |                        0 |       0 |
+| model.encoder.layers.3.mlp.activation_fn                |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.3.mlp.fc1                          |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.3.mlp.fc2                          |               147648 |                        0 |                        0 |       0 |
+| model.encoder.layers.3.dropout                          |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.4                                  |               444864 |                        0 |                        0 |       0 |
+| model.encoder.layers.4.attention                        |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.4.attention.q_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.4.attention.k_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.4.attention.v_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.4.attention.o_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.4.layernorm_before                 |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.4.layernorm_after                  |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.4.mlp                              |               295872 |                        0 |                        0 |       0 |
+| model.encoder.layers.4.mlp.activation_fn                |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.4.mlp.fc1                          |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.4.mlp.fc2                          |               147648 |                        0 |                        0 |       0 |
+| model.encoder.layers.4.dropout                          |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.5                                  |               444864 |                        0 |                        0 |       0 |
+| model.encoder.layers.5.attention                        |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.5.attention.q_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.5.attention.k_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.5.attention.v_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.5.attention.o_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.5.layernorm_before                 |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.5.layernorm_after                  |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.5.mlp                              |               295872 |                        0 |                        0 |       0 |
+| model.encoder.layers.5.mlp.activation_fn                |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.5.mlp.fc1                          |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.5.mlp.fc2                          |               147648 |                        0 |                        0 |       0 |
+| model.encoder.layers.5.dropout                          |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.6                                  |               444864 |                        0 |                        0 |       0 |
+| model.encoder.layers.6.attention                        |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.6.attention.q_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.6.attention.k_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.6.attention.v_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.6.attention.o_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.6.layernorm_before                 |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.6.layernorm_after                  |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.6.mlp                              |               295872 |                        0 |                        0 |       0 |
+| model.encoder.layers.6.mlp.activation_fn                |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.6.mlp.fc1                          |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.6.mlp.fc2                          |               147648 |                        0 |                        0 |       0 |
+| model.encoder.layers.6.dropout                          |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.7                                  |               444864 |                        0 |                        0 |       0 |
+| model.encoder.layers.7.attention                        |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.7.attention.q_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.7.attention.k_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.7.attention.v_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.7.attention.o_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.7.layernorm_before                 |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.7.layernorm_after                  |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.7.mlp                              |               295872 |                        0 |                        0 |       0 |
+| model.encoder.layers.7.mlp.activation_fn                |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.7.mlp.fc1                          |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.7.mlp.fc2                          |               147648 |                        0 |                        0 |       0 |
+| model.encoder.layers.7.dropout                          |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.8                                  |               444864 |                        0 |                        0 |       0 |
+| model.encoder.layers.8.attention                        |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.8.attention.q_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.8.attention.k_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.8.attention.v_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.8.attention.o_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.8.layernorm_before                 |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.8.layernorm_after                  |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.8.mlp                              |               295872 |                        0 |                        0 |       0 |
+| model.encoder.layers.8.mlp.activation_fn                |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.8.mlp.fc1                          |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.8.mlp.fc2                          |               147648 |                        0 |                        0 |       0 |
+| model.encoder.layers.8.dropout                          |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.9                                  |               444864 |                        0 |                        0 |       0 |
+| model.encoder.layers.9.attention                        |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.9.attention.q_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.9.attention.k_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.9.attention.v_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.9.attention.o_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.9.layernorm_before                 |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.9.layernorm_after                  |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.9.mlp                              |               295872 |                        0 |                        0 |       0 |
+| model.encoder.layers.9.mlp.activation_fn                |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.9.mlp.fc1                          |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.9.mlp.fc2                          |               147648 |                        0 |                        0 |       0 |
+| model.encoder.layers.9.dropout                          |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.10                                 |               444864 |                        0 |                        0 |       0 |
+| model.encoder.layers.10.attention                       |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.10.attention.q_proj                |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.10.attention.k_proj                |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.10.attention.v_proj                |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.10.attention.o_proj                |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.10.layernorm_before                |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.10.layernorm_after                 |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.10.mlp                             |               295872 |                        0 |                        0 |       0 |
+| model.encoder.layers.10.mlp.activation_fn               |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.10.mlp.fc1                         |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.10.mlp.fc2                         |               147648 |                        0 |                        0 |       0 |
+| model.encoder.layers.10.dropout                         |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.11                                 |               444864 |                        0 |                        0 |       0 |
+| model.encoder.layers.11.attention                       |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.11.attention.q_proj                |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.11.attention.k_proj                |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.11.attention.v_proj                |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.11.attention.o_proj                |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.11.layernorm_before                |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.11.layernorm_after                 |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.11.mlp                             |               295872 |                        0 |                        0 |       0 |
+| model.encoder.layers.11.mlp.activation_fn               |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.11.mlp.fc1                         |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.11.mlp.fc2                         |               147648 |                        0 |                        0 |       0 |
+| model.encoder.layers.11.dropout                         |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layernorm                                 |                  384 |                        0 |                        0 |       0 |
+| model.predictor                                         |             10791360 |                        0 |                        0 |       0 |
+| model.predictor.dropout                                 |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer                             |             10790784 |                        0 |                        0 |       0 |
+| model.predictor.transformer.norm                        |                  384 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers                      |             10790400 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0                    |              1798400 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0.attn               |               787008 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0.attn.norm          |                  384 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0.attn.attend        |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0.attn.to_qkv        |               589824 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0.attn.to_out        |               196800 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0.attn.to_out.0      |               196800 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0.attn.to_out.1      |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0.mlp                |               789056 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0.mlp.net            |               789056 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0.mlp.net.0          |                  384 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0.mlp.net.1          |               395264 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0.mlp.net.2          |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0.mlp.net.3          |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0.mlp.net.4          |               393408 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0.mlp.net.5          |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0.norm1              |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0.norm2              |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0.adaLN_modulation   |               222336 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0.adaLN_modulation.0 |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0.adaLN_modulation.1 |               222336 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1                    |              1798400 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1.attn               |               787008 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1.attn.norm          |                  384 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1.attn.attend        |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1.attn.to_qkv        |               589824 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1.attn.to_out        |               196800 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1.attn.to_out.0      |               196800 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1.attn.to_out.1      |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1.mlp                |               789056 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1.mlp.net            |               789056 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1.mlp.net.0          |                  384 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1.mlp.net.1          |               395264 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1.mlp.net.2          |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1.mlp.net.3          |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1.mlp.net.4          |               393408 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1.mlp.net.5          |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1.norm1              |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1.norm2              |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1.adaLN_modulation   |               222336 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1.adaLN_modulation.0 |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1.adaLN_modulation.1 |               222336 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2                    |              1798400 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2.attn               |               787008 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2.attn.norm          |                  384 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2.attn.attend        |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2.attn.to_qkv        |               589824 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2.attn.to_out        |               196800 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2.attn.to_out.0      |               196800 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2.attn.to_out.1      |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2.mlp                |               789056 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2.mlp.net            |               789056 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2.mlp.net.0          |                  384 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2.mlp.net.1          |               395264 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2.mlp.net.2          |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2.mlp.net.3          |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2.mlp.net.4          |               393408 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2.mlp.net.5          |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2.norm1              |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2.norm2              |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2.adaLN_modulation   |               222336 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2.adaLN_modulation.0 |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2.adaLN_modulation.1 |               222336 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3                    |              1798400 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3.attn               |               787008 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3.attn.norm          |                  384 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3.attn.attend        |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3.attn.to_qkv        |               589824 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3.attn.to_out        |               196800 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3.attn.to_out.0      |               196800 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3.attn.to_out.1      |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3.mlp                |               789056 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3.mlp.net            |               789056 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3.mlp.net.0          |                  384 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3.mlp.net.1          |               395264 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3.mlp.net.2          |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3.mlp.net.3          |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3.mlp.net.4          |               393408 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3.mlp.net.5          |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3.norm1              |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3.norm2              |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3.adaLN_modulation   |               222336 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3.adaLN_modulation.0 |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3.adaLN_modulation.1 |               222336 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4                    |              1798400 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4.attn               |               787008 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4.attn.norm          |                  384 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4.attn.attend        |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4.attn.to_qkv        |               589824 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4.attn.to_out        |               196800 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4.attn.to_out.0      |               196800 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4.attn.to_out.1      |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4.mlp                |               789056 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4.mlp.net            |               789056 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4.mlp.net.0          |                  384 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4.mlp.net.1          |               395264 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4.mlp.net.2          |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4.mlp.net.3          |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4.mlp.net.4          |               393408 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4.mlp.net.5          |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4.norm1              |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4.norm2              |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4.adaLN_modulation   |               222336 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4.adaLN_modulation.0 |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4.adaLN_modulation.1 |               222336 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5                    |              1798400 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5.attn               |               787008 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5.attn.norm          |                  384 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5.attn.attend        |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5.attn.to_qkv        |               589824 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5.attn.to_out        |               196800 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5.attn.to_out.0      |               196800 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5.attn.to_out.1      |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5.mlp                |               789056 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5.mlp.net            |               789056 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5.mlp.net.0          |                  384 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5.mlp.net.1          |               395264 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5.mlp.net.2          |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5.mlp.net.3          |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5.mlp.net.4          |               393408 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5.mlp.net.5          |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5.norm1              |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5.norm2              |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5.adaLN_modulation   |               222336 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5.adaLN_modulation.0 |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5.adaLN_modulation.1 |               222336 |                        0 |                        0 |       0 |
+| model.predictor.transformer.input_proj                  |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.cond_proj                   |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.output_proj                 |                    0 |                        0 |                        0 |       0 |
+| model.action_encoder                                    |               156206 |                        0 |                        0 |       0 |
+| model.action_encoder.patch_embed                        |                  110 |                        0 |                        0 |       0 |
+| model.action_encoder.embed                              |               156096 |                        0 |                        0 |       0 |
+| model.action_encoder.embed.0                            |                 8448 |                        0 |                        0 |       0 |
+| model.action_encoder.embed.1                            |                    0 |                        0 |                        0 |       0 |
+| model.action_encoder.embed.2                            |               147648 |                        0 |                        0 |       0 |
+| model.projector                                         |               792768 |                        0 |                        0 |    4097 |
+| model.projector.net                                     |               792768 |                        0 |                        0 |    4097 |
+| model.projector.net.0                                   |               395264 |                        0 |                        0 |       0 |
+| model.projector.net.1                                   |                 4096 |                        0 |                        0 |    4097 |
+| model.projector.net.2                                   |                    0 |                        0 |                        0 |       0 |
+| model.projector.net.3                                   |               393408 |                        0 |                        0 |       0 |
+| model.pred_proj                                         |               792768 |                        0 |                        0 |    4097 |
+| model.pred_proj.net                                     |               792768 |                        0 |                        0 |    4097 |
+| model.pred_proj.net.0                                   |               395264 |                        0 |                        0 |       0 |
+| model.pred_proj.net.1                                   |                 4096 |                        0 |                        0 |    4097 |
+| model.pred_proj.net.2                                   |                    0 |                        0 |                        0 |       0 |
+| model.pred_proj.net.3                                   |               393408 |                        0 |                        0 |       0 |
+| sigreg                                                  |                    0 |                        0 |                        0 |      51 |
++---------------------------------------------------------+----------------------+--------------------------+--------------------------+---------+
+20:24:50 | INFO  | utils.py    | ── SLURM ─────────────────────────────────────────
+20:24:50 | INFO  | trainer_inf~|   Job ID: 3219921
+20:24:50 | INFO  | trainer_inf~|   Task ID: N/A
+20:24:50 | INFO  | trainer_inf~|   Job Name: lewm-train-pusht_shapeI
+20:24:50 | INFO  | trainer_inf~|   Nodes: 1
+20:24:50 | INFO  | trainer_inf~|   Tasks: 1
+20:24:50 | INFO  | trainer_inf~|   CPUs per node: 24
+20:24:50 | INFO  | trainer_inf~|   CPUs per task: 24
+20:24:50 | INFO  | trainer_inf~|   Memory per node: 122880
+20:24:50 | INFO  | trainer_inf~|   Memory per CPU: N/A
+20:24:50 | INFO  | trainer_inf~|   Time limit: N/A
+20:24:50 | INFO  | trainer_inf~|   Partition: gpu
+20:24:50 | INFO  | trainer_inf~|   Node List: fc026
+20:24:50 | INFO  | trainer_inf~|   Submit Directory: /scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm
+20:24:50 | INFO  | utils.py    | ── HardwareMonitor ───────────────────────────────
+20:24:50 | INFO  | hardware_mo~|   interval: 10.0s
+20:24:50 | INFO  | hardware_mo~|   prefix:   'hardware/'
+20:24:50 | INFO  | hardware_mo~|   metrics:  cpu=True ram=True disk=True net=True gpu=True
+20:24:50 | INFO  | hardware_mo~|   per-rank: rank 0 only
+20:24:50 | WARN  | hardware_mo~| HardwareMonitor: psutil unavailable (ModuleNotFoundError("No module named 'psutil'")); CPU/RAM/disk/net metrics disabled.
+20:24:50 | WARN  | hardware_mo~| HardwareMonitor: pynvml unavailable (ModuleNotFoundError("No module named 'pynvml'")); GPU metrics disabled.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+20:24:51 | WARN  | env_info.py | ! pip freeze failed: Command '['/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/bin/python', '-m', 'pip', 'freeze']' returned non-zero exit status 1.
+20:24:51 | OK    | env_info.py | ✓ Packages: 0 packages collected in 0.63s
+20:24:51 | OK    | env_info.py | ✓ NVIDIA Driver: 580.126.20
+20:24:51 | INFO  | utils.py    | ── Optimizers ────────────────────────────────────
+20:24:51 | INFO  | module.py   |   Optimizer specified by Dict with keys ['model_opt']
+20:24:51 | INFO  | module.py   | 
+┏━━━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Optimizer   ┃ Pattern   ┃   Matched Modules ┃   Param Tensors ┃   Total Params ┃   RequiresGrad Tensors ┃
+┣━━━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━━━━┫
+┃ model_opt   ┃ model     ┃               316 ┃             297 ┃       18034478 ┃                    297 ┃
+┗━━━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━┛
+20:24:51 | INFO  | lr_schedule~| 	User provided a dict
+Loading `train_dataloader` to estimate number of stepping batches.
+20:24:51 | WARN  | module.py   | could not set pl_trainer to train dataset
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/lightning/pytorch/utilities/_pytree.py:21: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
+20:24:51 | OK    | env_info.py | ✓ Git: main @ 8edfeb33
+20:24:51 | INFO  | env_info.py |   Remote: git@github.com:tahaismail424/adaptive-wm.git
+20:24:51 | WARN  | env_info.py | ! Working directory has uncommitted changes
+20:24:51 | OK    | env_info.py | ✓ SLURM Job: 3219921
+20:24:51 | INFO  | env_info.py |   Name: lewm-train-pusht_shapeI
+20:24:51 | INFO  | env_info.py |   Partition: gpu
+20:24:51 | INFO  | env_info.py |   Nodes: 1
+20:24:51 | INFO  | env_info.py |   Tasks: 1
+20:24:51 | OK    | env_info.py | ✓ Environment: 5 relevant variables captured
+20:24:51 | INFO  | env_info.py |   Serializing environment data...
+20:24:51 | INFO  | env_info.py |   File exists, using version 9: environment_v9.json
+20:24:52 | INFO  | env_info.py |   File exists, using version 9: requirements_frozen_v9.txt
+20:24:52 | INFO  | env_info.py |   Save directory: /scratch/user/tahaismail424/.stable_wm/spt_runs
+20:24:52 | INFO  | env_info.py |   Writing environment to temp file...
+20:24:52 | INFO  | env_info.py |   Moving to: environment_v9.json
+20:24:52 | OK    | env_info.py | ✓ Environment file saved (3.1 KB)
+20:24:52 | OK    | env_info.py | ✓ Requirements file saved (0.2 KB)
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/lance/__init__.py:358: UserWarning: lance is not fork-safe. If you are using multiprocessing, use spawn or forkserver instead.
+  warnings.warn(
+20:24:53 | INFO  | module.py   |   Configured optimizer 'model_opt' (modules=316, param_tensors=297, total_params=18034478) with LinearWarmupCosineAnnealingLR scheduler.
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/lightning/pytorch/utilities/model_summary/model_summary.py:242: Precision bf16-mixed is not supported by the model summary.  Estimated model size in MB will not be accurate. Using 32 bits instead.
+┏━━━┳━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━┳━━━━━━━┓
+┃   ┃ Name              ┃ Type       ┃ Params ┃ Mode  ┃ FLOPs ┃
+┡━━━╇━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━╇━━━━━━━┩
+│ 0 │ callbacks_modules │ ModuleDict │      0 │ train │     0 │
+│ 1 │ callbacks_metrics │ ModuleDict │      0 │ train │     0 │
+│ 2 │ model             │ JEPA       │ 18.0 M │ train │     0 │
+│ 3 │ sigreg            │ SIGReg     │      0 │ train │     0 │
+└───┴───────────────────┴────────────┴────────┴───────┴───────┘
+Trainable params: 18.0 M                                                        
+Non-trainable params: 0                                                         
+Total params: 18.0 M                                                            
+Total estimated model params size (MB): 72.138                                  
+Modules in train mode: 319                                                      
+Modules in eval mode: 0                                                         
+Total FLOPs: 0                                                                  
+20:24:54 | INFO  | logger.py   | [RegistryLogger] summary.json flushed (0 metrics, step=0, epoch=0) → /scratch/user/tahaismail424/.stable_wm/spt_runs/runs/20261025/202448/b0123be2dc88/summary.json
+SLURM auto-requeueing enabled. Setting signal handlers.
+20:24:54 | WARN  | module.py   | could not set pl_trainer to train dataset
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/lightning/pytorch/utilities/_pytree.py:21: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/lightning/pytorch/trainer/connectors/data_connector.py:378: You have overridden `on_after_batch_transfer` in `LightningModule` but have passed in a `LightningDataModule`. It will use the implementation from `LightningModule` instance.
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/lightning/pytorch/utilities/data.py:79: Trying to infer the `batch_size` from an ambiguous collection. The batch size we found is 128. To avoid any miscalculations, use `self.log(..., batch_size=batch_size)`.
+20:26:17 | INFO  | trainer_inf~| \n+----------------------+-------------------+
+|        Metric        |       Value       |
++----------------------+-------------------+
+|    [0;34;40mvalidate/loss[0m     | [0;32;40m5.115448474884033[0m |
+|  [0;34;40mvalidate/pred_loss[0m  | [0;32;40m0.084198497235775[0m |
+| [0;34;40mvalidate/sigreg_loss[0m |        [0;32;40m56.0[0m       |
++----------------------+-------------------+
+20:26:18 | WARN  | hf_models.py| ! No Hugging Face (PreTrainedModel) submodules found in LightningModule.
+20:26:18 | INFO  | utils.py    | ── Optimizers ────────────────────────────────────
+20:26:18 | INFO  | module.py   |   self.optimizers() gave us 1 optimizers
+20:26:18 | WARN  | module.py   | ! No clip val found for optimizer model_opt
+20:26:18 | WARN  | module.py   | ! Will use the Trainer's value of 1.0
+20:26:18 | WARN  | module.py   | ! No clip algorithm found for optimizer model_opt
+20:26:18 | WARN  | module.py   | ! Will use the Trainer's value of None
+20:26:18 | OK    | module.py   | ✓ Optimizer check complete:
++------------+-----------+----------------+-----------+-----------+
+| Opt. Index | Opt. name |      opt       | clip val. | clip alg. |
++------------+-----------+----------------+-----------+-----------+
+|     0      | model_opt | LightningAdamW |    1.0    |    None   |
++------------+-----------+----------------+-----------+-----------+
+20:26:19 | INFO  | utils.py    | ── LogUnusedParametersOnce ───────────────────────
+20:26:19 | INFO  | unused_para~|   registered hooks on 297 leaf parameters
+20:26:30 | OK    | unused_para~| ✓ all tracked parameters received gradients on the first backward pass
+20:26:30 | INFO  | unused_para~|   hooks removed, callback disabled
+[Epoch 0/30] step 50/5804 (1.9 it/s)
+[Epoch 0/30] step 100/5804 (1.8 it/s)
+[Epoch 0/30] step 150/5804 (2.3 it/s)
+[Epoch 0/30] step 200/5804 (2.7 it/s)
+[Epoch 0/30] step 250/5804 (2.9 it/s)
+[Epoch 0/30] step 300/5804 (3.1 it/s)
+[Epoch 0/30] step 350/5804 (3.3 it/s)
+[Epoch 0/30] step 400/5804 (3.5 it/s)
+[Epoch 0/30] step 450/5804 (3.6 it/s)
+[Epoch 0/30] step 500/5804 (3.7 it/s)
+[Epoch 0/30] step 550/5804 (3.8 it/s)
+[Epoch 0/30] step 600/5804 (3.8 it/s)
+[2026-10-25 20:29:06,604][opentelemetry.exporter.otlp.proto.http.metric_exporter][WARNING] - Transient error Service Unavailable encountered while exporting metrics batch, retrying in 1.10s.
+[Epoch 0/30] step 650/5804 (3.9 it/s)
+[Epoch 0/30] step 700/5804 (3.9 it/s)
+[Epoch 0/30] step 750/5804 (4.0 it/s)
+[Epoch 0/30] step 800/5804 (4.1 it/s)
+[Epoch 0/30] step 850/5804 (4.1 it/s)
+[Epoch 0/30] step 900/5804 (4.2 it/s)
+[Epoch 0/30] step 950/5804 (4.2 it/s)
+[Epoch 0/30] step 1000/5804 (4.2 it/s)
+[Epoch 0/30] step 1050/5804 (4.2 it/s)
+[Epoch 0/30] step 1100/5804 (4.3 it/s)
+[Epoch 0/30] step 1150/5804 (4.3 it/s)
+[Epoch 0/30] step 1200/5804 (4.3 it/s)
+[Epoch 0/30] step 1250/5804 (4.4 it/s)
+[Epoch 0/30] step 1300/5804 (4.4 it/s)
+[Epoch 0/30] step 1350/5804 (4.4 it/s)
+[Epoch 0/30] step 1400/5804 (4.4 it/s)
+[Epoch 0/30] step 1450/5804 (4.4 it/s)
+[Epoch 0/30] step 1500/5804 (4.4 it/s)
+[Epoch 0/30] step 1550/5804 (4.4 it/s)
+[Epoch 0/30] step 1600/5804 (4.5 it/s)
+[Epoch 0/30] step 1650/5804 (4.5 it/s)
+[Epoch 0/30] step 1700/5804 (4.5 it/s)
+[Epoch 0/30] step 1750/5804 (4.5 it/s)
+[Epoch 0/30] step 1800/5804 (4.5 it/s)
+[Epoch 0/30] step 1850/5804 (4.5 it/s)
+[Epoch 0/30] step 1900/5804 (4.5 it/s)
+[Epoch 0/30] step 1950/5804 (4.6 it/s)
+[Epoch 0/30] step 2000/5804 (4.6 it/s)
+[Epoch 0/30] step 2050/5804 (4.6 it/s)
+[Epoch 0/30] step 2100/5804 (4.6 it/s)
+[Epoch 0/30] step 2150/5804 (4.6 it/s)
+[Epoch 0/30] step 2200/5804 (4.6 it/s)
+[Epoch 0/30] step 2250/5804 (4.6 it/s)
+[Epoch 0/30] step 2300/5804 (4.6 it/s)
+[Epoch 0/30] step 2350/5804 (4.6 it/s)
+[Epoch 0/30] step 2400/5804 (4.6 it/s)
+[Epoch 0/30] step 2450/5804 (4.6 it/s)
+[Epoch 0/30] step 2500/5804 (4.6 it/s)
+[Epoch 0/30] step 2550/5804 (4.6 it/s)
+[Epoch 0/30] step 2600/5804 (4.6 it/s)
+[Epoch 0/30] step 2650/5804 (4.7 it/s)
+[Epoch 0/30] step 2700/5804 (4.7 it/s)
+[Epoch 0/30] step 2750/5804 (4.7 it/s)
+[Epoch 0/30] step 2800/5804 (4.7 it/s)
+[Epoch 0/30] step 2850/5804 (4.6 it/s)
+[Epoch 0/30] step 2900/5804 (4.6 it/s)
+[Epoch 0/30] step 2950/5804 (4.6 it/s)
+[Epoch 0/30] step 3000/5804 (4.6 it/s)
+[Epoch 0/30] step 3050/5804 (4.6 it/s)
+[Epoch 0/30] step 3100/5804 (4.5 it/s)
+[Epoch 0/30] step 3150/5804 (4.5 it/s)
+[Epoch 0/30] step 3200/5804 (4.5 it/s)
+[Epoch 0/30] step 3250/5804 (4.5 it/s)
+[Epoch 0/30] step 3300/5804 (4.6 it/s)
+[Epoch 0/30] step 3350/5804 (4.6 it/s)
+[Epoch 0/30] step 3400/5804 (4.6 it/s)
+[Epoch 0/30] step 3450/5804 (4.5 it/s)
+[Epoch 0/30] step 3500/5804 (4.6 it/s)
+[Epoch 0/30] step 3550/5804 (4.6 it/s)
+[Epoch 0/30] step 3600/5804 (4.6 it/s)
+[Epoch 0/30] step 3650/5804 (4.6 it/s)
+[Epoch 0/30] step 3700/5804 (4.6 it/s)
+[Epoch 0/30] step 3750/5804 (4.6 it/s)
+[Epoch 0/30] step 3800/5804 (4.6 it/s)
+[Epoch 0/30] step 3850/5804 (4.6 it/s)
+[Epoch 0/30] step 3900/5804 (4.6 it/s)
+[Epoch 0/30] step 3950/5804 (4.6 it/s)
+[Epoch 0/30] step 4000/5804 (4.6 it/s)
+[Epoch 0/30] step 4050/5804 (4.6 it/s)
+[Epoch 0/30] step 4100/5804 (4.6 it/s)
+[Epoch 0/30] step 4150/5804 (4.6 it/s)
+[Epoch 0/30] step 4200/5804 (4.6 it/s)
+[Epoch 0/30] step 4250/5804 (4.6 it/s)
+[Epoch 0/30] step 4300/5804 (4.6 it/s)
+[Epoch 0/30] step 4350/5804 (4.6 it/s)
+[Epoch 0/30] step 4400/5804 (4.6 it/s)
+[Epoch 0/30] step 4450/5804 (4.7 it/s)
+[Epoch 0/30] step 4500/5804 (4.6 it/s)
+[Epoch 0/30] step 4550/5804 (4.6 it/s)
+[Epoch 0/30] step 4600/5804 (4.6 it/s)
+[Epoch 0/30] step 4650/5804 (4.6 it/s)
+[Epoch 0/30] step 4700/5804 (4.7 it/s)
+[Epoch 0/30] step 4750/5804 (4.7 it/s)
+[Epoch 0/30] step 4800/5804 (4.7 it/s)
+[Epoch 0/30] step 4850/5804 (4.7 it/s)
+[Epoch 0/30] step 4900/5804 (4.6 it/s)
+[Epoch 0/30] step 4950/5804 (4.6 it/s)
+[Epoch 0/30] step 5000/5804 (4.6 it/s)
+[Epoch 0/30] step 5050/5804 (4.6 it/s)
+[Epoch 0/30] step 5100/5804 (4.6 it/s)
+[Epoch 0/30] step 5150/5804 (4.7 it/s)
+[Epoch 0/30] step 5200/5804 (4.6 it/s)
+[Epoch 0/30] step 5250/5804 (4.6 it/s)
+[Epoch 0/30] step 5300/5804 (4.6 it/s)
+[Epoch 0/30] step 5350/5804 (4.6 it/s)
+[Epoch 0/30] step 5400/5804 (4.6 it/s)
+[Epoch 0/30] step 5450/5804 (4.7 it/s)
+[Epoch 0/30] step 5500/5804 (4.7 it/s)
+[Epoch 0/30] step 5550/5804 (4.7 it/s)
+[Epoch 0/30] step 5600/5804 (4.7 it/s)
+[Epoch 0/30] step 5650/5804 (4.7 it/s)
+[Epoch 0/30] step 5700/5804 (4.7 it/s)
+[Epoch 0/30] step 5750/5804 (4.7 it/s)
+[Epoch 0/30] step 5800/5804 (4.7 it/s)
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/lightning/pytorch/utilities/data.py:79: Trying to infer the `batch_size` from an ambiguous collection. The batch size we found is 18. To avoid any miscalculations, use `self.log(..., batch_size=batch_size)`.
+20:48:34 | INFO  | trainer_inf~| \n+----------------------+------------------------+
+|        Metric        |         Value          |
++----------------------+------------------------+
+|       [0;34;40mfit/loss[0m       |  [0;32;40m0.28394269943237305[0m   |
+|    [0;34;40mfit/pred_loss[0m     |  [0;32;40m0.05738021433353424[0m   |
+|   [0;34;40mfit/sigreg_loss[0m    |        [0;32;40m2.515625[0m        |
+| [0;34;40mhparams/lr_model_opt[0m | [0;32;40m4.9931491957977414e-05[0m |
+|    [0;34;40mvalidate/loss[0m     |   [0;32;40m9.628474235534668[0m    |
+|  [0;34;40mvalidate/pred_loss[0m  |  [0;32;40m0.06802697479724884[0m   |
+| [0;34;40mvalidate/sigreg_loss[0m |   [0;32;40m106.22583770751953[0m   |
++----------------------+------------------------+
+[2026-10-25 20:48:36,989][stable_worldmodel.wm.utils][INFO] - 📦📦📦 Model saved to /scratch/user/tahaismail424/.stable_wm/checkpoints/lewm_pusht_shapeI/weights_epoch_1.pt 📦📦📦
+[Epoch 0/30] done in 1338.8s
+20:48:37 | INFO  | checkpoint_~|   Checking for non PyTorch modules to save
+20:48:37 | INFO  | checkpoint_~|   Saved wandb resume info to checkpoint: {'id': 'lewm_pusht_shapeI', 'project': 'lewm', 'entity': None}
+20:48:37 | INFO  | checkpoint_~|   Wrote /scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/wandb_resume.json
+20:48:37 | INFO  | atomic_chec~| [atomic_save] → /scratch/user/tahaismail424/.stable_wm/spt_runs/runs/20261025/202448/b0123be2dc88/checkpoints/epoch=0-step=5804.ckpt
+20:48:38 | INFO  | atomic_chec~| [atomic_save] ✓ epoch=0-step=5804.ckpt saved (206.8 MiB, serialise=0.30s write=0.53s rename=2.2ms)
+20:48:38 | INFO  | checkpoint_~|   Checking for non PyTorch modules to save
+20:48:38 | INFO  | checkpoint_~|   Saved wandb resume info to checkpoint: {'id': 'lewm_pusht_shapeI', 'project': 'lewm', 'entity': None}
+20:48:38 | INFO  | checkpoint_~|   Wrote /scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/wandb_resume.json
+20:48:38 | INFO  | atomic_chec~| [atomic_save] → /scratch/user/tahaismail424/.stable_wm/spt_runs/runs/20261025/202448/b0123be2dc88/checkpoints/last.ckpt
+20:48:39 | INFO  | atomic_chec~| [atomic_save] ✓ last.ckpt saved (206.8 MiB, serialise=0.29s write=0.52s rename=5.5ms)
+[Epoch 1/30] step 50/5804 (2.4 it/s)
+[Epoch 1/30] step 100/5804 (3.3 it/s)
+[Epoch 1/30] step 150/5804 (3.8 it/s)
+[Epoch 1/30] step 200/5804 (4.1 it/s)
+[Epoch 1/30] step 250/5804 (4.3 it/s)
+[Epoch 1/30] step 300/5804 (4.3 it/s)
+[Epoch 1/30] step 350/5804 (4.3 it/s)
+[Epoch 1/30] step 400/5804 (4.4 it/s)
+[Epoch 1/30] step 450/5804 (4.5 it/s)
+[Epoch 1/30] step 500/5804 (4.6 it/s)
+[Epoch 1/30] step 550/5804 (4.5 it/s)
+[Epoch 1/30] step 600/5804 (4.6 it/s)
+[Epoch 1/30] step 650/5804 (4.6 it/s)
+[Epoch 1/30] step 700/5804 (4.6 it/s)
+[Epoch 1/30] step 750/5804 (4.6 it/s)
+[Epoch 1/30] step 800/5804 (4.7 it/s)
+[Epoch 1/30] step 850/5804 (4.7 it/s)
+[Epoch 1/30] step 900/5804 (4.7 it/s)
+[Epoch 1/30] step 950/5804 (4.8 it/s)
+[Epoch 1/30] step 1000/5804 (4.8 it/s)
+[Epoch 1/30] step 1050/5804 (4.7 it/s)
+[Epoch 1/30] step 1100/5804 (4.7 it/s)
+[Epoch 1/30] step 1150/5804 (4.7 it/s)
+[Epoch 1/30] step 1200/5804 (4.7 it/s)
+[Epoch 1/30] step 1250/5804 (4.8 it/s)
+[Epoch 1/30] step 1300/5804 (4.8 it/s)
+[Epoch 1/30] step 1350/5804 (4.8 it/s)
+[Epoch 1/30] step 1400/5804 (4.8 it/s)
+[Epoch 1/30] step 1450/5804 (4.7 it/s)
+[Epoch 1/30] step 1500/5804 (4.7 it/s)
+[Epoch 1/30] step 1550/5804 (4.7 it/s)
+[Epoch 1/30] step 1600/5804 (4.8 it/s)
+[Epoch 1/30] step 1650/5804 (4.8 it/s)
+[Epoch 1/30] step 1700/5804 (4.8 it/s)
+[Epoch 1/30] step 1750/5804 (4.8 it/s)
+[Epoch 1/30] step 1800/5804 (4.7 it/s)
+[Epoch 1/30] step 1850/5804 (4.7 it/s)
+[Epoch 1/30] step 1900/5804 (4.7 it/s)
+[Epoch 1/30] step 1950/5804 (4.7 it/s)
+[Epoch 1/30] step 2000/5804 (4.8 it/s)
+[Epoch 1/30] step 2050/5804 (4.8 it/s)
+[Epoch 1/30] step 2100/5804 (4.8 it/s)
+[Epoch 1/30] step 2150/5804 (4.8 it/s)
+[Epoch 1/30] step 2200/5804 (4.8 it/s)
+[Epoch 1/30] step 2250/5804 (4.8 it/s)
+[Epoch 1/30] step 2300/5804 (4.8 it/s)
+[Epoch 1/30] step 2350/5804 (4.8 it/s)
+[Epoch 1/30] step 2400/5804 (4.8 it/s)
+[Epoch 1/30] step 2450/5804 (4.8 it/s)
+[Epoch 1/30] step 2500/5804 (4.8 it/s)
+[Epoch 1/30] step 2550/5804 (4.8 it/s)
+[Epoch 1/30] step 2600/5804 (4.8 it/s)
+[Epoch 1/30] step 2650/5804 (4.8 it/s)
+[Epoch 1/30] step 2700/5804 (4.8 it/s)
+[Epoch 1/30] step 2750/5804 (4.8 it/s)
+[Epoch 1/30] step 2800/5804 (4.8 it/s)
+[Epoch 1/30] step 2850/5804 (4.8 it/s)
+[Epoch 1/30] step 2900/5804 (4.8 it/s)
+[Epoch 1/30] step 2950/5804 (4.8 it/s)
+[Epoch 1/30] step 3000/5804 (4.8 it/s)
+[Epoch 1/30] step 3050/5804 (4.8 it/s)
+[Epoch 1/30] step 3100/5804 (4.8 it/s)
+[Epoch 1/30] step 3150/5804 (4.8 it/s)
+[Epoch 1/30] step 3200/5804 (4.8 it/s)
+[Epoch 1/30] step 3250/5804 (4.8 it/s)
+[Epoch 1/30] step 3300/5804 (4.8 it/s)
+[Epoch 1/30] step 3350/5804 (4.8 it/s)
+[Epoch 1/30] step 3400/5804 (4.8 it/s)
+[Epoch 1/30] step 3450/5804 (4.8 it/s)
+[Epoch 1/30] step 3500/5804 (4.8 it/s)
+[Epoch 1/30] step 3550/5804 (4.8 it/s)
+[Epoch 1/30] step 3600/5804 (4.8 it/s)
+[Epoch 1/30] step 3650/5804 (4.8 it/s)
+[Epoch 1/30] step 3700/5804 (4.8 it/s)
+[Epoch 1/30] step 3750/5804 (4.8 it/s)
+[Epoch 1/30] step 3800/5804 (4.8 it/s)
+[Epoch 1/30] step 3850/5804 (4.7 it/s)
+[Epoch 1/30] step 3900/5804 (4.7 it/s)
+[Epoch 1/30] step 3950/5804 (4.7 it/s)
+[Epoch 1/30] step 4000/5804 (4.7 it/s)
+[Epoch 1/30] step 4050/5804 (4.7 it/s)
+[Epoch 1/30] step 4100/5804 (4.8 it/s)
+[Epoch 1/30] step 4150/5804 (4.8 it/s)
+[Epoch 1/30] step 4200/5804 (4.7 it/s)
+[Epoch 1/30] step 4250/5804 (4.7 it/s)
+[Epoch 1/30] step 4300/5804 (4.7 it/s)
+[Epoch 1/30] step 4350/5804 (4.7 it/s)
+[Epoch 1/30] step 4400/5804 (4.7 it/s)
+[Epoch 1/30] step 4450/5804 (4.7 it/s)
+[Epoch 1/30] step 4500/5804 (4.7 it/s)
+[Epoch 1/30] step 4550/5804 (4.7 it/s)
+[Epoch 1/30] step 4600/5804 (4.7 it/s)
+[Epoch 1/30] step 4650/5804 (4.7 it/s)
+[Epoch 1/30] step 4700/5804 (4.7 it/s)
+[Epoch 1/30] step 4750/5804 (4.7 it/s)
+[Epoch 1/30] step 4800/5804 (4.8 it/s)
+[Epoch 1/30] step 4850/5804 (4.8 it/s)
+[Epoch 1/30] step 4900/5804 (4.7 it/s)
+[Epoch 1/30] step 4950/5804 (4.7 it/s)
+[Epoch 1/30] step 5000/5804 (4.7 it/s)
+[Epoch 1/30] step 5050/5804 (4.8 it/s)
+[Epoch 1/30] step 5100/5804 (4.8 it/s)
+[Epoch 1/30] step 5150/5804 (4.8 it/s)
+[Epoch 1/30] step 5200/5804 (4.8 it/s)
+[Epoch 1/30] step 5250/5804 (4.7 it/s)
+[Epoch 1/30] step 5300/5804 (4.8 it/s)
+[Epoch 1/30] step 5350/5804 (4.8 it/s)
+[Epoch 1/30] step 5400/5804 (4.8 it/s)
+[Epoch 1/30] step 5450/5804 (4.8 it/s)
+[Epoch 1/30] step 5500/5804 (4.8 it/s)
+[Epoch 1/30] step 5550/5804 (4.8 it/s)
+[Epoch 1/30] step 5600/5804 (4.8 it/s)
+[Epoch 1/30] step 5650/5804 (4.8 it/s)
+[Epoch 1/30] step 5700/5804 (4.8 it/s)
+[Epoch 1/30] step 5750/5804 (4.8 it/s)
+[Epoch 1/30] step 5800/5804 (4.8 it/s)
+21:10:23 | INFO  | trainer_inf~| \n+----------------------+------------------------+
+|        Metric        |         Value          |
++----------------------+------------------------+
+|       [0;34;40mfit/loss[0m       |  [0;32;40m0.17401012778282166[0m   |
+|    [0;34;40mfit/pred_loss[0m     |  [0;32;40m0.022642936557531357[0m  |
+|   [0;34;40mfit/sigreg_loss[0m    |       [0;32;40m1.6796875[0m        |
+| [0;34;40mhparams/lr_model_opt[0m | [0;32;40m4.9596874305279925e-05[0m |
+|    [0;34;40mvalidate/loss[0m     |    [0;32;40m9.1309175491333[0m     |
+|  [0;34;40mvalidate/pred_loss[0m  |  [0;32;40m0.07250944525003433[0m   |
+| [0;34;40mvalidate/sigreg_loss[0m |   [0;32;40m100.64730834960938[0m   |
++----------------------+------------------------+
+[2026-10-25 21:10:24,962][stable_worldmodel.wm.utils][INFO] - 📦📦📦 Model saved to /scratch/user/tahaismail424/.stable_wm/checkpoints/lewm_pusht_shapeI/weights_epoch_2.pt 📦📦📦
+[Epoch 1/30] done in 1305.3s
+21:10:25 | INFO  | checkpoint_~|   Checking for non PyTorch modules to save
+21:10:25 | INFO  | checkpoint_~|   Saved wandb resume info to checkpoint: {'id': 'lewm_pusht_shapeI', 'project': 'lewm', 'entity': None}
+21:10:25 | INFO  | checkpoint_~|   Wrote /scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/wandb_resume.json
+21:10:25 | INFO  | atomic_chec~| [atomic_save] → /scratch/user/tahaismail424/.stable_wm/spt_runs/runs/20261025/202448/b0123be2dc88/checkpoints/epoch=1-step=11608.ckpt
+21:10:26 | INFO  | atomic_chec~| [atomic_save] ✓ epoch=1-step=11608.ckpt saved (206.8 MiB, serialise=0.37s write=0.59s rename=0.7ms)
+21:10:26 | INFO  | checkpoint_~|   Checking for non PyTorch modules to save
+21:10:26 | INFO  | checkpoint_~|   Saved wandb resume info to checkpoint: {'id': 'lewm_pusht_shapeI', 'project': 'lewm', 'entity': None}
+21:10:26 | INFO  | checkpoint_~|   Wrote /scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/wandb_resume.json
+21:10:26 | INFO  | atomic_chec~| [atomic_save] → /scratch/user/tahaismail424/.stable_wm/spt_runs/runs/20261025/202448/b0123be2dc88/checkpoints/last.ckpt
+21:10:30 | INFO  | atomic_chec~| [atomic_save] ✓ last.ckpt saved (206.8 MiB, serialise=0.32s write=3.49s rename=1.3ms)
+[Epoch 2/30] step 50/5804 (2.2 it/s)
+[Epoch 2/30] step 100/5804 (3.1 it/s)
+[Epoch 2/30] step 150/5804 (3.6 it/s)
+[Epoch 2/30] step 200/5804 (3.9 it/s)
+[Epoch 2/30] step 250/5804 (4.1 it/s)
+[Epoch 2/30] step 300/5804 (4.2 it/s)
+[Epoch 2/30] step 350/5804 (4.1 it/s)
+[Epoch 2/30] step 400/5804 (4.2 it/s)
+[Epoch 2/30] step 450/5804 (4.3 it/s)
+[Epoch 2/30] step 500/5804 (4.1 it/s)
+[Epoch 2/30] step 550/5804 (3.9 it/s)
+[Epoch 2/30] step 600/5804 (3.9 it/s)
+[Epoch 2/30] step 650/5804 (3.9 it/s)
+[Epoch 2/30] step 700/5804 (4.0 it/s)
+[Epoch 2/30] step 750/5804 (3.8 it/s)
+[Epoch 2/30] step 800/5804 (3.8 it/s)
+[Epoch 2/30] step 850/5804 (3.9 it/s)
+[Epoch 2/30] step 900/5804 (3.9 it/s)
+[Epoch 2/30] step 950/5804 (3.9 it/s)
+[Epoch 2/30] step 1000/5804 (4.0 it/s)
+[Epoch 2/30] step 1050/5804 (4.0 it/s)
+[Epoch 2/30] step 1100/5804 (4.1 it/s)
+[Epoch 2/30] step 1150/5804 (4.1 it/s)
+[Epoch 2/30] step 1200/5804 (4.1 it/s)
+[Epoch 2/30] step 1250/5804 (4.1 it/s)
+[Epoch 2/30] step 1300/5804 (4.1 it/s)
+[Epoch 2/30] step 1350/5804 (4.2 it/s)
+[Epoch 2/30] step 1400/5804 (4.2 it/s)
+[Epoch 2/30] step 1450/5804 (4.2 it/s)
+[Epoch 2/30] step 1500/5804 (4.2 it/s)
+[Epoch 2/30] step 1550/5804 (4.2 it/s)
+[Epoch 2/30] step 1600/5804 (4.2 it/s)
+[Epoch 2/30] step 1650/5804 (4.2 it/s)
+[Epoch 2/30] step 1700/5804 (4.2 it/s)
+[Epoch 2/30] step 1750/5804 (4.2 it/s)
+[Epoch 2/30] step 1800/5804 (4.2 it/s)
+[Epoch 2/30] step 1850/5804 (4.3 it/s)
+[Epoch 2/30] step 1900/5804 (4.3 it/s)
+[Epoch 2/30] step 1950/5804 (4.3 it/s)
+[Epoch 2/30] step 2000/5804 (4.3 it/s)
+[Epoch 2/30] step 2050/5804 (4.3 it/s)
+[Epoch 2/30] step 2100/5804 (4.3 it/s)
+[Epoch 2/30] step 2150/5804 (4.3 it/s)
+[Epoch 2/30] step 2200/5804 (4.3 it/s)
+[Epoch 2/30] step 2250/5804 (4.3 it/s)
+[Epoch 2/30] step 2300/5804 (4.3 it/s)
+[Epoch 2/30] step 2350/5804 (4.3 it/s)
+[Epoch 2/30] step 2400/5804 (4.3 it/s)
+[Epoch 2/30] step 2450/5804 (4.3 it/s)
+[Epoch 2/30] step 2500/5804 (4.3 it/s)
+[Epoch 2/30] step 2550/5804 (4.3 it/s)
+[Epoch 2/30] step 2600/5804 (4.4 it/s)
+[Epoch 2/30] step 2650/5804 (4.4 it/s)
+[Epoch 2/30] step 2700/5804 (4.4 it/s)
+[Epoch 2/30] step 2750/5804 (4.4 it/s)
+[Epoch 2/30] step 2800/5804 (4.4 it/s)
+[Epoch 2/30] step 2850/5804 (4.4 it/s)
+[Epoch 2/30] step 2900/5804 (4.4 it/s)
+[Epoch 2/30] step 2950/5804 (4.4 it/s)
+[Epoch 2/30] step 3000/5804 (4.5 it/s)
+[Epoch 2/30] step 3050/5804 (4.5 it/s)
+[Epoch 2/30] step 3100/5804 (4.5 it/s)
+[Epoch 2/30] step 3150/5804 (4.5 it/s)
+[Epoch 2/30] step 3200/5804 (4.5 it/s)
+[Epoch 2/30] step 3250/5804 (4.5 it/s)
+[Epoch 2/30] step 3300/5804 (4.5 it/s)
+[Epoch 2/30] step 3350/5804 (4.5 it/s)
+[Epoch 2/30] step 3400/5804 (4.5 it/s)
+[Epoch 2/30] step 3450/5804 (4.5 it/s)
+[Epoch 2/30] step 3500/5804 (4.5 it/s)
+[Epoch 2/30] step 3550/5804 (4.6 it/s)
+[Epoch 2/30] step 3600/5804 (4.6 it/s)
+[Epoch 2/30] step 3650/5804 (4.5 it/s)
+[Epoch 2/30] step 3700/5804 (4.5 it/s)
+[Epoch 2/30] step 3750/5804 (4.5 it/s)
+[Epoch 2/30] step 3800/5804 (4.6 it/s)
+[Epoch 2/30] step 3850/5804 (4.6 it/s)
+[Epoch 2/30] step 3900/5804 (4.5 it/s)
+[Epoch 2/30] step 3950/5804 (4.5 it/s)
+[Epoch 2/30] step 4000/5804 (4.5 it/s)
+[Epoch 2/30] step 4050/5804 (4.5 it/s)
+[Epoch 2/30] step 4100/5804 (4.5 it/s)
+[Epoch 2/30] step 4150/5804 (4.5 it/s)
+[Epoch 2/30] step 4200/5804 (4.5 it/s)
+[Epoch 2/30] step 4250/5804 (4.5 it/s)
+[Epoch 2/30] step 4300/5804 (4.5 it/s)
+[Epoch 2/30] step 4350/5804 (4.5 it/s)
+[Epoch 2/30] step 4400/5804 (4.5 it/s)
+[Epoch 2/30] step 4450/5804 (4.5 it/s)
+[Epoch 2/30] step 4500/5804 (4.5 it/s)
+[Epoch 2/30] step 4550/5804 (4.5 it/s)
+[Epoch 2/30] step 4600/5804 (4.5 it/s)
+[Epoch 2/30] step 4650/5804 (4.5 it/s)
+[Epoch 2/30] step 4700/5804 (4.5 it/s)
+[Epoch 2/30] step 4750/5804 (4.6 it/s)
+[Epoch 2/30] step 4800/5804 (4.6 it/s)
+[Epoch 2/30] step 4850/5804 (4.5 it/s)
+[Epoch 2/30] step 4900/5804 (4.5 it/s)
+[Epoch 2/30] step 4950/5804 (4.5 it/s)
+[Epoch 2/30] step 5000/5804 (4.6 it/s)
+[Epoch 2/30] step 5050/5804 (4.6 it/s)
+[Epoch 2/30] step 5100/5804 (4.6 it/s)
+[Epoch 2/30] step 5150/5804 (4.6 it/s)
+[Epoch 2/30] step 5200/5804 (4.5 it/s)
+[Epoch 2/30] step 5250/5804 (4.5 it/s)
+[Epoch 2/30] step 5300/5804 (4.5 it/s)
+[Epoch 2/30] step 5350/5804 (4.5 it/s)
+[Epoch 2/30] step 5400/5804 (4.5 it/s)
+[Epoch 2/30] step 5450/5804 (4.6 it/s)
+[Epoch 2/30] step 5500/5804 (4.5 it/s)
+[Epoch 2/30] step 5550/5804 (4.5 it/s)
+[Epoch 2/30] step 5600/5804 (4.6 it/s)
+[Epoch 2/30] step 5650/5804 (4.6 it/s)
+[Epoch 2/30] step 5700/5804 (4.5 it/s)
+[Epoch 2/30] step 5750/5804 (4.5 it/s)
+[Epoch 2/30] step 5800/5804 (4.6 it/s)
+21:33:09 | INFO  | trainer_inf~| \n+----------------------+-----------------------+
+|        Metric        |         Value         |
++----------------------+-----------------------+
+|       [0;34;40mfit/loss[0m       |   [0;32;40m0.1533970832824707[0m  |
+|    [0;34;40mfit/pred_loss[0m     |   [0;32;40m0.0244908407330513[0m  |
+|   [0;34;40mfit/sigreg_loss[0m    |         [0;32;40m1.4375[0m        |
+| [0;34;40mhparams/lr_model_opt[0m | [0;32;40m4.898730185232125e-05[0m |
+|    [0;34;40mvalidate/loss[0m     |    [0;32;40m9.00024127960205[0m   |
+|  [0;34;40mvalidate/pred_loss[0m  |  [0;32;40m0.08328581601381302[0m  |
+| [0;34;40mvalidate/sigreg_loss[0m |   [0;32;40m99.07099151611328[0m   |
++----------------------+-----------------------+
+[2026-10-25 21:33:11,278][stable_worldmodel.wm.utils][INFO] - 📦📦📦 Model saved to /scratch/user/tahaismail424/.stable_wm/checkpoints/lewm_pusht_shapeI/weights_epoch_3.pt 📦📦📦
+[Epoch 2/30] done in 1360.7s
+21:33:11 | INFO  | checkpoint_~|   Checking for non PyTorch modules to save
+21:33:12 | INFO  | checkpoint_~|   Saved wandb resume info to checkpoint: {'id': 'lewm_pusht_shapeI', 'project': 'lewm', 'entity': None}
+21:33:12 | INFO  | checkpoint_~|   Wrote /scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/wandb_resume.json
+21:33:12 | INFO  | atomic_chec~| [atomic_save] → /scratch/user/tahaismail424/.stable_wm/spt_runs/runs/20261025/202448/b0123be2dc88/checkpoints/epoch=2-step=17412.ckpt
+21:33:13 | INFO  | atomic_chec~| [atomic_save] ✓ epoch=2-step=17412.ckpt saved (206.8 MiB, serialise=0.32s write=0.70s rename=0.7ms)
+21:33:13 | INFO  | checkpoint_~|   Checking for non PyTorch modules to save
+21:33:13 | INFO  | checkpoint_~|   Saved wandb resume info to checkpoint: {'id': 'lewm_pusht_shapeI', 'project': 'lewm', 'entity': None}
+21:33:13 | INFO  | checkpoint_~|   Wrote /scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/wandb_resume.json
+21:33:13 | INFO  | atomic_chec~| [atomic_save] → /scratch/user/tahaismail424/.stable_wm/spt_runs/runs/20261025/202448/b0123be2dc88/checkpoints/last.ckpt
+21:33:14 | INFO  | atomic_chec~| [atomic_save] ✓ last.ckpt saved (206.8 MiB, serialise=0.32s write=0.50s rename=0.9ms)
+[Epoch 3/30] step 50/5804 (2.9 it/s)
+[Epoch 3/30] step 100/5804 (3.3 it/s)
+[Epoch 3/30] step 150/5804 (3.8 it/s)
+[Epoch 3/30] step 200/5804 (4.1 it/s)
+[Epoch 3/30] step 250/5804 (4.3 it/s)
+[Epoch 3/30] step 300/5804 (4.4 it/s)
+[Epoch 3/30] step 350/5804 (4.5 it/s)
+[Epoch 3/30] step 400/5804 (4.6 it/s)
+[Epoch 3/30] step 450/5804 (4.5 it/s)
+[Epoch 3/30] step 500/5804 (4.5 it/s)
+[Epoch 3/30] step 550/5804 (4.6 it/s)
+[Epoch 3/30] step 600/5804 (4.7 it/s)
+[Epoch 3/30] step 650/5804 (4.7 it/s)
+[Epoch 3/30] step 700/5804 (4.7 it/s)
+[Epoch 3/30] step 750/5804 (4.7 it/s)
+[Epoch 3/30] step 800/5804 (4.6 it/s)
+[Epoch 3/30] step 850/5804 (4.6 it/s)
+[Epoch 3/30] step 900/5804 (4.7 it/s)
+[Epoch 3/30] step 950/5804 (4.7 it/s)
+[Epoch 3/30] step 1000/5804 (4.7 it/s)
+[Epoch 3/30] step 1050/5804 (4.7 it/s)
+[Epoch 3/30] step 1100/5804 (4.6 it/s)
+[Epoch 3/30] step 1150/5804 (4.6 it/s)
+[Epoch 3/30] step 1200/5804 (4.7 it/s)
+[Epoch 3/30] step 1250/5804 (4.7 it/s)
+[Epoch 3/30] step 1300/5804 (4.5 it/s)
+[Epoch 3/30] step 1350/5804 (4.6 it/s)
+[Epoch 3/30] step 1400/5804 (4.6 it/s)
+[Epoch 3/30] step 1450/5804 (4.5 it/s)
+[Epoch 3/30] step 1500/5804 (4.5 it/s)
+[Epoch 3/30] step 1550/5804 (4.6 it/s)
+[Epoch 3/30] step 1600/5804 (4.6 it/s)
+[Epoch 3/30] step 1650/5804 (4.6 it/s)
+[Epoch 3/30] step 1700/5804 (4.6 it/s)
+[Epoch 3/30] step 1750/5804 (4.6 it/s)
+[Epoch 3/30] step 1800/5804 (4.6 it/s)
+[Epoch 3/30] step 1850/5804 (4.6 it/s)
+[Epoch 3/30] step 1900/5804 (4.6 it/s)
+[Epoch 3/30] step 1950/5804 (4.6 it/s)
+[Epoch 3/30] step 2000/5804 (4.6 it/s)
+[Epoch 3/30] step 2050/5804 (4.6 it/s)
+[Epoch 3/30] step 2100/5804 (4.6 it/s)
+[Epoch 3/30] step 2150/5804 (4.6 it/s)
+[Epoch 3/30] step 2200/5804 (4.6 it/s)
+[Epoch 3/30] step 2250/5804 (4.6 it/s)
+[Epoch 3/30] step 2300/5804 (4.6 it/s)
+[Epoch 3/30] step 2350/5804 (4.7 it/s)
+[Epoch 3/30] step 2400/5804 (4.7 it/s)
+[Epoch 3/30] step 2450/5804 (4.7 it/s)
+[Epoch 3/30] step 2500/5804 (4.7 it/s)
+[Epoch 3/30] step 2550/5804 (4.7 it/s)
+[Epoch 3/30] step 2600/5804 (4.7 it/s)
+[Epoch 3/30] step 2650/5804 (4.6 it/s)
+[Epoch 3/30] step 2700/5804 (4.6 it/s)
+[Epoch 3/30] step 2750/5804 (4.6 it/s)
+[Epoch 3/30] step 2800/5804 (4.6 it/s)
+[Epoch 3/30] step 2850/5804 (4.3 it/s)
+[Epoch 3/30] step 2900/5804 (4.3 it/s)
+[Epoch 3/30] step 2950/5804 (4.3 it/s)
+[Epoch 3/30] step 3000/5804 (4.4 it/s)
+[Epoch 3/30] step 3050/5804 (4.4 it/s)
+[Epoch 3/30] step 3100/5804 (4.4 it/s)
+[Epoch 3/30] step 3150/5804 (4.4 it/s)
+[Epoch 3/30] step 3200/5804 (4.4 it/s)
+[Epoch 3/30] step 3250/5804 (4.4 it/s)
+[Epoch 3/30] step 3300/5804 (4.4 it/s)
+[Epoch 3/30] step 3350/5804 (4.4 it/s)
+[Epoch 3/30] step 3400/5804 (4.4 it/s)
+[Epoch 3/30] step 3450/5804 (4.4 it/s)
+[Epoch 3/30] step 3500/5804 (4.4 it/s)
+[Epoch 3/30] step 3550/5804 (4.4 it/s)
+[Epoch 3/30] step 3600/5804 (4.5 it/s)
+[Epoch 3/30] step 3650/5804 (4.5 it/s)
+[Epoch 3/30] step 3700/5804 (4.5 it/s)
+[Epoch 3/30] step 3750/5804 (4.5 it/s)
+[Epoch 3/30] step 3800/5804 (4.5 it/s)
+[Epoch 3/30] step 3850/5804 (4.5 it/s)
+[Epoch 3/30] step 3900/5804 (4.5 it/s)
+[Epoch 3/30] step 3950/5804 (4.5 it/s)
+[Epoch 3/30] step 4000/5804 (4.5 it/s)
+[Epoch 3/30] step 4050/5804 (4.5 it/s)
+[Epoch 3/30] step 4100/5804 (4.5 it/s)
+[Epoch 3/30] step 4150/5804 (4.5 it/s)
+[Epoch 3/30] step 4200/5804 (4.5 it/s)
+[Epoch 3/30] step 4250/5804 (4.5 it/s)
+[Epoch 3/30] step 4300/5804 (4.5 it/s)
+[Epoch 3/30] step 4350/5804 (4.5 it/s)
+[Epoch 3/30] step 4400/5804 (4.5 it/s)
+[Epoch 3/30] step 4450/5804 (4.5 it/s)
+[Epoch 3/30] step 4500/5804 (4.5 it/s)
+[Epoch 3/30] step 4550/5804 (4.5 it/s)
+[Epoch 3/30] step 4600/5804 (4.5 it/s)
+[Epoch 3/30] step 4650/5804 (4.5 it/s)
+[Epoch 3/30] step 4700/5804 (4.5 it/s)
+[Epoch 3/30] step 4750/5804 (4.5 it/s)
+[Epoch 3/30] step 4800/5804 (4.5 it/s)
+[Epoch 3/30] step 4850/5804 (4.5 it/s)
+[Epoch 3/30] step 4900/5804 (4.5 it/s)
+[Epoch 3/30] step 4950/5804 (4.5 it/s)
+[Epoch 3/30] step 5000/5804 (4.5 it/s)
+[Epoch 3/30] step 5050/5804 (4.5 it/s)
+[Epoch 3/30] step 5100/5804 (4.5 it/s)
+[Epoch 3/30] step 5150/5804 (4.5 it/s)
+[Epoch 3/30] step 5200/5804 (4.5 it/s)
+[Epoch 3/30] step 5250/5804 (4.5 it/s)
+[Epoch 3/30] step 5300/5804 (4.5 it/s)
+[Epoch 3/30] step 5350/5804 (4.5 it/s)
+[Epoch 3/30] step 5400/5804 (4.5 it/s)
+[Epoch 3/30] step 5450/5804 (4.5 it/s)
+[Epoch 3/30] step 5500/5804 (4.5 it/s)
+[Epoch 3/30] step 5550/5804 (4.5 it/s)
+[Epoch 3/30] step 5600/5804 (4.5 it/s)
+[Epoch 3/30] step 5650/5804 (4.5 it/s)
+[Epoch 3/30] step 5700/5804 (4.5 it/s)
+[Epoch 3/30] step 5750/5804 (4.5 it/s)
+[Epoch 3/30] step 5800/5804 (4.5 it/s)
+21:55:59 | INFO  | trainer_inf~| \n+----------------------+-----------------------+
+|        Metric        |         Value         |
++----------------------+-----------------------+
+|       [0;34;40mfit/loss[0m       |  [0;32;40m0.13868261873722076[0m  |
+|    [0;34;40mfit/pred_loss[0m     |  [0;32;40m0.015635747462511063[0m |
+|   [0;34;40mfit/sigreg_loss[0m    |       [0;32;40m1.3671875[0m       |
+| [0;34;40mhparams/lr_model_opt[0m | [0;32;40m4.810958853340708e-05[0m |
+|    [0;34;40mvalidate/loss[0m     |    [0;32;40m8.91525936126709[0m   |
+|  [0;34;40mvalidate/pred_loss[0m  |  [0;32;40m0.07913736253976822[0m  |
+| [0;34;40mvalidate/sigreg_loss[0m |   [0;32;40m98.17005157470703[0m   |
++----------------------+-----------------------+
+[2026-10-25 21:56:01,331][stable_worldmodel.wm.utils][INFO] - 📦📦📦 Model saved to /scratch/user/tahaismail424/.stable_wm/checkpoints/lewm_pusht_shapeI/weights_epoch_4.pt 📦📦📦
+[Epoch 3/30] done in 1366.8s
+21:56:01 | INFO  | checkpoint_~|   Checking for non PyTorch modules to save
+21:56:02 | INFO  | checkpoint_~|   Saved wandb resume info to checkpoint: {'id': 'lewm_pusht_shapeI', 'project': 'lewm', 'entity': None}
+21:56:02 | INFO  | checkpoint_~|   Wrote /scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/wandb_resume.json
+21:56:02 | INFO  | atomic_chec~| [atomic_save] → /scratch/user/tahaismail424/.stable_wm/spt_runs/runs/20261025/202448/b0123be2dc88/checkpoints/epoch=3-step=23216.ckpt
+21:56:03 | INFO  | atomic_chec~| [atomic_save] ✓ epoch=3-step=23216.ckpt saved (206.8 MiB, serialise=0.38s write=0.96s rename=0.7ms)
+21:56:04 | INFO  | checkpoint_~|   Checking for non PyTorch modules to save
+21:56:04 | INFO  | checkpoint_~|   Saved wandb resume info to checkpoint: {'id': 'lewm_pusht_shapeI', 'project': 'lewm', 'entity': None}
+21:56:04 | INFO  | checkpoint_~|   Wrote /scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/wandb_resume.json
+21:56:04 | INFO  | atomic_chec~| [atomic_save] → /scratch/user/tahaismail424/.stable_wm/spt_runs/runs/20261025/202448/b0123be2dc88/checkpoints/last.ckpt
+21:56:06 | INFO  | atomic_chec~| [atomic_save] ✓ last.ckpt saved (206.8 MiB, serialise=0.31s write=2.50s rename=0.9ms)
+[Epoch 4/30] step 50/5804 (2.7 it/s)
+[Epoch 4/30] step 100/5804 (3.5 it/s)
+[Epoch 4/30] step 150/5804 (3.9 it/s)
+[Epoch 4/30] step 200/5804 (4.1 it/s)
+[Epoch 4/30] step 250/5804 (4.3 it/s)
+[Epoch 4/30] step 300/5804 (4.5 it/s)
+[Epoch 4/30] step 350/5804 (4.3 it/s)
+[Epoch 4/30] step 400/5804 (4.4 it/s)
+[Epoch 4/30] step 450/5804 (4.5 it/s)
+[Epoch 4/30] step 500/5804 (4.5 it/s)
+[Epoch 4/30] step 550/5804 (4.6 it/s)
+[Epoch 4/30] step 600/5804 (4.7 it/s)
+[Epoch 4/30] step 650/5804 (4.7 it/s)
+[Epoch 4/30] step 700/5804 (4.7 it/s)
+[Epoch 4/30] step 750/5804 (4.6 it/s)
+[Epoch 4/30] step 800/5804 (4.6 it/s)
+[Epoch 4/30] step 850/5804 (4.7 it/s)
+[Epoch 4/30] step 900/5804 (4.7 it/s)
+[Epoch 4/30] step 950/5804 (4.7 it/s)
+[Epoch 4/30] step 1000/5804 (4.7 it/s)
+[Epoch 4/30] step 1050/5804 (4.7 it/s)
+[Epoch 4/30] step 1100/5804 (4.7 it/s)
+[Epoch 4/30] step 1150/5804 (4.7 it/s)
+[Epoch 4/30] step 1200/5804 (4.7 it/s)
+[Epoch 4/30] step 1250/5804 (4.7 it/s)
+[Epoch 4/30] step 1300/5804 (4.7 it/s)
+[Epoch 4/30] step 1350/5804 (4.7 it/s)
+[Epoch 4/30] step 1400/5804 (4.6 it/s)
+[Epoch 4/30] step 1450/5804 (4.6 it/s)
+[Epoch 4/30] step 1500/5804 (4.6 it/s)
+[Epoch 4/30] step 1550/5804 (4.7 it/s)
+[Epoch 4/30] step 1600/5804 (4.7 it/s)
+[Epoch 4/30] step 1650/5804 (4.7 it/s)
+[Epoch 4/30] step 1700/5804 (4.7 it/s)
+[Epoch 4/30] step 1750/5804 (4.6 it/s)
+[Epoch 4/30] step 1800/5804 (4.6 it/s)
+[Epoch 4/30] step 1850/5804 (4.6 it/s)
+[Epoch 4/30] step 1900/5804 (4.7 it/s)
+[Epoch 4/30] step 1950/5804 (4.7 it/s)
+[Epoch 4/30] step 2000/5804 (4.7 it/s)
+[Epoch 4/30] step 2050/5804 (4.7 it/s)
+[Epoch 4/30] step 2100/5804 (4.7 it/s)
+[Epoch 4/30] step 2150/5804 (4.7 it/s)
+[Epoch 4/30] step 2200/5804 (4.7 it/s)
+[Epoch 4/30] step 2250/5804 (4.7 it/s)
+[Epoch 4/30] step 2300/5804 (4.7 it/s)
+[Epoch 4/30] step 2350/5804 (4.7 it/s)
+[Epoch 4/30] step 2400/5804 (4.8 it/s)
+[Epoch 4/30] step 2450/5804 (4.8 it/s)
+[Epoch 4/30] step 2500/5804 (4.8 it/s)
+[Epoch 4/30] step 2550/5804 (4.8 it/s)
+[Epoch 4/30] step 2600/5804 (4.7 it/s)
+[Epoch 4/30] step 2650/5804 (4.8 it/s)
+[Epoch 4/30] step 2700/5804 (4.8 it/s)
+[Epoch 4/30] step 2750/5804 (4.8 it/s)
+[Epoch 4/30] step 2800/5804 (4.8 it/s)
+[Epoch 4/30] step 2850/5804 (4.8 it/s)
+[Epoch 4/30] step 2900/5804 (4.8 it/s)
+[Epoch 4/30] step 2950/5804 (4.8 it/s)
+[Epoch 4/30] step 3000/5804 (4.8 it/s)
+[Epoch 4/30] step 3050/5804 (4.8 it/s)
+[Epoch 4/30] step 3100/5804 (4.8 it/s)
+[Epoch 4/30] step 3150/5804 (4.8 it/s)
+[Epoch 4/30] step 3200/5804 (4.8 it/s)
+[Epoch 4/30] step 3250/5804 (4.8 it/s)
+[Epoch 4/30] step 3300/5804 (4.8 it/s)
+[Epoch 4/30] step 3350/5804 (4.8 it/s)
+[Epoch 4/30] step 3400/5804 (4.8 it/s)
+[Epoch 4/30] step 3450/5804 (4.8 it/s)
+[Epoch 4/30] step 3500/5804 (4.8 it/s)
+[Epoch 4/30] step 3550/5804 (4.8 it/s)
+[Epoch 4/30] step 3600/5804 (4.8 it/s)
+[Epoch 4/30] step 3650/5804 (4.8 it/s)
+[Epoch 4/30] step 3700/5804 (4.8 it/s)
+[Epoch 4/30] step 3750/5804 (4.8 it/s)
+[Epoch 4/30] step 3800/5804 (4.8 it/s)
+[Epoch 4/30] step 3850/5804 (4.8 it/s)
+[Epoch 4/30] step 3900/5804 (4.8 it/s)
+[Epoch 4/30] step 3950/5804 (4.8 it/s)
+[Epoch 4/30] step 4000/5804 (4.8 it/s)
+[Epoch 4/30] step 4050/5804 (4.8 it/s)
+[Epoch 4/30] step 4100/5804 (4.8 it/s)
+[Epoch 4/30] step 4150/5804 (4.8 it/s)
+[Epoch 4/30] step 4200/5804 (4.8 it/s)
+[Epoch 4/30] step 4250/5804 (4.8 it/s)
+[Epoch 4/30] step 4300/5804 (4.8 it/s)
+[Epoch 4/30] step 4350/5804 (4.8 it/s)
+[Epoch 4/30] step 4400/5804 (4.8 it/s)
+[Epoch 4/30] step 4450/5804 (4.8 it/s)
+[Epoch 4/30] step 4500/5804 (4.8 it/s)
+[Epoch 4/30] step 4550/5804 (4.8 it/s)
+[Epoch 4/30] step 4600/5804 (4.8 it/s)
+[Epoch 4/30] step 4650/5804 (4.8 it/s)
+[Epoch 4/30] step 4700/5804 (4.8 it/s)
+[Epoch 4/30] step 4750/5804 (4.8 it/s)
+[Epoch 4/30] step 4800/5804 (4.8 it/s)
+[Epoch 4/30] step 4850/5804 (4.8 it/s)
+[Epoch 4/30] step 4900/5804 (4.8 it/s)
+[Epoch 4/30] step 4950/5804 (4.8 it/s)
+[Epoch 4/30] step 5000/5804 (4.8 it/s)
+[Epoch 4/30] step 5050/5804 (4.8 it/s)
+[Epoch 4/30] step 5100/5804 (4.8 it/s)
+[Epoch 4/30] step 5150/5804 (4.8 it/s)
+[Epoch 4/30] step 5200/5804 (4.8 it/s)
+[Epoch 4/30] step 5250/5804 (4.8 it/s)
+[Epoch 4/30] step 5300/5804 (4.8 it/s)
+[Epoch 4/30] step 5350/5804 (4.8 it/s)
+[Epoch 4/30] step 5400/5804 (4.8 it/s)
+[Epoch 4/30] step 5450/5804 (4.8 it/s)
+[Epoch 4/30] step 5500/5804 (4.8 it/s)
+[Epoch 4/30] step 5550/5804 (4.8 it/s)
+[Epoch 4/30] step 5600/5804 (4.8 it/s)
+[Epoch 4/30] step 5650/5804 (4.8 it/s)
+[Epoch 4/30] step 5700/5804 (4.8 it/s)
+[Epoch 4/30] step 5750/5804 (4.8 it/s)
+[Epoch 4/30] step 5800/5804 (4.8 it/s)
+22:17:41 | INFO  | trainer_inf~| \n+----------------------+-----------------------+
+|        Metric        |         Value         |
++----------------------+-----------------------+
+|       [0;34;40mfit/loss[0m       |   [0;32;40m0.1175096184015274[0m  |
+|    [0;34;40mfit/pred_loss[0m     |  [0;32;40m0.016923679038882256[0m |
+|   [0;34;40mfit/sigreg_loss[0m    |       [0;32;40m1.1171875[0m       |
+| [0;34;40mhparams/lr_model_opt[0m | [0;32;40m4.697354597738013e-05[0m |
+|    [0;34;40mvalidate/loss[0m     |   [0;32;40m8.879690170288086[0m   |
+|  [0;34;40mvalidate/pred_loss[0m  |  [0;32;40m0.07760987430810928[0m  |
+| [0;34;40mvalidate/sigreg_loss[0m |   [0;32;40m97.80423736572266[0m   |
++----------------------+-----------------------+
+[2026-10-25 22:17:43,221][stable_worldmodel.wm.utils][INFO] - 📦📦📦 Model saved to /scratch/user/tahaismail424/.stable_wm/checkpoints/lewm_pusht_shapeI/weights_epoch_5.pt 📦📦📦
+[Epoch 4/30] done in 1296.4s
+22:17:43 | INFO  | checkpoint_~|   Checking for non PyTorch modules to save
+22:17:44 | INFO  | checkpoint_~|   Saved wandb resume info to checkpoint: {'id': 'lewm_pusht_shapeI', 'project': 'lewm', 'entity': None}
+22:17:44 | INFO  | checkpoint_~|   Wrote /scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/wandb_resume.json
+22:17:44 | INFO  | atomic_chec~| [atomic_save] → /scratch/user/tahaismail424/.stable_wm/spt_runs/runs/20261025/202448/b0123be2dc88/checkpoints/epoch=4-step=29020.ckpt
+22:17:45 | INFO  | atomic_chec~| [atomic_save] ✓ epoch=4-step=29020.ckpt saved (206.8 MiB, serialise=0.41s write=0.54s rename=0.7ms)
+22:17:45 | INFO  | checkpoint_~|   Checking for non PyTorch modules to save
+22:17:45 | INFO  | checkpoint_~|   Saved wandb resume info to checkpoint: {'id': 'lewm_pusht_shapeI', 'project': 'lewm', 'entity': None}
+22:17:45 | INFO  | checkpoint_~|   Wrote /scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/wandb_resume.json
+22:17:45 | INFO  | atomic_chec~| [atomic_save] → /scratch/user/tahaismail424/.stable_wm/spt_runs/runs/20261025/202448/b0123be2dc88/checkpoints/last.ckpt
+22:17:46 | INFO  | atomic_chec~| [atomic_save] ✓ last.ckpt saved (206.8 MiB, serialise=0.34s write=0.89s rename=0.9ms)
+[Epoch 5/30] step 50/5804 (3.4 it/s)
+[Epoch 5/30] step 100/5804 (4.1 it/s)
+[Epoch 5/30] step 150/5804 (4.5 it/s)
+[Epoch 5/30] step 200/5804 (4.7 it/s)
+[Epoch 5/30] step 250/5804 (4.4 it/s)
+[Epoch 5/30] step 300/5804 (4.5 it/s)
+[Epoch 5/30] step 350/5804 (4.7 it/s)
+[Epoch 5/30] step 400/5804 (4.7 it/s)
+[Epoch 5/30] step 450/5804 (4.8 it/s)
+[Epoch 5/30] step 500/5804 (4.8 it/s)
+[Epoch 5/30] step 550/5804 (4.7 it/s)
+[Epoch 5/30] step 600/5804 (4.6 it/s)
+[Epoch 5/30] step 650/5804 (4.7 it/s)
+[Epoch 5/30] step 700/5804 (4.7 it/s)
+[Epoch 5/30] step 750/5804 (4.7 it/s)
+[Epoch 5/30] step 800/5804 (4.8 it/s)
+[Epoch 5/30] step 850/5804 (4.8 it/s)
+[Epoch 5/30] step 900/5804 (4.8 it/s)
+[Epoch 5/30] step 950/5804 (4.7 it/s)
+[Epoch 5/30] step 1000/5804 (4.7 it/s)
+[Epoch 5/30] step 1050/5804 (4.8 it/s)
+[Epoch 5/30] step 1100/5804 (4.8 it/s)
+[Epoch 5/30] step 1150/5804 (4.8 it/s)
+[Epoch 5/30] step 1200/5804 (4.8 it/s)
+[Epoch 5/30] step 1250/5804 (4.6 it/s)
+[Epoch 5/30] step 1300/5804 (4.6 it/s)
+[Epoch 5/30] step 1350/5804 (4.6 it/s)
+[Epoch 5/30] step 1400/5804 (4.5 it/s)
+[Epoch 5/30] step 1450/5804 (4.5 it/s)
+[Epoch 5/30] step 1500/5804 (4.5 it/s)
+[Epoch 5/30] step 1550/5804 (4.5 it/s)
+[Epoch 5/30] step 1600/5804 (4.5 it/s)
+[Epoch 5/30] step 1650/5804 (4.5 it/s)
+[Epoch 5/30] step 1700/5804 (4.5 it/s)
+[Epoch 5/30] step 1750/5804 (4.5 it/s)
+[Epoch 5/30] step 1800/5804 (4.5 it/s)
+[Epoch 5/30] step 1850/5804 (4.6 it/s)
+[Epoch 5/30] step 1900/5804 (4.6 it/s)
+[Epoch 5/30] step 1950/5804 (4.5 it/s)
+[Epoch 5/30] step 2000/5804 (4.6 it/s)
+[Epoch 5/30] step 2050/5804 (4.6 it/s)
+[Epoch 5/30] step 2100/5804 (4.6 it/s)
+[Epoch 5/30] step 2150/5804 (4.6 it/s)
+[Epoch 5/30] step 2200/5804 (4.6 it/s)
+[Epoch 5/30] step 2250/5804 (4.6 it/s)
+[Epoch 5/30] step 2300/5804 (4.6 it/s)
+[Epoch 5/30] step 2350/5804 (4.6 it/s)
+[Epoch 5/30] step 2400/5804 (4.6 it/s)
+[Epoch 5/30] step 2450/5804 (4.6 it/s)
+[Epoch 5/30] step 2500/5804 (4.6 it/s)
+[Epoch 5/30] step 2550/5804 (4.6 it/s)
+[Epoch 5/30] step 2600/5804 (4.6 it/s)
+[Epoch 5/30] step 2650/5804 (4.6 it/s)
+[Epoch 5/30] step 2700/5804 (4.6 it/s)
+[Epoch 5/30] step 2750/5804 (4.6 it/s)
+[Epoch 5/30] step 2800/5804 (4.6 it/s)
+[Epoch 5/30] step 2850/5804 (4.6 it/s)
+[Epoch 5/30] step 2900/5804 (4.6 it/s)
+[Epoch 5/30] step 2950/5804 (4.6 it/s)
+[Epoch 5/30] step 3000/5804 (4.6 it/s)
+[Epoch 5/30] step 3050/5804 (4.6 it/s)
+[Epoch 5/30] step 3100/5804 (4.6 it/s)
+[Epoch 5/30] step 3150/5804 (4.6 it/s)
+[Epoch 5/30] step 3200/5804 (4.7 it/s)
+[Epoch 5/30] step 3250/5804 (4.7 it/s)
+[Epoch 5/30] step 3300/5804 (4.7 it/s)
+[Epoch 5/30] step 3350/5804 (4.6 it/s)
+[Epoch 5/30] step 3400/5804 (4.7 it/s)
+[Epoch 5/30] step 3450/5804 (4.7 it/s)
+[Epoch 5/30] step 3500/5804 (4.7 it/s)
+[Epoch 5/30] step 3550/5804 (4.7 it/s)
+[Epoch 5/30] step 3600/5804 (4.7 it/s)
+[Epoch 5/30] step 3650/5804 (4.7 it/s)
+[Epoch 5/30] step 3700/5804 (4.7 it/s)
+[Epoch 5/30] step 3750/5804 (4.7 it/s)
+[Epoch 5/30] step 3800/5804 (4.7 it/s)
+[Epoch 5/30] step 3850/5804 (4.7 it/s)
+[Epoch 5/30] step 3900/5804 (4.7 it/s)
+[Epoch 5/30] step 3950/5804 (4.7 it/s)
+[Epoch 5/30] step 4000/5804 (4.7 it/s)
+[Epoch 5/30] step 4050/5804 (4.7 it/s)
+[Epoch 5/30] step 4100/5804 (4.7 it/s)
+[Epoch 5/30] step 4150/5804 (4.7 it/s)
+[Epoch 5/30] step 4200/5804 (4.7 it/s)
+[Epoch 5/30] step 4250/5804 (4.7 it/s)
+[Epoch 5/30] step 4300/5804 (4.7 it/s)
+[Epoch 5/30] step 4350/5804 (4.7 it/s)
+[Epoch 5/30] step 4400/5804 (4.7 it/s)
+[Epoch 5/30] step 4450/5804 (4.7 it/s)
+[Epoch 5/30] step 4500/5804 (4.7 it/s)
+[Epoch 5/30] step 4550/5804 (4.7 it/s)
+[Epoch 5/30] step 4600/5804 (4.7 it/s)
+[Epoch 5/30] step 4650/5804 (4.7 it/s)
+[Epoch 5/30] step 4700/5804 (4.7 it/s)
+[Epoch 5/30] step 4750/5804 (4.7 it/s)
+[Epoch 5/30] step 4800/5804 (4.7 it/s)
+[Epoch 5/30] step 4850/5804 (4.7 it/s)
+[Epoch 5/30] step 4900/5804 (4.7 it/s)
+[Epoch 5/30] step 4950/5804 (4.7 it/s)
+[Epoch 5/30] step 5000/5804 (4.7 it/s)
+[Epoch 5/30] step 5050/5804 (4.7 it/s)
+[Epoch 5/30] step 5100/5804 (4.7 it/s)
+[Epoch 5/30] step 5150/5804 (4.7 it/s)
+[Epoch 5/30] step 5200/5804 (4.7 it/s)
+[Epoch 5/30] step 5250/5804 (4.7 it/s)
+[Epoch 5/30] step 5300/5804 (4.7 it/s)
+[Epoch 5/30] step 5350/5804 (4.7 it/s)
+[Epoch 5/30] step 5400/5804 (4.7 it/s)
+[Epoch 5/30] step 5450/5804 (4.7 it/s)
+[Epoch 5/30] step 5500/5804 (4.7 it/s)
+[Epoch 5/30] step 5550/5804 (4.7 it/s)
+[Epoch 5/30] step 5600/5804 (4.7 it/s)
+[Epoch 5/30] step 5650/5804 (4.7 it/s)
+[Epoch 5/30] step 5700/5804 (4.7 it/s)
+[Epoch 5/30] step 5750/5804 (4.7 it/s)
+[Epoch 5/30] step 5800/5804 (4.7 it/s)
+22:39:54 | INFO  | trainer_inf~| \n+----------------------+-----------------------+
+|        Metric        |         Value         |
++----------------------+-----------------------+
+|       [0;34;40mfit/loss[0m       |  [0;32;40m0.11372705549001694[0m  |
+|    [0;34;40mfit/pred_loss[0m     |  [0;32;40m0.015094243921339512[0m |
+|   [0;34;40mfit/sigreg_loss[0m    |        [0;32;40m1.09375[0m        |
+| [0;34;40mhparams/lr_model_opt[0m | [0;32;40m4.559187436825596e-05[0m |
+|    [0;34;40mvalidate/loss[0m     |    [0;32;40m8.46678352355957[0m   |
+|  [0;34;40mvalidate/pred_loss[0m  |  [0;32;40m0.07762044668197632[0m  |
+| [0;34;40mvalidate/sigreg_loss[0m |   [0;32;40m93.20433044433594[0m   |
++----------------------+-----------------------+
+[2026-10-25 22:39:56,281][stable_worldmodel.wm.utils][INFO] - 📦📦📦 Model saved to /scratch/user/tahaismail424/.stable_wm/checkpoints/lewm_pusht_shapeI/weights_epoch_6.pt 📦📦📦
+[Epoch 5/30] done in 1330.1s
+22:39:56 | INFO  | checkpoint_~|   Checking for non PyTorch modules to save
+22:39:57 | INFO  | checkpoint_~|   Saved wandb resume info to checkpoint: {'id': 'lewm_pusht_shapeI', 'project': 'lewm', 'entity': None}
+22:39:57 | INFO  | checkpoint_~|   Wrote /scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/wandb_resume.json
+22:39:57 | INFO  | atomic_chec~| [atomic_save] → /scratch/user/tahaismail424/.stable_wm/spt_runs/runs/20261025/202448/b0123be2dc88/checkpoints/epoch=5-step=34824.ckpt
+22:39:59 | INFO  | atomic_chec~| [atomic_save] ✓ epoch=5-step=34824.ckpt saved (206.8 MiB, serialise=0.45s write=1.63s rename=0.8ms)
+22:39:59 | INFO  | checkpoint_~|   Checking for non PyTorch modules to save
+22:39:59 | INFO  | checkpoint_~|   Saved wandb resume info to checkpoint: {'id': 'lewm_pusht_shapeI', 'project': 'lewm', 'entity': None}
+22:39:59 | INFO  | checkpoint_~|   Wrote /scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/wandb_resume.json
+22:39:59 | INFO  | atomic_chec~| [atomic_save] → /scratch/user/tahaismail424/.stable_wm/spt_runs/runs/20261025/202448/b0123be2dc88/checkpoints/last.ckpt
+22:40:01 | INFO  | atomic_chec~| [atomic_save] ✓ last.ckpt saved (206.8 MiB, serialise=0.34s write=0.91s rename=0.8ms)
+[Epoch 6/30] step 50/5804 (3.0 it/s)
+[Epoch 6/30] step 100/5804 (3.8 it/s)
+[Epoch 6/30] step 150/5804 (4.0 it/s)
+[Epoch 6/30] step 200/5804 (4.0 it/s)
+[Epoch 6/30] step 250/5804 (4.3 it/s)
+[Epoch 6/30] step 300/5804 (4.4 it/s)
+[Epoch 6/30] step 350/5804 (4.5 it/s)
+[Epoch 6/30] step 400/5804 (4.6 it/s)
+[Epoch 6/30] step 450/5804 (4.7 it/s)
+[Epoch 6/30] step 500/5804 (4.7 it/s)
+[Epoch 6/30] step 550/5804 (4.6 it/s)
+[Epoch 6/30] step 600/5804 (4.7 it/s)
+[Epoch 6/30] step 650/5804 (4.7 it/s)
+[Epoch 6/30] step 700/5804 (4.7 it/s)
+[Epoch 6/30] step 750/5804 (4.8 it/s)
+[Epoch 6/30] step 800/5804 (4.8 it/s)
+[Epoch 6/30] step 850/5804 (4.8 it/s)
+[Epoch 6/30] step 900/5804 (4.8 it/s)
+[Epoch 6/30] step 950/5804 (4.8 it/s)
+[Epoch 6/30] step 1000/5804 (4.8 it/s)
+[Epoch 6/30] step 1050/5804 (4.8 it/s)
+[Epoch 6/30] step 1100/5804 (4.8 it/s)
+[Epoch 6/30] step 1150/5804 (4.8 it/s)
+[Epoch 6/30] step 1200/5804 (4.8 it/s)
+[Epoch 6/30] step 1250/5804 (4.8 it/s)
+[Epoch 6/30] step 1300/5804 (4.8 it/s)
+[Epoch 6/30] step 1350/5804 (4.8 it/s)
+[Epoch 6/30] step 1400/5804 (4.8 it/s)
+[Epoch 6/30] step 1450/5804 (4.8 it/s)
+[Epoch 6/30] step 1500/5804 (4.9 it/s)
+[Epoch 6/30] step 1550/5804 (4.8 it/s)
+[Epoch 6/30] step 1600/5804 (4.8 it/s)
+[Epoch 6/30] step 1650/5804 (4.8 it/s)
+[Epoch 6/30] step 1700/5804 (4.8 it/s)
+[Epoch 6/30] step 1750/5804 (4.8 it/s)
+[Epoch 6/30] step 1800/5804 (4.8 it/s)
+[Epoch 6/30] step 1850/5804 (4.8 it/s)
+[Epoch 6/30] step 1900/5804 (4.8 it/s)
+[Epoch 6/30] step 1950/5804 (4.8 it/s)
+[Epoch 6/30] step 2000/5804 (4.8 it/s)
+[Epoch 6/30] step 2050/5804 (4.8 it/s)
+[Epoch 6/30] step 2100/5804 (4.9 it/s)
+[Epoch 6/30] step 2150/5804 (4.9 it/s)
+[Epoch 6/30] step 2200/5804 (4.9 it/s)
+[Epoch 6/30] step 2250/5804 (4.9 it/s)
+[Epoch 6/30] step 2300/5804 (4.9 it/s)
+[Epoch 6/30] step 2350/5804 (4.9 it/s)
+[Epoch 6/30] step 2400/5804 (4.8 it/s)
+[Epoch 6/30] step 2450/5804 (4.9 it/s)
+[Epoch 6/30] step 2500/5804 (4.9 it/s)
+[Epoch 6/30] step 2550/5804 (4.9 it/s)
+[Epoch 6/30] step 2600/5804 (4.9 it/s)
+[Epoch 6/30] step 2650/5804 (4.8 it/s)
+[Epoch 6/30] step 2700/5804 (4.7 it/s)
+[Epoch 6/30] step 2750/5804 (4.7 it/s)
+[Epoch 6/30] step 2800/5804 (4.7 it/s)
+[Epoch 6/30] step 2850/5804 (4.8 it/s)
+[Epoch 6/30] step 2900/5804 (4.8 it/s)
+[Epoch 6/30] step 2950/5804 (4.8 it/s)
+[Epoch 6/30] step 3000/5804 (4.7 it/s)
+[Epoch 6/30] step 3050/5804 (4.7 it/s)
+[Epoch 6/30] step 3100/5804 (4.7 it/s)
+[Epoch 6/30] step 3150/5804 (4.7 it/s)
+[Epoch 6/30] step 3200/5804 (4.8 it/s)
+[Epoch 6/30] step 3250/5804 (4.8 it/s)
+[Epoch 6/30] step 3300/5804 (4.8 it/s)
+[Epoch 6/30] step 3350/5804 (4.8 it/s)
+[Epoch 6/30] step 3400/5804 (4.8 it/s)
+[Epoch 6/30] step 3450/5804 (4.8 it/s)
+[Epoch 6/30] step 3500/5804 (4.8 it/s)
+[Epoch 6/30] step 3550/5804 (4.8 it/s)
+[Epoch 6/30] step 3600/5804 (4.8 it/s)
+[Epoch 6/30] step 3650/5804 (4.8 it/s)
+[Epoch 6/30] step 3700/5804 (4.8 it/s)
+[Epoch 6/30] step 3750/5804 (4.8 it/s)
+[Epoch 6/30] step 3800/5804 (4.8 it/s)
+[Epoch 6/30] step 3850/5804 (4.8 it/s)
+[Epoch 6/30] step 3900/5804 (4.8 it/s)
+[Epoch 6/30] step 3950/5804 (4.8 it/s)
+[Epoch 6/30] step 4000/5804 (4.8 it/s)
+[Epoch 6/30] step 4050/5804 (4.8 it/s)
+[Epoch 6/30] step 4100/5804 (4.8 it/s)
+[Epoch 6/30] step 4150/5804 (4.8 it/s)
+[Epoch 6/30] step 4200/5804 (4.8 it/s)
+[Epoch 6/30] step 4250/5804 (4.8 it/s)
+[Epoch 6/30] step 4300/5804 (4.8 it/s)
+[Epoch 6/30] step 4350/5804 (4.8 it/s)
+[Epoch 6/30] step 4400/5804 (4.8 it/s)
+[Epoch 6/30] step 4450/5804 (4.8 it/s)
+[Epoch 6/30] step 4500/5804 (4.8 it/s)
+[Epoch 6/30] step 4550/5804 (4.8 it/s)
+[Epoch 6/30] step 4600/5804 (4.8 it/s)
+[Epoch 6/30] step 4650/5804 (4.8 it/s)
+[Epoch 6/30] step 4700/5804 (4.8 it/s)
+[Epoch 6/30] step 4750/5804 (4.8 it/s)
+[Epoch 6/30] step 4800/5804 (4.8 it/s)
+[Epoch 6/30] step 4850/5804 (4.8 it/s)
+[Epoch 6/30] step 4900/5804 (4.8 it/s)
+[Epoch 6/30] step 4950/5804 (4.8 it/s)
+[Epoch 6/30] step 5000/5804 (4.8 it/s)
+[Epoch 6/30] step 5050/5804 (4.8 it/s)
+[Epoch 6/30] step 5100/5804 (4.8 it/s)
+[Epoch 6/30] step 5150/5804 (4.8 it/s)
+[Epoch 6/30] step 5200/5804 (4.8 it/s)
+[Epoch 6/30] step 5250/5804 (4.8 it/s)
+[Epoch 6/30] step 5300/5804 (4.8 it/s)
+[Epoch 6/30] step 5350/5804 (4.8 it/s)
+[Epoch 6/30] step 5400/5804 (4.9 it/s)
+[Epoch 6/30] step 5450/5804 (4.8 it/s)
+[Epoch 6/30] step 5500/5804 (4.8 it/s)
+[Epoch 6/30] step 5550/5804 (4.8 it/s)
+[Epoch 6/30] step 5600/5804 (4.8 it/s)
+[Epoch 6/30] step 5650/5804 (4.8 it/s)
+[Epoch 6/30] step 5700/5804 (4.9 it/s)
+[Epoch 6/30] step 5750/5804 (4.8 it/s)
+[Epoch 6/30] step 5800/5804 (4.8 it/s)
+23:01:26 | INFO  | trainer_inf~| \n+----------------------+------------------------+
+|        Metric        |         Value          |
++----------------------+------------------------+
+|       [0;34;40mfit/loss[0m       |  [0;32;40m0.09890378266572952[0m   |
+|    [0;34;40mfit/pred_loss[0m     |  [0;32;40m0.011013154871761799[0m  |
+|   [0;34;40mfit/sigreg_loss[0m    |       [0;32;40m0.9765625[0m        |
+| [0;34;40mhparams/lr_model_opt[0m | [0;32;40m4.3980016926070675e-05[0m |
+|    [0;34;40mvalidate/loss[0m     |   [0;32;40m8.525134086608887[0m    |
+|  [0;34;40mvalidate/pred_loss[0m  |  [0;32;40m0.08311416953802109[0m   |
+| [0;34;40mvalidate/sigreg_loss[0m |   [0;32;40m93.80404663085938[0m    |
++----------------------+------------------------+
+[2026-10-25 23:01:28,251][stable_worldmodel.wm.utils][INFO] - 📦📦📦 Model saved to /scratch/user/tahaismail424/.stable_wm/checkpoints/lewm_pusht_shapeI/weights_epoch_7.pt 📦📦📦
+[Epoch 6/30] done in 1287.1s
+23:01:28 | INFO  | checkpoint_~|   Checking for non PyTorch modules to save
+23:01:28 | INFO  | checkpoint_~|   Saved wandb resume info to checkpoint: {'id': 'lewm_pusht_shapeI', 'project': 'lewm', 'entity': None}
+23:01:28 | INFO  | checkpoint_~|   Wrote /scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/wandb_resume.json
+23:01:28 | INFO  | atomic_chec~| [atomic_save] → /scratch/user/tahaismail424/.stable_wm/spt_runs/runs/20261025/202448/b0123be2dc88/checkpoints/epoch=6-step=40628.ckpt
+23:01:30 | INFO  | atomic_chec~| [atomic_save] ✓ epoch=6-step=40628.ckpt saved (206.8 MiB, serialise=0.39s write=0.74s rename=2.5ms)
+23:01:30 | INFO  | checkpoint_~|   Checking for non PyTorch modules to save
+23:01:30 | INFO  | checkpoint_~|   Saved wandb resume info to checkpoint: {'id': 'lewm_pusht_shapeI', 'project': 'lewm', 'entity': None}
+23:01:30 | INFO  | checkpoint_~|   Wrote /scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/wandb_resume.json
+23:01:30 | INFO  | atomic_chec~| [atomic_save] → /scratch/user/tahaismail424/.stable_wm/spt_runs/runs/20261025/202448/b0123be2dc88/checkpoints/last.ckpt
+23:01:31 | INFO  | atomic_chec~| [atomic_save] ✓ last.ckpt saved (206.8 MiB, serialise=0.37s write=0.60s rename=0.8ms)
+[Epoch 7/30] step 50/5804 (3.2 it/s)
+[Epoch 7/30] step 100/5804 (4.0 it/s)
+[Epoch 7/30] step 150/5804 (4.1 it/s)
+[Epoch 7/30] step 200/5804 (4.0 it/s)
+[Epoch 7/30] step 250/5804 (4.2 it/s)
+[Epoch 7/30] step 300/5804 (4.4 it/s)
+[Epoch 7/30] step 350/5804 (4.5 it/s)
+[Epoch 7/30] step 400/5804 (4.6 it/s)
+[Epoch 7/30] step 450/5804 (4.7 it/s)
+[Epoch 7/30] step 500/5804 (4.6 it/s)
+[Epoch 7/30] step 550/5804 (4.6 it/s)
+[Epoch 7/30] step 600/5804 (4.6 it/s)
+[Epoch 7/30] step 650/5804 (4.7 it/s)
+[Epoch 7/30] step 700/5804 (4.7 it/s)
+[Epoch 7/30] step 750/5804 (4.7 it/s)
+[Epoch 7/30] step 800/5804 (4.8 it/s)
+[Epoch 7/30] step 850/5804 (4.8 it/s)
+[Epoch 7/30] step 900/5804 (4.8 it/s)
+[Epoch 7/30] step 950/5804 (4.7 it/s)
+[Epoch 7/30] step 1000/5804 (4.8 it/s)
+[Epoch 7/30] step 1050/5804 (4.8 it/s)
+[Epoch 7/30] step 1100/5804 (4.8 it/s)
+[Epoch 7/30] step 1150/5804 (4.8 it/s)
+[Epoch 7/30] step 1200/5804 (4.8 it/s)
+[Epoch 7/30] step 1250/5804 (4.9 it/s)
+[Epoch 7/30] step 1300/5804 (4.8 it/s)
+[Epoch 7/30] step 1350/5804 (4.9 it/s)
+[Epoch 7/30] step 1400/5804 (4.9 it/s)
+[Epoch 7/30] step 1450/5804 (4.9 it/s)
+[Epoch 7/30] step 1500/5804 (4.9 it/s)
+[Epoch 7/30] step 1550/5804 (4.9 it/s)
+[Epoch 7/30] step 1600/5804 (4.9 it/s)
+[Epoch 7/30] step 1650/5804 (4.9 it/s)
+[Epoch 7/30] step 1700/5804 (4.9 it/s)
+[Epoch 7/30] step 1750/5804 (4.9 it/s)
+[Epoch 7/30] step 1800/5804 (4.9 it/s)
+[Epoch 7/30] step 1850/5804 (4.9 it/s)
+[Epoch 7/30] step 1900/5804 (4.9 it/s)
+[Epoch 7/30] step 1950/5804 (4.9 it/s)
+[Epoch 7/30] step 2000/5804 (4.9 it/s)
+[Epoch 7/30] step 2050/5804 (4.9 it/s)
+[Epoch 7/30] step 2100/5804 (4.9 it/s)
+[Epoch 7/30] step 2150/5804 (4.9 it/s)
+[Epoch 7/30] step 2200/5804 (4.9 it/s)
+[Epoch 7/30] step 2250/5804 (4.9 it/s)
+[Epoch 7/30] step 2300/5804 (4.9 it/s)
+[Epoch 7/30] step 2350/5804 (4.9 it/s)
+[Epoch 7/30] step 2400/5804 (4.9 it/s)
+[Epoch 7/30] step 2450/5804 (4.9 it/s)
+[Epoch 7/30] step 2500/5804 (4.9 it/s)
+[Epoch 7/30] step 2550/5804 (4.9 it/s)
+[Epoch 7/30] step 2600/5804 (4.9 it/s)
+[Epoch 7/30] step 2650/5804 (4.9 it/s)
+[Epoch 7/30] step 2700/5804 (4.9 it/s)
+[Epoch 7/30] step 2750/5804 (4.9 it/s)
+[Epoch 7/30] step 2800/5804 (4.9 it/s)
+[Epoch 7/30] step 2850/5804 (4.9 it/s)
+[Epoch 7/30] step 2900/5804 (4.9 it/s)
+[Epoch 7/30] step 2950/5804 (4.9 it/s)
+[Epoch 7/30] step 3000/5804 (4.9 it/s)
+[Epoch 7/30] step 3050/5804 (4.9 it/s)
+[Epoch 7/30] step 3100/5804 (4.9 it/s)
+[Epoch 7/30] step 3150/5804 (4.9 it/s)
+[Epoch 7/30] step 3200/5804 (4.9 it/s)
+[Epoch 7/30] step 3250/5804 (4.9 it/s)
+[Epoch 7/30] step 3300/5804 (4.9 it/s)
+[Epoch 7/30] step 3350/5804 (4.9 it/s)
+[Epoch 7/30] step 3400/5804 (4.9 it/s)
+[Epoch 7/30] step 3450/5804 (4.9 it/s)
+[Epoch 7/30] step 3500/5804 (4.9 it/s)
+[Epoch 7/30] step 3550/5804 (4.9 it/s)
+[Epoch 7/30] step 3600/5804 (4.9 it/s)
+[Epoch 7/30] step 3650/5804 (4.9 it/s)
+[Epoch 7/30] step 3700/5804 (4.9 it/s)
+[Epoch 7/30] step 3750/5804 (4.9 it/s)
+[Epoch 7/30] step 3800/5804 (4.9 it/s)
+[Epoch 7/30] step 3850/5804 (4.9 it/s)
+[Epoch 7/30] step 3900/5804 (4.9 it/s)
+[Epoch 7/30] step 3950/5804 (4.9 it/s)
+[Epoch 7/30] step 4000/5804 (4.9 it/s)
+[Epoch 7/30] step 4050/5804 (4.9 it/s)
+[Epoch 7/30] step 4100/5804 (4.9 it/s)
+[Epoch 7/30] step 4150/5804 (4.9 it/s)
+[Epoch 7/30] step 4200/5804 (4.9 it/s)
+[Epoch 7/30] step 4250/5804 (4.9 it/s)
+[Epoch 7/30] step 4300/5804 (4.9 it/s)
+[Epoch 7/30] step 4350/5804 (4.9 it/s)
+[Epoch 7/30] step 4400/5804 (4.9 it/s)
+[Epoch 7/30] step 4450/5804 (4.9 it/s)
+[Epoch 7/30] step 4500/5804 (4.9 it/s)
+[Epoch 7/30] step 4550/5804 (4.9 it/s)
+[Epoch 7/30] step 4600/5804 (4.9 it/s)
+[Epoch 7/30] step 4650/5804 (4.9 it/s)
+[Epoch 7/30] step 4700/5804 (4.9 it/s)
+[Epoch 7/30] step 4750/5804 (4.9 it/s)
+[Epoch 7/30] step 4800/5804 (4.9 it/s)
+[Epoch 7/30] step 4850/5804 (4.9 it/s)
+[Epoch 7/30] step 4900/5804 (4.9 it/s)
+[Epoch 7/30] step 4950/5804 (4.9 it/s)
+[Epoch 7/30] step 5000/5804 (4.9 it/s)
+[Epoch 7/30] step 5050/5804 (4.9 it/s)
+[Epoch 7/30] step 5100/5804 (4.9 it/s)
+[Epoch 7/30] step 5150/5804 (4.9 it/s)
+[Epoch 7/30] step 5200/5804 (4.9 it/s)
+[Epoch 7/30] step 5250/5804 (4.9 it/s)
+[Epoch 7/30] step 5300/5804 (4.9 it/s)
+[Epoch 7/30] step 5350/5804 (4.9 it/s)
+[Epoch 7/30] step 5400/5804 (4.9 it/s)
+[Epoch 7/30] step 5450/5804 (4.9 it/s)
+[Epoch 7/30] step 5500/5804 (4.9 it/s)
+[Epoch 7/30] step 5550/5804 (4.9 it/s)
+[Epoch 7/30] step 5600/5804 (4.9 it/s)
+[Epoch 7/30] step 5650/5804 (4.9 it/s)
+[Epoch 7/30] step 5700/5804 (4.9 it/s)
+[Epoch 7/30] step 5750/5804 (4.9 it/s)
+[Epoch 7/30] step 5800/5804 (4.9 it/s)
+23:22:39 | INFO  | trainer_inf~| \n+----------------------+------------------------+
+|        Metric        |         Value          |
++----------------------+------------------------+
+|       [0;34;40mfit/loss[0m       |  [0;32;40m0.09423714876174927[0m   |
+|    [0;34;40mfit/pred_loss[0m     |  [0;32;40m0.009764491580426693[0m  |
+|   [0;34;40mfit/sigreg_loss[0m    |         [0;32;40m0.9375[0m         |
+| [0;34;40mhparams/lr_model_opt[0m | [0;32;40m4.2155992559855804e-05[0m |
+|    [0;34;40mvalidate/loss[0m     |   [0;32;40m8.253631591796875[0m    |
+|  [0;34;40mvalidate/pred_loss[0m  |  [0;32;40m0.08585788309574127[0m   |
+| [0;34;40mvalidate/sigreg_loss[0m |   [0;32;40m90.74586486816406[0m    |
++----------------------+------------------------+
+[2026-10-25 23:22:41,064][stable_worldmodel.wm.utils][INFO] - 📦📦📦 Model saved to /scratch/user/tahaismail424/.stable_wm/checkpoints/lewm_pusht_shapeI/weights_epoch_8.pt 📦📦📦
+[Epoch 7/30] done in 1269.9s
+23:22:41 | INFO  | checkpoint_~|   Checking for non PyTorch modules to save
+23:22:41 | INFO  | checkpoint_~|   Saved wandb resume info to checkpoint: {'id': 'lewm_pusht_shapeI', 'project': 'lewm', 'entity': None}
+23:22:41 | INFO  | checkpoint_~|   Wrote /scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/wandb_resume.json
+23:22:41 | INFO  | atomic_chec~| [atomic_save] → /scratch/user/tahaismail424/.stable_wm/spt_runs/runs/20261025/202448/b0123be2dc88/checkpoints/epoch=7-step=46432.ckpt
+23:22:43 | INFO  | atomic_chec~| [atomic_save] ✓ epoch=7-step=46432.ckpt saved (206.8 MiB, serialise=0.35s write=1.02s rename=0.8ms)
+23:22:43 | INFO  | checkpoint_~|   Checking for non PyTorch modules to save
+23:22:43 | INFO  | checkpoint_~|   Saved wandb resume info to checkpoint: {'id': 'lewm_pusht_shapeI', 'project': 'lewm', 'entity': None}
+23:22:43 | INFO  | checkpoint_~|   Wrote /scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/wandb_resume.json
+23:22:43 | INFO  | atomic_chec~| [atomic_save] → /scratch/user/tahaismail424/.stable_wm/spt_runs/runs/20261025/202448/b0123be2dc88/checkpoints/last.ckpt
+23:22:44 | INFO  | atomic_chec~| [atomic_save] ✓ last.ckpt saved (206.8 MiB, serialise=0.34s write=1.00s rename=0.9ms)
+[Epoch 8/30] step 50/5804 (3.6 it/s)
+[Epoch 8/30] step 100/5804 (3.7 it/s)
+[Epoch 8/30] step 150/5804 (4.0 it/s)
+[Epoch 8/30] step 200/5804 (4.3 it/s)
+[Epoch 8/30] step 250/5804 (4.5 it/s)
+[Epoch 8/30] step 300/5804 (4.6 it/s)
+[Epoch 8/30] step 350/5804 (4.7 it/s)
+[Epoch 8/30] step 400/5804 (4.8 it/s)
+[Epoch 8/30] step 450/5804 (4.8 it/s)
+[Epoch 8/30] step 500/5804 (4.7 it/s)
+[Epoch 8/30] step 550/5804 (4.7 it/s)
+[Epoch 8/30] step 600/5804 (4.8 it/s)
+[Epoch 8/30] step 650/5804 (4.8 it/s)
+[Epoch 8/30] step 700/5804 (4.8 it/s)
+[Epoch 8/30] step 750/5804 (4.9 it/s)
+[Epoch 8/30] step 800/5804 (4.9 it/s)
+[Epoch 8/30] step 850/5804 (4.8 it/s)
+[Epoch 8/30] step 900/5804 (4.9 it/s)
+[Epoch 8/30] step 950/5804 (4.9 it/s)
+[Epoch 8/30] step 1000/5804 (4.9 it/s)
+[Epoch 8/30] step 1050/5804 (4.9 it/s)
+[Epoch 8/30] step 1100/5804 (4.9 it/s)
+[Epoch 8/30] step 1150/5804 (5.0 it/s)
+[Epoch 8/30] step 1200/5804 (5.0 it/s)
+[Epoch 8/30] step 1250/5804 (4.9 it/s)
+[Epoch 8/30] step 1300/5804 (4.9 it/s)
+[Epoch 8/30] step 1350/5804 (4.9 it/s)
+[Epoch 8/30] step 1400/5804 (4.9 it/s)
+[Epoch 8/30] step 1450/5804 (4.9 it/s)
+[Epoch 8/30] step 1500/5804 (4.9 it/s)
+[Epoch 8/30] step 1550/5804 (4.9 it/s)
+[Epoch 8/30] step 1600/5804 (4.9 it/s)
+[Epoch 8/30] step 1650/5804 (4.9 it/s)
+[Epoch 8/30] step 1700/5804 (4.9 it/s)
+[Epoch 8/30] step 1750/5804 (4.9 it/s)
+[Epoch 8/30] step 1800/5804 (4.9 it/s)
+[Epoch 8/30] step 1850/5804 (5.0 it/s)
+[Epoch 8/30] step 1900/5804 (5.0 it/s)
+[Epoch 8/30] step 1950/5804 (4.9 it/s)
+[Epoch 8/30] step 2000/5804 (4.8 it/s)
+[Epoch 8/30] step 2050/5804 (4.8 it/s)
+[Epoch 8/30] step 2100/5804 (4.8 it/s)
+[Epoch 8/30] step 2150/5804 (4.8 it/s)
+[Epoch 8/30] step 2200/5804 (4.8 it/s)
+[Epoch 8/30] step 2250/5804 (4.8 it/s)
+[Epoch 8/30] step 2300/5804 (4.7 it/s)
+[Epoch 8/30] step 2350/5804 (4.8 it/s)
+[Epoch 8/30] step 2400/5804 (4.8 it/s)
+[Epoch 8/30] step 2450/5804 (4.8 it/s)
+[Epoch 8/30] step 2500/5804 (4.8 it/s)
+[Epoch 8/30] step 2550/5804 (4.8 it/s)
+[Epoch 8/30] step 2600/5804 (4.8 it/s)
+[Epoch 8/30] step 2650/5804 (4.8 it/s)
+[Epoch 8/30] step 2700/5804 (4.8 it/s)
+[Epoch 8/30] step 2750/5804 (4.8 it/s)
+[Epoch 8/30] step 2800/5804 (4.8 it/s)
+[Epoch 8/30] step 2850/5804 (4.8 it/s)
+[Epoch 8/30] step 2900/5804 (4.8 it/s)
+[Epoch 8/30] step 2950/5804 (4.8 it/s)
+[Epoch 8/30] step 3000/5804 (4.8 it/s)
+[Epoch 8/30] step 3050/5804 (4.8 it/s)
+[Epoch 8/30] step 3100/5804 (4.8 it/s)
+[Epoch 8/30] step 3150/5804 (4.8 it/s)
+[Epoch 8/30] step 3200/5804 (4.8 it/s)
+[Epoch 8/30] step 3250/5804 (4.8 it/s)
+[Epoch 8/30] step 3300/5804 (4.8 it/s)
+[Epoch 8/30] step 3350/5804 (4.8 it/s)
+[Epoch 8/30] step 3400/5804 (4.8 it/s)
+[Epoch 8/30] step 3450/5804 (4.8 it/s)
+[Epoch 8/30] step 3500/5804 (4.8 it/s)
+[Epoch 8/30] step 3550/5804 (4.8 it/s)
+[Epoch 8/30] step 3600/5804 (4.8 it/s)
+[Epoch 8/30] step 3650/5804 (4.8 it/s)
+[Epoch 8/30] step 3700/5804 (4.8 it/s)
+[Epoch 8/30] step 3750/5804 (4.8 it/s)
+[Epoch 8/30] step 3800/5804 (4.8 it/s)
+[Epoch 8/30] step 3850/5804 (4.8 it/s)
+[Epoch 8/30] step 3900/5804 (4.8 it/s)
+[Epoch 8/30] step 3950/5804 (4.8 it/s)
+[Epoch 8/30] step 4000/5804 (4.8 it/s)
+[Epoch 8/30] step 4050/5804 (4.8 it/s)
+[Epoch 8/30] step 4100/5804 (4.8 it/s)
+[Epoch 8/30] step 4150/5804 (4.8 it/s)
+[Epoch 8/30] step 4200/5804 (4.8 it/s)
+[Epoch 8/30] step 4250/5804 (4.8 it/s)
+[Epoch 8/30] step 4300/5804 (4.8 it/s)
+[Epoch 8/30] step 4350/5804 (4.8 it/s)
+[Epoch 8/30] step 4400/5804 (4.8 it/s)
+[Epoch 8/30] step 4450/5804 (4.8 it/s)
+[Epoch 8/30] step 4500/5804 (4.8 it/s)
+[Epoch 8/30] step 4550/5804 (4.8 it/s)
+[Epoch 8/30] step 4600/5804 (4.8 it/s)
+[Epoch 8/30] step 4650/5804 (4.8 it/s)
+[Epoch 8/30] step 4700/5804 (4.8 it/s)
+[Epoch 8/30] step 4750/5804 (4.8 it/s)
+[Epoch 8/30] step 4800/5804 (4.7 it/s)
+[Epoch 8/30] step 4850/5804 (4.7 it/s)
+[Epoch 8/30] step 4900/5804 (4.8 it/s)
+[Epoch 8/30] step 4950/5804 (4.8 it/s)
+[Epoch 8/30] step 5000/5804 (4.8 it/s)
+[Epoch 8/30] step 5050/5804 (4.8 it/s)
+[Epoch 8/30] step 5100/5804 (4.7 it/s)
+[Epoch 8/30] step 5150/5804 (4.8 it/s)
+[Epoch 8/30] step 5200/5804 (4.8 it/s)
+[Epoch 8/30] step 5250/5804 (4.8 it/s)
+[Epoch 8/30] step 5300/5804 (4.8 it/s)
+[Epoch 8/30] step 5350/5804 (4.8 it/s)
+[Epoch 8/30] step 5400/5804 (4.8 it/s)
+[Epoch 8/30] step 5450/5804 (4.7 it/s)
+[Epoch 8/30] step 5500/5804 (4.8 it/s)
+[Epoch 8/30] step 5550/5804 (4.8 it/s)
+[Epoch 8/30] step 5600/5804 (4.8 it/s)
+[Epoch 8/30] step 5650/5804 (4.8 it/s)
+[Epoch 8/30] step 5700/5804 (4.8 it/s)
+[Epoch 8/30] step 5750/5804 (4.8 it/s)
+[Epoch 8/30] step 5800/5804 (4.8 it/s)
+23:44:32 | INFO  | trainer_inf~| \n+----------------------+-----------------------+
+|        Metric        |         Value         |
++----------------------+-----------------------+
+|       [0;34;40mfit/loss[0m       |  [0;32;40m0.09460239112377167[0m  |
+|    [0;34;40mfit/pred_loss[0m     |  [0;32;40m0.009153176099061966[0m |
+|   [0;34;40mfit/sigreg_loss[0m    |       [0;32;40m0.94921875[0m      |
+| [0;34;40mhparams/lr_model_opt[0m | [0;32;40m4.014019214082509e-05[0m |
+|    [0;34;40mvalidate/loss[0m     |    [0;32;40m8.29905891418457[0m   |
+|  [0;34;40mvalidate/pred_loss[0m  |  [0;32;40m0.08396231383085251[0m  |
+| [0;34;40mvalidate/sigreg_loss[0m |    [0;32;40m91.2742919921875[0m   |
++----------------------+-----------------------+
+[2026-10-25 23:44:33,159][stable_worldmodel.wm.utils][INFO] - 📦📦📦 Model saved to /scratch/user/tahaismail424/.stable_wm/checkpoints/lewm_pusht_shapeI/weights_epoch_9.pt 📦📦📦
+[Epoch 8/30] done in 1308.6s
+23:44:33 | INFO  | checkpoint_~|   Checking for non PyTorch modules to save
+23:44:33 | INFO  | checkpoint_~|   Saved wandb resume info to checkpoint: {'id': 'lewm_pusht_shapeI', 'project': 'lewm', 'entity': None}
+23:44:33 | INFO  | checkpoint_~|   Wrote /scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/wandb_resume.json
+23:44:33 | INFO  | atomic_chec~| [atomic_save] → /scratch/user/tahaismail424/.stable_wm/spt_runs/runs/20261025/202448/b0123be2dc88/checkpoints/epoch=8-step=52236.ckpt
+23:44:34 | INFO  | atomic_chec~| [atomic_save] ✓ epoch=8-step=52236.ckpt saved (206.8 MiB, serialise=0.37s write=0.45s rename=0.7ms)
+23:44:34 | INFO  | checkpoint_~|   Checking for non PyTorch modules to save
+23:44:34 | INFO  | checkpoint_~|   Saved wandb resume info to checkpoint: {'id': 'lewm_pusht_shapeI', 'project': 'lewm', 'entity': None}
+23:44:34 | INFO  | checkpoint_~|   Wrote /scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/wandb_resume.json
+23:44:34 | INFO  | atomic_chec~| [atomic_save] → /scratch/user/tahaismail424/.stable_wm/spt_runs/runs/20261025/202448/b0123be2dc88/checkpoints/last.ckpt
+23:44:35 | INFO  | atomic_chec~| [atomic_save] ✓ last.ckpt saved (206.8 MiB, serialise=0.36s write=0.30s rename=0.8ms)
+[Epoch 9/30] step 50/5804 (3.6 it/s)
+[Epoch 9/30] step 100/5804 (4.2 it/s)
+[Epoch 9/30] step 150/5804 (4.6 it/s)
+[Epoch 9/30] step 200/5804 (4.5 it/s)
+[Epoch 9/30] step 250/5804 (4.3 it/s)
+[Epoch 9/30] step 300/5804 (4.4 it/s)
+[Epoch 9/30] step 350/5804 (4.5 it/s)
+[Epoch 9/30] step 400/5804 (4.6 it/s)
+[Epoch 9/30] step 450/5804 (4.7 it/s)
+[Epoch 9/30] step 500/5804 (4.8 it/s)
+[Epoch 9/30] step 550/5804 (4.6 it/s)
+[Epoch 9/30] step 600/5804 (4.6 it/s)
+[Epoch 9/30] step 650/5804 (4.7 it/s)
+[Epoch 9/30] step 700/5804 (4.7 it/s)
+[Epoch 9/30] step 750/5804 (4.8 it/s)
+[Epoch 9/30] step 800/5804 (4.8 it/s)
+[Epoch 9/30] step 850/5804 (4.8 it/s)
+[Epoch 9/30] step 900/5804 (4.8 it/s)
+[Epoch 9/30] step 950/5804 (4.8 it/s)
+[Epoch 9/30] step 1000/5804 (4.9 it/s)
+[Epoch 9/30] step 1050/5804 (4.9 it/s)
+[Epoch 9/30] step 1100/5804 (4.9 it/s)
+[Epoch 9/30] step 1150/5804 (4.9 it/s)
+[Epoch 9/30] step 1200/5804 (4.9 it/s)
+[Epoch 9/30] step 1250/5804 (4.9 it/s)
+[Epoch 9/30] step 1300/5804 (4.9 it/s)
+[Epoch 9/30] step 1350/5804 (4.9 it/s)
+[Epoch 9/30] step 1400/5804 (4.9 it/s)
+[Epoch 9/30] step 1450/5804 (4.9 it/s)
+[Epoch 9/30] step 1500/5804 (4.9 it/s)
+[Epoch 9/30] step 1550/5804 (4.9 it/s)
+[Epoch 9/30] step 1600/5804 (4.9 it/s)
+[Epoch 9/30] step 1650/5804 (4.9 it/s)
+[Epoch 9/30] step 1700/5804 (4.9 it/s)
+[Epoch 9/30] step 1750/5804 (4.9 it/s)
+[Epoch 9/30] step 1800/5804 (4.9 it/s)
+[Epoch 9/30] step 1850/5804 (4.9 it/s)
+[Epoch 9/30] step 1900/5804 (4.9 it/s)
+[Epoch 9/30] step 1950/5804 (4.9 it/s)
+[Epoch 9/30] step 2000/5804 (4.9 it/s)
+[Epoch 9/30] step 2050/5804 (4.9 it/s)
+[Epoch 9/30] step 2100/5804 (4.9 it/s)
+[Epoch 9/30] step 2150/5804 (4.9 it/s)
+[Epoch 9/30] step 2200/5804 (4.9 it/s)
+[Epoch 9/30] step 2250/5804 (4.9 it/s)
+[Epoch 9/30] step 2300/5804 (4.9 it/s)
+[Epoch 9/30] step 2350/5804 (4.9 it/s)
+[Epoch 9/30] step 2400/5804 (4.9 it/s)
+[Epoch 9/30] step 2450/5804 (4.9 it/s)
+[Epoch 9/30] step 2500/5804 (4.9 it/s)
+[Epoch 9/30] step 2550/5804 (4.9 it/s)
+[Epoch 9/30] step 2600/5804 (4.9 it/s)
+[Epoch 9/30] step 2650/5804 (4.9 it/s)
+[Epoch 9/30] step 2700/5804 (4.9 it/s)
+[Epoch 9/30] step 2750/5804 (4.9 it/s)
+[Epoch 9/30] step 2800/5804 (4.9 it/s)
+[Epoch 9/30] step 2850/5804 (4.9 it/s)
+[Epoch 9/30] step 2900/5804 (4.9 it/s)
+[Epoch 9/30] step 2950/5804 (4.9 it/s)
+[Epoch 9/30] step 3000/5804 (5.0 it/s)
+[Epoch 9/30] step 3050/5804 (5.0 it/s)
+[Epoch 9/30] step 3100/5804 (5.0 it/s)
+[Epoch 9/30] step 3150/5804 (4.9 it/s)
+[Epoch 9/30] step 3200/5804 (4.9 it/s)
+[Epoch 9/30] step 3250/5804 (4.9 it/s)
+[Epoch 9/30] step 3300/5804 (5.0 it/s)
+[Epoch 9/30] step 3350/5804 (5.0 it/s)
+[Epoch 9/30] step 3400/5804 (5.0 it/s)
+[Epoch 9/30] step 3450/5804 (5.0 it/s)
+[Epoch 9/30] step 3500/5804 (4.9 it/s)
+[Epoch 9/30] step 3550/5804 (4.9 it/s)
+[Epoch 9/30] step 3600/5804 (4.9 it/s)

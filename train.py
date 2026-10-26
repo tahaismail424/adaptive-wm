@@ -41,15 +41,17 @@ def lejepa_forward(self, batch, stage, cfg):
     output["loss"] = output["pred_loss"] + lambd * output["sigreg_loss"]  
 
     losses_dict = {f"{stage}/{k}": v.detach() for k, v in output.items() if "loss" in k}
-    self.log_dict(losses_dict, on_step=True, sync_dist=True)
+    # per-step for training curves, epoch-averaged for validation
+    self.log_dict(losses_dict, on_step=(stage == "fit"), on_epoch=(stage != "fit"), sync_dist=True)
     return output
 
-@hydra.main(version_base=None, config_path="./config/train", config_name="lewm")
-def run(cfg):
-    #########################
-    ##       dataset       ##
-    #########################
+def build_datasets(cfg, rnd_gen):
+    """Load train/val sets with shared, train-fitted transforms.
 
+    If cfg.data.val_set names a dataset (e.g. pusht-scenarios' <name>_val.h5,
+    split by parent demo), it is the val set; otherwise the train dataset is
+    randomly split by cfg.train_split. Sets cfg.model.action_encoder.input_dim.
+    """
     dataset_cfg = OmegaConf.to_container(cfg.data.dataset, resolve=True)
     dataset_name = dataset_cfg.pop("name")
     cache_dir = os.environ.get("LOCAL_DATASET_DIR", None)
@@ -70,10 +72,27 @@ def run(cfg):
     transform = spt.data.transforms.Compose(*transforms)
     dataset.transform = transform
 
+    # allow optional manually specified train/val split
+    if cfg.data.get("val_set", None):
+        val_set = swm.data.load_dataset(
+            cfg.data.val_set, transform=transform, cache_dir=cache_dir, **dataset_cfg
+        )
+        train_set = dataset
+    else:
+        train_set, val_set = spt.data.random_split(
+            dataset, lengths=[cfg.train_split, 1 - cfg.train_split], generator=rnd_gen
+        )
+    return train_set, val_set
+
+
+@hydra.main(version_base=None, config_path="./config/train", config_name="lewm")
+def run(cfg):
+    #########################
+    ##       dataset       ##
+    #########################
+
     rnd_gen = torch.Generator().manual_seed(cfg.seed)
-    train_set, val_set = spt.data.random_split(
-        dataset, lengths=[cfg.train_split, 1 - cfg.train_split], generator=rnd_gen
-    )
+    train_set, val_set = build_datasets(cfg, rnd_gen)
 
     train = torch.utils.data.DataLoader(train_set, **cfg.loader,shuffle=True, drop_last=True, generator=rnd_gen)
     val = torch.utils.data.DataLoader(val_set, **cfg.loader, shuffle=False, drop_last=False)
@@ -126,6 +145,7 @@ def run(cfg):
         callbacks=[object_dump_callback],
         num_sanity_val_steps=1,
         logger=logger,
+        log_every_n_steps=cfg.log_every_n_steps,
         enable_checkpointing=True,
     )
 

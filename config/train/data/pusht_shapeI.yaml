@@ -1,0 +1,14 @@
+dataset:
+  num_steps: ${eval:'${num_preds} + ${history_size}'}
+  frameskip: 5
+  name: varied_pusht/pusht_v0_only_shape_I_train.h5
+  keys_to_load:
+    - pixels
+    - action
+    - proprio
+    - state
+  keys_to_cache:
+    - action
+    - proprio
+    - state
+val_set: varied_pusht/pusht_v0_only_shape_I_val.h5

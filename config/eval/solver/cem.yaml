@@ -1,4 +1,4 @@
-_target_: stable_worldmodel.solver.CEMSolver
+_target_: stable_worldmodel.planning.CEMSolver
 model: ???
 batch_size: 1
 num_samples: 300
