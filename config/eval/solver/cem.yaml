@@ -1,5 +1,5 @@
 _target_: stable_worldmodel.planning.CEMSolver
-model: ???
+cost: ???  # the world model; JEPA.get_cost satisfies swm's Costable protocol
 batch_size: 1
 num_samples: 300
 var_scale: 1.0

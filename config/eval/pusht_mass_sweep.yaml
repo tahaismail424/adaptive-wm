@@ -1,0 +1,63 @@
+# Stress test: original Push-T eval tasks (LeWM's pusht_expert_train), same
+# planner, but block MASS varied in our env (pusht_scenarios). Every point uses
+# the same sampled starts/goals, so points compare pairwise.
+#
+# In stock Push-T the agent is kinematic (infinitely strong), so block mass has
+# no effect at all. Mass only matters with a capped agent strength
+# (sim.agent_max_force). The sweep therefore caps strength for every point
+# except `stock`; at the cap used here, mass 1 pushes almost like stock
+# (pusht-scenarios: 138 vs 142 px per push), heavier blocks move much less.
+#
+#   sbatch --export=CONFIG=pusht_mass_sweep,POLICY=lewm_pusht_released/weights.pt scripts/slurm/eval.sbatch
+defaults:
+  - launcher: local
+  - solver: cem
+  - _self_
+
+solver:
+  batch_size: ${eval.chunk_size}
+
+world:
+  env_name: pusht_scenarios.env:pts/PushT-v0   # unbounded, like swm/PushT-v1
+  render_contacts: true                        # swm draws contact points; LeWM's frames have them
+  num_envs: ${eval.num_eval}                   # overridden per chunk by eval.py
+  max_episode_steps: ???
+
+dataset:
+  keys_to_cache:
+    - action
+    - proprio
+    - state
+
+seed: 42
+policy: random
+
+plan_config:
+  horizon: 5
+  receding_horizon: 5
+  action_block: 5
+
+eval:
+  num_eval: 100
+  goal_offset_steps: 25
+  eval_budget: 50
+  img_size: 224
+  chunk_size: 100
+  video: sample          # one video per sweep point
+  videos_per_env: 1
+  dataset_name: pusht_expert_train
+  variation_overrides:   # applied to every point (a point's own overrides win)
+    sim.agent_max_force: 20000.0
+  sweep:
+    - {name: stock, overrides: {sim.agent_max_force: 0.0}}   # uncapped = original env (parity)
+    - {name: mass_0.1, overrides: {sim.block_mass: 0.1}}
+    - {name: mass_0.25, overrides: {sim.block_mass: 0.25}}
+    - {name: mass_0.5, overrides: {sim.block_mass: 0.5}}
+    - {name: mass_1, overrides: {sim.block_mass: 1.0}}       # capped strength, default mass
+    - {name: mass_2, overrides: {sim.block_mass: 2.0}}
+    - {name: mass_3, overrides: {sim.block_mass: 3.0}}
+    - {name: mass_5, overrides: {sim.block_mass: 5.0}}
+    - {name: mass_10, overrides: {sim.block_mass: 10.0}}
+
+output:
+  filename: pusht_mass_sweep_results.txt

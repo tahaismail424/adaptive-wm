@@ -1,0 +1,96 @@
+host=fc101 job=3220394 gpus=0 cpus=8
+Tesla T4, 16384 MiB
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/stable_worldmodel/envs/__init__.py:215: UserWarning: ale-py not found; ALE/* envs are unavailable. Install with: pip install 'stable-worldmodel[env]' or pip install ale-py.
+  from stable_worldmodel.envs import ale  # noqa: F401
+14:08:03 | INFO  | atomic_chec~| [atomic_save] installed crash-safe checkpoint plugin (write to sibling .tmp + fsync + atomic rename)
+[2026-10-26 14:08:14,191][root][INFO] - Cached 'action' from '/scratch/user/tahaismail424/.stable_wm/datasets/varied_pusht/pusht_v0_only_shape_I_test_eval.h5'
+[2026-10-26 14:08:14,226][root][INFO] - Cached 'proprio' from '/scratch/user/tahaismail424/.stable_wm/datasets/varied_pusht/pusht_v0_only_shape_I_test_eval.h5'
+[2026-10-26 14:08:14,227][root][INFO] - Cached 'state' from '/scratch/user/tahaismail424/.stable_wm/datasets/varied_pusht/pusht_v0_only_shape_I_test_eval.h5'
+[2026-10-26 14:08:24,464][root][INFO] - Cached 'action' from '/scratch/user/tahaismail424/.stable_wm/datasets/varied_pusht/pusht_v0_only_shape_I_train.h5'
+[2026-10-26 14:08:36,387][root][INFO] - Cached 'proprio' from '/scratch/user/tahaismail424/.stable_wm/datasets/varied_pusht/pusht_v0_only_shape_I_train.h5'
+[2026-10-26 14:08:50,152][root][INFO] - Cached 'state' from '/scratch/user/tahaismail424/.stable_wm/datasets/varied_pusht/pusht_v0_only_shape_I_train.h5'
+14:08:53 | INFO  | utils.py    | Created ViT-tiny from scratch with config: {'hidden_size': 192, 'num_hidden_layers': 12, 'num_attention_heads': 3, 'intermediate_size': 768, 'image_size': 224, 'patch_size': 14}
+3181 valid starting points found for evaluation.
+540 eval episodes
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/gymnasium/spaces/box.py:486: UserWarning: [33mWARN: Casting input x to numpy array.[0m
+  gym.logger.warn("Casting input x to numpy array.")
+CEM solve time: 98.1280 seconds
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/gymnasium/utils/passive_env_checker.py:243: UserWarning: [33mWARN: The infos returned by `reset` and the following `step` share an object, therefore, modifying one will modify the other. Environments should return new info data on every call as users commonly keep the data returned to them.[0m
+  logger.warn(
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/gymnasium/utils/passive_env_checker.py:243: UserWarning: [33mWARN: The infos returned by `step` and the following `step` share an object, therefore, modifying one will modify the other. Environments should return new info data on every call as users commonly keep the data returned to them.[0m
+  logger.warn(
+CEM solve time: 49.1284 seconds
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/lance/__init__.py:358: UserWarning: lance is not fork-safe. If you are using multiprocessing, use spawn or forkserver instead.
+  warnings.warn(
+chunk 1/7: 0/27 successes
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/gymnasium/spaces/box.py:486: UserWarning: [33mWARN: Casting input x to numpy array.[0m
+  gym.logger.warn("Casting input x to numpy array.")
+CEM solve time: 190.3000 seconds
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/gymnasium/utils/passive_env_checker.py:243: UserWarning: [33mWARN: The infos returned by `reset` and the following `step` share an object, therefore, modifying one will modify the other. Environments should return new info data on every call as users commonly keep the data returned to them.[0m
+  logger.warn(
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/gymnasium/utils/passive_env_checker.py:243: UserWarning: [33mWARN: The infos returned by `step` and the following `step` share an object, therefore, modifying one will modify the other. Environments should return new info data on every call as users commonly keep the data returned to them.[0m
+  logger.warn(
+CEM solve time: 192.2560 seconds
+chunk 2/7: 0/100 successes
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/gymnasium/spaces/box.py:486: UserWarning: [33mWARN: Casting input x to numpy array.[0m
+  gym.logger.warn("Casting input x to numpy array.")
+CEM solve time: 195.6021 seconds
+CEM solve time: 192.5354 seconds
+chunk 3/7: 1/100 successes
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/gymnasium/spaces/box.py:486: UserWarning: [33mWARN: Casting input x to numpy array.[0m
+  gym.logger.warn("Casting input x to numpy array.")
+CEM solve time: 191.2431 seconds
+CEM solve time: 190.7240 seconds
+chunk 4/7: 0/100 successes
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/gymnasium/spaces/box.py:486: UserWarning: [33mWARN: Casting input x to numpy array.[0m
+  gym.logger.warn("Casting input x to numpy array.")
+CEM solve time: 198.0576 seconds
+CEM solve time: 197.0958 seconds
+chunk 5/7: 4/100 successes
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/gymnasium/spaces/box.py:486: UserWarning: [33mWARN: Casting input x to numpy array.[0m
+  gym.logger.warn("Casting input x to numpy array.")
+CEM solve time: 197.3247 seconds
+CEM solve time: 196.2310 seconds
+chunk 6/7: 3/100 successes
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/gymnasium/spaces/box.py:486: UserWarning: [33mWARN: Casting input x to numpy array.[0m
+  gym.logger.warn("Casting input x to numpy array.")
+CEM solve time: 24.2372 seconds
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/gymnasium/utils/passive_env_checker.py:243: UserWarning: [33mWARN: The infos returned by `reset` and the following `step` share an object, therefore, modifying one will modify the other. Environments should return new info data on every call as users commonly keep the data returned to them.[0m
+  logger.warn(
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/gymnasium/utils/passive_env_checker.py:243: UserWarning: [33mWARN: The infos returned by `step` and the following `step` share an object, therefore, modifying one will modify the other. Environments should return new info data on every call as users commonly keep the data returned to them.[0m
+  logger.warn(
+CEM solve time: 23.6620 seconds
+chunk 7/7: 0/13 successes
+success_rate: 1.5% over 540 episodes
+env_id  success      name
+    54   0/20   0.0%  mass-light.friction-low.color-default.shape-I
+    55   0/20   0.0%  mass-light.friction-low.color-warm.shape-I
+    56   0/20   0.0%  mass-light.friction-low.color-night.shape-I
+    57   0/20   0.0%  mass-light.friction-high.color-default.shape-I
+    58   0/20   0.0%  mass-light.friction-high.color-warm.shape-I
+    59   0/20   0.0%  mass-light.friction-high.color-night.shape-I
+    60   1/20   5.0%  mass-light.friction-stop.color-default.shape-I
+    61   0/20   0.0%  mass-light.friction-stop.color-warm.shape-I
+    62   0/20   0.0%  mass-light.friction-stop.color-night.shape-I
+    63   0/20   0.0%  mass-normal.friction-low.color-default.shape-I
+    64   0/20   0.0%  mass-normal.friction-low.color-warm.shape-I
+    65   0/20   0.0%  mass-normal.friction-low.color-night.shape-I
+    66   0/20   0.0%  mass-normal.friction-high.color-default.shape-I
+    67   0/20   0.0%  mass-normal.friction-high.color-warm.shape-I
+    68   0/20   0.0%  mass-normal.friction-high.color-night.shape-I
+    69   0/20   0.0%  mass-normal.friction-stop.color-default.shape-I
+    70   4/20  20.0%  mass-normal.friction-stop.color-warm.shape-I
+    71   0/20   0.0%  mass-normal.friction-stop.color-night.shape-I
+    72   0/20   0.0%  mass-heavy.friction-low.color-default.shape-I
+    73   0/20   0.0%  mass-heavy.friction-low.color-warm.shape-I
+    74   0/20   0.0%  mass-heavy.friction-low.color-night.shape-I
+    75   0/20   0.0%  mass-heavy.friction-high.color-default.shape-I
+    76   0/20   0.0%  mass-heavy.friction-high.color-warm.shape-I
+    77   0/20   0.0%  mass-heavy.friction-high.color-night.shape-I
+    78   3/20  15.0%  mass-heavy.friction-stop.color-default.shape-I
+    79   0/20   0.0%  mass-heavy.friction-stop.color-warm.shape-I
+    80   0/20   0.0%  mass-heavy.friction-stop.color-night.shape-I
+by color: default 4/180, night 0/180, warm 4/180
+by friction: high 0/180, low 0/180, stop 8/180
+by mass: heavy 3/180, light 1/180, normal 4/180
+by shape: I 8/540

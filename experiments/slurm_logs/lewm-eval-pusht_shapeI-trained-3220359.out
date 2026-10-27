@@ -2,3 +2,17 @@ host=fc101 job=3220359 gpus=0 cpus=8
 Tesla T4, 16384 MiB
 /scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/stable_worldmodel/envs/__init__.py:215: UserWarning: ale-py not found; ALE/* envs are unavailable. Install with: pip install 'stable-worldmodel[env]' or pip install ale-py.
   from stable_worldmodel.envs import ale  # noqa: F401
+13:16:23 | INFO  | atomic_chec~| [atomic_save] installed crash-safe checkpoint plugin (write to sibling .tmp + fsync + atomic rename)
+[2026-10-26 13:16:30,785][root][INFO] - Cached 'action' from '/scratch/user/tahaismail424/.stable_wm/datasets/varied_pusht/pusht_v0_only_shape_I_val.h5'
+[2026-10-26 13:16:31,937][root][INFO] - Cached 'proprio' from '/scratch/user/tahaismail424/.stable_wm/datasets/varied_pusht/pusht_v0_only_shape_I_val.h5'
+[2026-10-26 13:16:33,686][root][INFO] - Cached 'state' from '/scratch/user/tahaismail424/.stable_wm/datasets/varied_pusht/pusht_v0_only_shape_I_val.h5'
+[2026-10-26 13:16:37,497][root][INFO] - Cached 'action' from '/scratch/user/tahaismail424/.stable_wm/datasets/varied_pusht/pusht_v0_only_shape_I_train.h5'
+[2026-10-26 13:16:48,282][root][INFO] - Cached 'proprio' from '/scratch/user/tahaismail424/.stable_wm/datasets/varied_pusht/pusht_v0_only_shape_I_train.h5'
+[2026-10-26 13:16:58,622][root][INFO] - Cached 'state' from '/scratch/user/tahaismail424/.stable_wm/datasets/varied_pusht/pusht_v0_only_shape_I_train.h5'
+13:17:02 | INFO  | utils.py    | Created ViT-tiny from scratch with config: {'hidden_size': 192, 'num_hidden_layers': 12, 'num_attention_heads': 3, 'intermediate_size': 768, 'image_size': 224, 'patch_size': 14}
+Error executing job with overrides: ['policy=lewm_pusht_shapeI/weights_epoch_30.pt']
+Error in call to target 'stable_worldmodel.planning.solver.cem.CEMSolver':
+TypeError("CEMSolver.__init__() got an unexpected keyword argument 'model'")
+full_key: solver
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.

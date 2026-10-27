@@ -1,0 +1,78 @@
+host=fc101 job=3220376 gpus=0 cpus=8
+Tesla T4, 16384 MiB
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/stable_worldmodel/envs/__init__.py:215: UserWarning: ale-py not found; ALE/* envs are unavailable. Install with: pip install 'stable-worldmodel[env]' or pip install ale-py.
+  from stable_worldmodel.envs import ale  # noqa: F401
+13:40:23 | INFO  | atomic_chec~| [atomic_save] installed crash-safe checkpoint plugin (write to sibling .tmp + fsync + atomic rename)
+[2026-10-26 13:40:33,313][root][INFO] - Cached 'action' from '/scratch/user/tahaismail424/.stable_wm/datasets/varied_pusht/pusht_v0_only_shape_I_test_eval.h5'
+[2026-10-26 13:40:33,315][root][INFO] - Cached 'proprio' from '/scratch/user/tahaismail424/.stable_wm/datasets/varied_pusht/pusht_v0_only_shape_I_test_eval.h5'
+[2026-10-26 13:40:33,316][root][INFO] - Cached 'state' from '/scratch/user/tahaismail424/.stable_wm/datasets/varied_pusht/pusht_v0_only_shape_I_test_eval.h5'
+[2026-10-26 13:40:42,594][root][INFO] - Cached 'action' from '/scratch/user/tahaismail424/.stable_wm/datasets/varied_pusht/pusht_v0_only_shape_I_train.h5'
+[2026-10-26 13:40:53,358][root][INFO] - Cached 'proprio' from '/scratch/user/tahaismail424/.stable_wm/datasets/varied_pusht/pusht_v0_only_shape_I_train.h5'
+[2026-10-26 13:41:03,465][root][INFO] - Cached 'state' from '/scratch/user/tahaismail424/.stable_wm/datasets/varied_pusht/pusht_v0_only_shape_I_train.h5'
+13:41:04 | INFO  | utils.py    | Created ViT-tiny from scratch with config: {'hidden_size': 192, 'num_hidden_layers': 12, 'num_attention_heads': 3, 'intermediate_size': 768, 'image_size': 224, 'patch_size': 14}
+3181 valid starting points found for evaluation.
+540 eval episodes
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/gymnasium/spaces/box.py:486: UserWarning: [33mWARN: Casting input x to numpy array.[0m
+  gym.logger.warn("Casting input x to numpy array.")
+Error executing job with overrides: ['policy=lewm_pusht_shapeI/weights_epoch_30.pt']
+Traceback (most recent call last):
+  File "/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/eval.py", line 358, in run
+    successes, videos = evaluate_in_chunks(
+                        ~~~~~~~~~~~~~~~~~~^
+        make_world, dataset, eval_episodes, eval_start_idx, chunks,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        callables=OmegaConf.to_container(callables, resolve=True) if callables else None,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/eval.py", line 194, in evaluate_in_chunks
+    metrics = worlds[n].evaluate(
+        dataset=dataset,
+    ...<3 lines>...
+        **evaluate_kwargs,
+    )
+  File "/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/stable_worldmodel/world/world.py", line 244, in evaluate
+    return self._evaluate_from_dataset(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dataset,
+        ^^^^^^^^
+    ...<6 lines>...
+        mode,
+        ^^^^^
+    )
+    ^
+  File "/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/stable_worldmodel/world/world.py", line 626, in _evaluate_from_dataset
+    self._run(max_steps=eval_budget, mode=mode, on_step=on_step)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/stable_worldmodel/world/world.py", line 388, in _run
+    for env_idx, ep_count in self._run_iter(
+                             ~~~~~~~~~~~~~~^
+        episodes=episodes,
+        ^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        on_step=on_step,
+        ^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/stable_worldmodel/world/world.py", line 435, in _run_iter
+    actions = self._get_actions()
+  File "/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/stable_worldmodel/world/world.py", line 482, in _get_actions
+    return self.policy.get_action(self.infos)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/stable_worldmodel/policy.py", line 497, in get_action
+    outputs = self.solver(sliced, init_action=sliced_init)
+  File "/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/stable_worldmodel/planning/solver/cem.py", line 95, in __call__
+    return self.solve(*args, **kwargs)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+  File "/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/stable_worldmodel/planning/solver/cem.py", line 215, in solve
+    costs = self.cost.get_cost(expanded_infos, candidates)
+  File "/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/jepa.py", line 151, in get_cost
+    cost = self.criterion(info_dict)
+  File "/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/jepa.py", line 117, in criterion
+    goal_emb = goal_emb[..., -1:, :].expand_as(pred_emb)
+RuntimeError: The expanded size of the tensor (300) must match the existing size (27) at non-singleton dimension 1.  Target sizes: [27, 300, 6, 192].  Tensor sizes: [27, 1, 192]
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.

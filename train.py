@@ -1,3 +1,4 @@
+import json
 import os
 from functools import partial
 from pathlib import Path
@@ -11,6 +12,7 @@ from lightning.pytorch.loggers import WandbLogger
 from omegaconf import OmegaConf, open_dict
 
 from module import SIGReg
+from subsample import compact_clip_index, format_summary, subsample_by_parent
 from utils import get_column_normalizer, get_img_preprocessor, SaveCkptCallback
 
 
@@ -51,6 +53,11 @@ def build_datasets(cfg, rnd_gen):
     If cfg.data.val_set names a dataset (e.g. pusht-scenarios' <name>_val.h5,
     split by parent demo), it is the val set; otherwise the train dataset is
     randomly split by cfg.train_split. Sets cfg.model.action_encoder.input_dim.
+
+    Optional cfg.data.subsample {fraction, seed} keeps that fraction of each
+    env's recorded demos (and all their augmented copies) before anything else,
+    so the normalizers are fit on the kept data; see subsample.py. The summary
+    is attached to the training dataset as `subsample_summary`.
     """
     dataset_cfg = OmegaConf.to_container(cfg.data.dataset, resolve=True)
     dataset_name = dataset_cfg.pop("name")
@@ -58,6 +65,13 @@ def build_datasets(cfg, rnd_gen):
     dataset = swm.data.load_dataset(
         dataset_name, transform=None, cache_dir=cache_dir, **dataset_cfg
     )
+    dataset.subsample_summary = None
+    sub = cfg.data.get("subsample", None)
+    if sub:
+        sub = OmegaConf.to_container(sub, resolve=True)
+        dataset.subsample_summary = subsample_by_parent(dataset, sub["fraction"], sub.get("seed", 0))
+        print(format_summary(dataset.subsample_summary))
+    compact_clip_index(dataset)  # int64 array: workers share it instead of copying
     transforms = [get_img_preprocessor(source='pixels', target='pixels', img_size=cfg.img_size)]
     
     with open_dict(cfg):
@@ -77,6 +91,7 @@ def build_datasets(cfg, rnd_gen):
         val_set = swm.data.load_dataset(
             cfg.data.val_set, transform=transform, cache_dir=cache_dir, **dataset_cfg
         )
+        compact_clip_index(val_set)
         train_set = dataset
     else:
         train_set, val_set = spt.data.random_split(
@@ -135,6 +150,12 @@ def run(cfg):
     run_dir.mkdir(parents=True, exist_ok=True)
     with open(run_dir / "config.yaml", "w") as f:
         OmegaConf.save(cfg, f)
+    summary = getattr(train_set, "subsample_summary", None) or getattr(
+        getattr(train_set, "dataset", None), "subsample_summary", None
+    )
+    if summary:  # which demos this run trained on, to reproduce the subset
+        with open(run_dir / "subsample.json", "w") as f:
+            json.dump(summary, f, indent=2)
 
     object_dump_callback = SaveCkptCallback(
         run_name=cfg.output_model_name, cfg=cfg.model, epoch_interval=1,

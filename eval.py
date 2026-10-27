@@ -254,6 +254,130 @@ def per_env_results(dataset, rows, successes, manifest=None):
     return {"by_env": by_env, "by_factor": dict(by_factor)}
 
 
+def stats_dataset_name(cfg):
+    """Dataset whose statistics normalize the policy's inputs (action, proprio,
+    state): `train.dataset_name` if set, else None (= the eval dataset itself,
+    LeWM's default). `train.dataset_name: from_checkpoint` reads the training
+    file from the checkpoint run's config.yaml (written by train.py next to the
+    weights), so each checkpoint is normalized exactly like it was trained --
+    essential when evaluating checkpoints on data from another condition."""
+    name = OmegaConf.select(cfg, "train.dataset_name")
+    if name != "from_checkpoint":
+        return name
+    if cfg.get("policy", "random") == "random":
+        return None  # a random policy doesn't use the scalers
+    config_path = _checkpoint_config_path(cfg)
+    trained_on = OmegaConf.select(OmegaConf.load(config_path), "data.dataset.name")
+    if not trained_on:
+        raise ValueError(f"{config_path} has no data.dataset.name")
+    trained_on = str(trained_on)
+    return trained_on[: -len(".h5")] if trained_on.endswith(".h5") else trained_on  # HDF5Dataset adds .h5
+
+
+def _checkpoint_config_path(cfg):
+    policy = Path(str(cfg.policy))
+    run_dir = Path(swm.data.utils.get_cache_dir(sub_folder="checkpoints"), policy.parent if policy.suffix else policy)
+    config_path = run_dir / "config.yaml"
+    if not config_path.exists():
+        raise ValueError(
+            f"train.dataset_name=from_checkpoint, but {config_path} does not exist; "
+            f"set train.dataset_name to the checkpoint's training file explicitly"
+        )
+    return config_path
+
+
+def checkpoint_subsample(cfg):
+    """The checkpoint run's data.subsample block ({fraction, seed}) when stats
+    come from_checkpoint and the run trained on a subsample, else None. eval
+    then rebuilds the same subset (the rule is deterministic) before fitting the
+    scalers, so they match training exactly."""
+    if OmegaConf.select(cfg, "train.dataset_name") != "from_checkpoint":
+        return None
+    if cfg.get("policy", "random") == "random":
+        return None
+    sub = OmegaConf.select(OmegaConf.load(_checkpoint_config_path(cfg)), "data.subsample")
+    return OmegaConf.to_container(sub, resolve=True) if sub else None
+
+
+def build_policy(cfg, process, transform):
+    """Random policy, or the checkpoint `cfg.policy` planned with `cfg.solver`
+    (on the solver's device)."""
+    if cfg.get("policy", "random") == "random":
+        return swm.policy.RandomPolicy()
+    model = swm.wm.utils.load_pretrained(cfg.policy)
+    model = model.to(cfg.solver.get("device", "cuda"))
+    model = model.eval()
+    model.requires_grad_(False)
+    model.interpolate_pos_encoding = True
+    config = swm.PlanConfig(**cfg.plan_config)
+    # swm (pinned rev) solvers take `cost=` (a Costable); JEPA exposes get_cost itself
+    solver = hydra.utils.instantiate(cfg.solver, cost=model)
+    return swm.policy.WorldModelPolicy(
+        solver=solver, config=config, process=process, transform=transform
+    )
+
+
+def apply_variation_overrides(world, overrides):
+    """Force variation values (dotted keys, e.g. {'sim.block_mass': 3.0}) on every
+    env of `world`, on top of whatever each eval episode restores from its
+    dataset row. Needs envs with reset_options_from_dataset (pts/PushT*), which
+    swm's dataset eval calls to build each env's reset options."""
+    if not overrides:
+        return world
+    from pusht_scenarios.env.variations import cast_values
+
+    for env in world.envs.envs:
+        base = env.unwrapped
+        if not hasattr(base, "reset_options_from_dataset"):
+            raise ValueError(
+                f"variation_overrides need an env with reset_options_from_dataset "
+                f"(pusht_scenarios pts/PushT*), got {type(base).__name__}"
+            )
+        values = cast_values(base, dict(overrides))  # validates keys, casts dtypes
+        restore = base.reset_options_from_dataset
+
+        def with_overrides(init_row, goal_row, _restore=restore, _values=values):
+            options = _restore(init_row, goal_row)
+            options.setdefault("variation_values", {}).update(_values)
+            return options
+
+        base.reset_options_from_dataset = with_overrides
+    return world
+
+
+def sweep_points(cfg):
+    """[(name, overrides)] to evaluate. Without eval.sweep: one unnamed point with
+    eval.variation_overrides. With eval.sweep (a list of {name, overrides}):
+    one point each, its overrides layered on top of eval.variation_overrides."""
+    def plain(value):  # OmegaConf node -> python; missing/None -> empty
+        if value is None:
+            return None
+        return OmegaConf.to_container(value, resolve=True) if OmegaConf.is_config(value) else value
+
+    base = dict(plain(cfg.eval.get("variation_overrides")) or {})
+    sweep = plain(cfg.eval.get("sweep"))
+    if not sweep:
+        return [(None, base)]
+    points = []
+    for point in sweep:
+        if "name" not in point:
+            raise ValueError(f"every eval.sweep point needs a name: {point}")
+        points.append((str(point["name"]), {**base, **(point.get("overrides") or {})}))
+    names = [n for n, _ in points]
+    if len(set(names)) != len(names):
+        raise ValueError(f"duplicate eval.sweep names: {names}")
+    return points
+
+
+def format_sweep(summary):
+    lines = [f"{'point':<22} {'success':>9} {'rate':>7}   overrides"]
+    for r in summary:
+        lines.append(
+            f"{(r['name'] or '-'):<22} {r['successes']:>4}/{r['num_episodes']:<4} {r['success_rate']:6.1f}%   {r['overrides']}"
+        )
+    return "\n".join(lines)
+
+
 def output_filename(filename, policy):
     """Results file name for one eval: the configured name plus the checkpoint,
     e.g. pusht_shapeI_val_results.txt + lewm_pusht_shapeI/weights_epoch_5.pt
@@ -295,27 +419,18 @@ def run(cfg: DictConfig):
     dataset = get_dataset(cfg, cfg.eval.dataset_name)
     # normalize with the training file's statistics if given (held-out test files
     # have different stats); otherwise with the eval file itself (LeWM's default)
-    train_name = OmegaConf.select(cfg, "train.dataset_name")
+    train_name = stats_dataset_name(cfg)
+    print(f"normalization stats from: {train_name or cfg.eval.dataset_name}")
     stats_dataset = get_dataset(cfg, train_name) if train_name else dataset
+    sub = checkpoint_subsample(cfg)
+    if sub:
+        from subsample import format_summary, subsample_by_parent
+
+        print(format_summary(subsample_by_parent(stats_dataset, sub["fraction"], sub.get("seed", 0))))
     process = fit_scalers(stats_dataset, cfg.dataset.keys_to_cache)
 
     # -- run evaluation
-    policy = cfg.get("policy", "random")
-
-    if policy != "random":
-        model = swm.wm.utils.load_pretrained(cfg.policy)
-        model = model.to("cuda")
-        model = model.eval()
-        model.requires_grad_(False)
-        model.interpolate_pos_encoding = True
-        config = swm.PlanConfig(**cfg.plan_config)
-        solver = hydra.utils.instantiate(cfg.solver, model=model)
-        policy = swm.policy.WorldModelPolicy(
-            solver=solver, config=config, process=process, transform=transform
-        )
-
-    else:
-        policy = swm.policy.RandomPolicy()
+    policy = build_policy(cfg, process, transform)
 
     results_path = (
         Path(swm.data.utils.get_cache_dir(), cfg.policy).parent
@@ -340,76 +455,100 @@ def run(cfg: DictConfig):
     video_mask = video_plan(cfg.eval.get("video", "full"), env_ids, cfg.eval.get("videos_per_env", 1))
     chunks = make_chunks(video_mask, cfg.eval.get("chunk_size") or n_eval)
 
-    def make_world(n):
-        world = swm.World(**{**cfg.world, "num_envs": n}, image_shape=(224, 224))
-        world.set_policy(policy)
-        return world
-
     results_path.mkdir(parents=True, exist_ok=True)
-    # one video dir per eval (test / val / ...) so runs of the same model do not overwrite each other
+    # one results/video name per eval (test / val / ...) and checkpoint
     out_name = output_filename(cfg.output.filename, cfg.policy)
-    video_dir = results_path / f"videos_{Path(out_name).stem}"
-
     callables = cfg.eval.get("callables")
-    start_time = time.time()
-    successes, videos = evaluate_in_chunks(
-        make_world, dataset, eval_episodes, eval_start_idx, chunks,
-        video_dir=video_dir,
-        goal_offset=cfg.eval.goal_offset_steps,
-        eval_budget=cfg.eval.eval_budget,
-        callables=OmegaConf.to_container(callables, resolve=True) if callables else None,
-    )
-    end_time = time.time()
+    callables = OmegaConf.to_container(callables, resolve=True) if callables else None
+    manifest = load_manifest(dataset)
+    manifest_envs = {e["env_id"]: e for e in (manifest or {}).get("envs", [])}
 
-    metrics = {
-        "success_rate": 100.0 * float(successes.mean()),
-        "num_episodes": n_eval,
-        "episode_successes": successes,
-    }
-    print(f"success_rate: {metrics['success_rate']:.1f}% over {n_eval} episodes")
+    points = sweep_points(cfg)
+    summary = []
+    for name, overrides in points:
+        stem = Path(out_name).stem + (f"_{name}" if name else "")
+        point_name = stem + Path(out_name).suffix
+        video_dir = results_path / f"videos_{stem}"
+        if name:
+            print(f"==== sweep point {name}: {overrides}")
 
-    # per-environment breakdown (pusht-scenarios exports carry an env_id column)
-    env_results = per_env_results(
-        dataset, eval_rows, metrics["episode_successes"], load_manifest(dataset)
-    )
-    if env_results is not None:
-        print(format_per_env(env_results))
+        def make_world(n, _overrides=overrides):
+            world = swm.World(**{**cfg.world, "num_envs": n}, image_shape=(224, 224))
+            apply_variation_overrides(world, _overrides)
+            world.set_policy(policy)
+            return world
 
-    if videos:
-        manifest_envs = {e["env_id"]: e for e in (load_manifest(dataset) or {}).get("envs", [])}
-        index = [
-            {
-                "video": v, "row": int(eval_rows[p]), "episode": int(eval_episodes[p]),
-                "start": int(eval_start_idx[p]), "env_id": int(env_ids[p]),
-                "success": bool(successes[p]),
-                "name": manifest_envs.get(int(env_ids[p]), {}).get("name"),
-            }
-            for p, v in videos
-        ]
-        video_dir.mkdir(parents=True, exist_ok=True)
-        with (video_dir / "index.json").open("w") as f:
-            json.dump(index, f, indent=2)
+        start_time = time.time()
+        successes, videos = evaluate_in_chunks(
+            make_world, dataset, eval_episodes, eval_start_idx, chunks,
+            video_dir=video_dir,
+            goal_offset=cfg.eval.goal_offset_steps,
+            eval_budget=cfg.eval.eval_budget,
+            callables=callables,
+        )
+        end_time = time.time()
 
-    results_path = results_path / out_name
-    results_path.parent.mkdir(parents=True, exist_ok=True)
+        metrics = {
+            "success_rate": 100.0 * float(successes.mean()),
+            "num_episodes": n_eval,
+            "episode_successes": successes,
+        }
+        print(f"success_rate{f' [{name}]' if name else ''}: {metrics['success_rate']:.1f}% over {n_eval} episodes")
+        summary.append({
+            "name": name, "overrides": overrides, "success_rate": metrics["success_rate"],
+            "successes": int(successes.sum()), "num_episodes": n_eval,
+            "evaluation_time": end_time - start_time,
+        })
 
-    with results_path.open("a") as f:
-        f.write("\n")  # separate from previous runs
-
-        f.write("==== CONFIG ====\n")
-        f.write(OmegaConf.to_yaml(cfg))
-        f.write("\n")
-
-        f.write("==== RESULTS ====\n")
-        f.write(f"metrics: success_rate={metrics['success_rate']:.2f} num_episodes={n_eval}\n")
-        f.write(f"evaluation_time: {end_time - start_time} seconds\n")
+        # per-environment breakdown (pusht-scenarios exports carry an env_id column)
+        env_results = per_env_results(dataset, eval_rows, successes, manifest)
         if env_results is not None:
-            f.write("==== PER ENV ====\n")
-            f.write(format_per_env(env_results) + "\n")
+            print(format_per_env(env_results))
 
-    if env_results is not None:
-        with results_path.with_name(results_path.stem + "_per_env.json").open("w") as f:
-            json.dump({"metrics": {"success_rate": metrics["success_rate"], "num_episodes": n_eval}, **env_results}, f, indent=2)
+        if videos:
+            index = [
+                {
+                    "video": v, "row": int(eval_rows[p]), "episode": int(eval_episodes[p]),
+                    "start": int(eval_start_idx[p]), "env_id": int(env_ids[p]),
+                    "success": bool(successes[p]),
+                    "name": manifest_envs.get(int(env_ids[p]), {}).get("name"),
+                    "overrides": overrides,
+                }
+                for p, v in videos
+            ]
+            video_dir.mkdir(parents=True, exist_ok=True)
+            with (video_dir / "index.json").open("w") as f:
+                json.dump(index, f, indent=2)
+
+        point_path = results_path / point_name
+        with point_path.open("a") as f:
+            f.write("\n")  # separate from previous runs
+
+            f.write("==== CONFIG ====\n")
+            f.write(OmegaConf.to_yaml(cfg))
+            f.write("\n")
+
+            f.write("==== RESULTS ====\n")
+            if overrides:
+                f.write(f"variation_overrides: {overrides}\n")
+            f.write(f"metrics: success_rate={metrics['success_rate']:.2f} num_episodes={n_eval}\n")
+            f.write(f"evaluation_time: {end_time - start_time} seconds\n")
+            if env_results is not None:
+                f.write("==== PER ENV ====\n")
+                f.write(format_per_env(env_results) + "\n")
+
+        if env_results is not None:
+            with point_path.with_name(point_path.stem + "_per_env.json").open("w") as f:
+                json.dump({"metrics": {"success_rate": metrics["success_rate"], "num_episodes": n_eval}, **env_results}, f, indent=2)
+
+    if len(points) > 1 or points[0][0]:
+        table = format_sweep(summary)
+        print(table)
+        sweep_path = results_path / (Path(out_name).stem + "_sweep.txt")
+        with sweep_path.open("a") as f:
+            f.write(f"\n==== {cfg.policy} on {cfg.eval.dataset_name} ====\n{table}\n")
+        with sweep_path.with_suffix(".json").open("w") as f:
+            json.dump({"policy": cfg.policy, "dataset": cfg.eval.dataset_name, "points": summary}, f, indent=2)
 
 
 if __name__ == "__main__":

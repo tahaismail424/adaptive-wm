@@ -1,0 +1,38 @@
+host=t004 job=20306485 gpus=0 cpus=8
+Tesla T4, 16384 MiB
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/stable_worldmodel/envs/__init__.py:215: UserWarning: ale-py not found; ALE/* envs are unavailable. Install with: pip install 'stable-worldmodel[env]' or pip install ale-py.
+  from stable_worldmodel.envs import ale  # noqa: F401
+12:33:19 | INFO  | atomic_chec~| [atomic_save] installed crash-safe checkpoint plugin (write to sibling .tmp + fsync + atomic rename)
+[2026-10-27 12:33:32,159][root][INFO] - Cached 'action' from '/scratch/user/tahaismail424/.stable_wm/datasets/friction_pusht/slippery/pusht_v05_friction_slippery_val.h5'
+[2026-10-27 12:33:34,479][root][INFO] - Cached 'proprio' from '/scratch/user/tahaismail424/.stable_wm/datasets/friction_pusht/slippery/pusht_v05_friction_slippery_val.h5'
+[2026-10-27 12:33:37,132][root][INFO] - Cached 'state' from '/scratch/user/tahaismail424/.stable_wm/datasets/friction_pusht/slippery/pusht_v05_friction_slippery_val.h5'
+normalization stats from: friction_pusht/slippery/pusht_v05_friction_slippery_train
+[2026-10-27 12:33:51,210][root][INFO] - Cached 'action' from '/scratch/user/tahaismail424/.stable_wm/datasets/friction_pusht/slippery/pusht_v05_friction_slippery_train.h5'
+[2026-10-27 12:34:08,899][root][INFO] - Cached 'proprio' from '/scratch/user/tahaismail424/.stable_wm/datasets/friction_pusht/slippery/pusht_v05_friction_slippery_train.h5'
+[2026-10-27 12:34:27,672][root][INFO] - Cached 'state' from '/scratch/user/tahaismail424/.stable_wm/datasets/friction_pusht/slippery/pusht_v05_friction_slippery_train.h5'
+12:34:33 | INFO  | utils.py    | Created ViT-tiny from scratch with config: {'hidden_size': 192, 'num_hidden_layers': 12, 'num_attention_heads': 3, 'intermediate_size': 768, 'image_size': 224, 'patch_size': 14}
+2799 valid starting points found for evaluation.
+100 eval episodes
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/gymnasium/spaces/box.py:486: UserWarning: [33mWARN: Casting input x to numpy array.[0m
+  gym.logger.warn("Casting input x to numpy array.")
+CEM solve time: 33.7511 seconds
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/gymnasium/utils/passive_env_checker.py:243: UserWarning: [33mWARN: The infos returned by `reset` and the following `step` share an object, therefore, modifying one will modify the other. Environments should return new info data on every call as users commonly keep the data returned to them.[0m
+  logger.warn(
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/gymnasium/utils/passive_env_checker.py:243: UserWarning: [33mWARN: The infos returned by `step` and the following `step` share an object, therefore, modifying one will modify the other. Environments should return new info data on every call as users commonly keep the data returned to them.[0m
+  logger.warn(
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/lance/__init__.py:358: UserWarning: lance is not fork-safe. If you are using multiprocessing, use spawn or forkserver instead.
+  warnings.warn(
+chunk 1/2: 1/1 successes
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/gymnasium/spaces/box.py:486: UserWarning: [33mWARN: Casting input x to numpy array.[0m
+  gym.logger.warn("Casting input x to numpy array.")
+CEM solve time: 199.8162 seconds
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/gymnasium/utils/passive_env_checker.py:243: UserWarning: [33mWARN: The infos returned by `reset` and the following `step` share an object, therefore, modifying one will modify the other. Environments should return new info data on every call as users commonly keep the data returned to them.[0m
+  logger.warn(
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/gymnasium/utils/passive_env_checker.py:243: UserWarning: [33mWARN: The infos returned by `step` and the following `step` share an object, therefore, modifying one will modify the other. Environments should return new info data on every call as users commonly keep the data returned to them.[0m
+  logger.warn(
+CEM solve time: 116.0156 seconds
+chunk 2/2: 46/99 successes
+success_rate: 47.0% over 100 episodes
+env_id  success      name
+     1  47/100  47.0%  friction-slippery
+by friction: slippery 47/100

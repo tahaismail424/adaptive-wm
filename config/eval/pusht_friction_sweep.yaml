@@ -1,0 +1,62 @@
+# Stress test: original Push-T eval tasks (LeWM's pusht_expert_train), same
+# planner, but FLOOR FRICTION varied in our env (pusht_scenarios). Every point
+# uses the same sampled starts/goals, so points compare pairwise.
+#
+# In stock Push-T the block has no momentum (sim.damping 0: it stops dead when
+# not pushed), so floor friction has no effect. Friction only matters once the
+# block can slide (damping 1). The sweep therefore turns momentum on for every
+# point except `stock`; `friction_0` (momentum, no friction: ice) isolates the
+# effect of momentum itself, higher friction brings the block back toward
+# stopping on its own. Mass/strength are left at stock values.
+#
+#   sbatch --export=CONFIG=pusht_friction_sweep,POLICY=lewm_pusht_released/weights.pt scripts/slurm/eval.sbatch
+defaults:
+  - launcher: local
+  - solver: cem
+  - _self_
+
+solver:
+  batch_size: ${eval.chunk_size}
+
+world:
+  env_name: pusht_scenarios.env:pts/PushT-v0   # unbounded, like swm/PushT-v1
+  render_contacts: true                        # swm draws contact points; LeWM's frames have them
+  num_envs: ${eval.num_eval}                   # overridden per chunk by eval.py
+  max_episode_steps: ???
+
+dataset:
+  keys_to_cache:
+    - action
+    - proprio
+    - state
+
+seed: 42
+policy: random
+
+plan_config:
+  horizon: 5
+  receding_horizon: 5
+  action_block: 5
+
+eval:
+  num_eval: 100
+  goal_offset_steps: 25
+  eval_budget: 50
+  img_size: 224
+  chunk_size: 100
+  video: sample          # one video per sweep point
+  videos_per_env: 1
+  dataset_name: pusht_expert_train
+  variation_overrides:   # applied to every point (a point's own overrides win)
+    sim.damping: 1.0
+  sweep:
+    - {name: stock, overrides: {sim.damping: 0.0}}           # no momentum = original env (parity)
+    - {name: friction_0, overrides: {sim.floor_friction: 0.0}}   # momentum, frictionless (ice)
+    - {name: friction_0.1, overrides: {sim.floor_friction: 0.1}}
+    - {name: friction_0.25, overrides: {sim.floor_friction: 0.25}}
+    - {name: friction_0.5, overrides: {sim.floor_friction: 0.5}}
+    - {name: friction_1, overrides: {sim.floor_friction: 1.0}}
+    - {name: friction_2, overrides: {sim.floor_friction: 2.0}}
+
+output:
+  filename: pusht_friction_sweep_results.txt

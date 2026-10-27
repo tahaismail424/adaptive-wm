@@ -1,0 +1,53 @@
+# v0.5 friction set: plan on the held-out stock demos (friction_pusht/stock/..._val.h5).
+# Cross-evaluate every checkpoint (stock / slippery / mixed) on both
+# pusht_friction_stock_val and pusht_friction_slippery_val. The env rebuilds
+# each episode's floor (sim.damping, sim.floor_friction) from the dataset's
+# variation.* columns via reset_options_from_dataset, so stock episodes are
+# played on the stock floor whatever checkpoint plans them.
+defaults:
+  - launcher: local
+  - solver: cem
+  - _self_
+
+solver:
+  batch_size: ${eval.chunk_size}  # CEM plans a whole chunk in one GPU batch
+
+world:
+  env_name: pusht_scenarios.env:pts/PushTBounded-v0   # what the demos were recorded with
+  num_envs: ${eval.num_eval}  # overridden per chunk by eval.py
+  max_episode_steps: ???
+
+dataset:
+  keys_to_cache:
+    - action
+    - proprio
+    - state
+
+seed: 42
+policy: random # ckpt name or random
+
+plan_config:
+  horizon: 5
+  receding_horizon: 5
+  action_block: 5 # frameskip
+
+eval:
+  num_eval: 100         # unused (per_env is set)
+  per_env: 100          # 100 starts from this condition's env (one env per val file)
+  only_original: true   # recorded val demos only, not their noisy copies
+  allow_fewer: false
+  chunk_size: 100
+  video: full
+  videos_per_env: 1
+  goal_offset_steps: 25 # demos are paced like LeWM's (block ~31 px / 25 steps on stock vs 27)
+  eval_budget: 50
+  img_size: 224
+  dataset_name: friction_pusht/stock/pusht_v05_friction_stock_val
+
+# normalize with the stats of the file each checkpoint was trained on (read from
+# checkpoints/<run>/config.yaml), not this val file's condition
+train:
+  dataset_name: from_checkpoint
+
+output:
+  filename: pusht_friction_stock_val_results.txt

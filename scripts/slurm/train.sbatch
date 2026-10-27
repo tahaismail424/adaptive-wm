@@ -35,6 +35,6 @@ NAME=${NAME:-lewm_${DATA}}
 # fixed subdir so a requeued/resubmitted job finds the same run dir
 python train.py data=$DATA $WANDB_ARGS \
     output_model_name=$NAME subdir=$NAME \
-    trainer.max_epochs=30 \
+    trainer.max_epochs=10 \
     num_workers=$((SLURM_CPUS_PER_TASK - 2)) \
     "$@"

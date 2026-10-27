@@ -112,8 +112,13 @@ class JEPA(nn.Module):
     def criterion(self, info_dict: dict):
         """Compute the cost between predicted embeddings and goal embeddings."""
         pred_emb = info_dict["predicted_emb"]  # (B,S, T-1, dim)
-        goal_emb = info_dict["goal_emb"]  # (B, S, T, dim)
+        goal_emb = info_dict["goal_emb"]  # (B, T, dim): one goal per env
 
+        # give the goal a sample dim so it broadcasts per env over the S candidates.
+        # Without it, (B, 1, dim) only lines up with (B, S, T, dim) when B == 1
+        # (LeWM's solver batch_size), and batched planning crashes.
+        if goal_emb.ndim == pred_emb.ndim - 1:
+            goal_emb = goal_emb.unsqueeze(1)
         goal_emb = goal_emb[..., -1:, :].expand_as(pred_emb)
 
         # return last-step cost per action candidate
