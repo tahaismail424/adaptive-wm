@@ -9,7 +9,7 @@
 #
 # Results (metrics txt + videos) land next to the policy: $STABLEWM_HOME/<policy dir>/
 #
-#SBATCH --job-name=lewm-eval-pusht_shapeI-trained-val-early
+#SBATCH --job-name=lewm-eval-pusht_friction_mixed_slippery
 #SBATCH --partition=gpu
 #SBATCH --gres=gpu:t4:1
 #SBATCH --nodes=1
@@ -22,7 +22,7 @@
 source scripts/slurm/env.sh   # before set -u: Lmod's module() trips on unbound vars
 set -euo pipefail
 
-CONFIG=${CONFIG:-pusht_shapeI_val}
-POLICY=${POLICY:-lewm_pusht_shapeI/weights_epoch_5.pt}
+CONFIG=${CONFIG:-pusht_friction_slippery_val}
+POLICY=${POLICY:-lewm_pusht_friction_mixed/weights_epoch_10.pt}
 
 python eval.py --config-name=$CONFIG.yaml policy=$POLICY "$@"

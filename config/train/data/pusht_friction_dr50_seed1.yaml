@@ -1,0 +1,24 @@
+# v0.5 friction, data-matched "domain randomization" baseline: the mixed export
+# (stock + slippery), but only HALF of each floor's recorded demos, each with
+# all of its augmented copies. 99/198 stock + 95/189 slippery = 194 demos, about
+# the budget of each single-floor model (198 / 189), so 10 epochs ~ the same
+# number of steps. Val is the full mixed val set (= the stock + slippery val
+# demos), identical for every checkpoint. See subsample.py for the rule.
+# Other draws: data.subsample.seed=1, 2, ... (error bars); nested in fraction.
+dataset:
+  num_steps: ${eval:'${num_preds} + ${history_size}'}
+  frameskip: 5
+  name: friction_pusht/mixed/pusht_v05_friction_mixed_train.h5
+  keys_to_load:
+    - pixels
+    - action
+    - proprio
+    - state
+  keys_to_cache:
+    - action
+    - proprio
+    - state
+val_set: friction_pusht/mixed/pusht_v05_friction_mixed_val.h5
+subsample:
+  fraction: {0: 0.5, 1: 0.5}   # per env_id (0 = stock, 1 = slippery); a scalar applies to all
+  seed: 42

@@ -2,3 +2,29 @@ host=t002 job=20307078 gpus=0 cpus=8
 Tesla T4, 16384 MiB
 /scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/stable_worldmodel/envs/__init__.py:215: UserWarning: ale-py not found; ALE/* envs are unavailable. Install with: pip install 'stable-worldmodel[env]' or pip install ale-py.
   from stable_worldmodel.envs import ale  # noqa: F401
+13:54:07 | INFO  | atomic_chec~| [atomic_save] installed crash-safe checkpoint plugin (write to sibling .tmp + fsync + atomic rename)
+[2026-10-27 13:54:10,812][root][INFO] - Cached 'action' from '/scratch/user/tahaismail424/.stable_wm/datasets/friction_pusht/stock/pusht_v05_friction_stock_val.h5'
+[2026-10-27 13:54:12,474][root][INFO] - Cached 'proprio' from '/scratch/user/tahaismail424/.stable_wm/datasets/friction_pusht/stock/pusht_v05_friction_stock_val.h5'
+[2026-10-27 13:54:14,026][root][INFO] - Cached 'state' from '/scratch/user/tahaismail424/.stable_wm/datasets/friction_pusht/stock/pusht_v05_friction_stock_val.h5'
+normalization stats from: friction_pusht/stock/pusht_v05_friction_stock_train
+[2026-10-27 13:54:28,772][root][INFO] - Cached 'action' from '/scratch/user/tahaismail424/.stable_wm/datasets/friction_pusht/stock/pusht_v05_friction_stock_train.h5'
+[2026-10-27 13:54:45,560][root][INFO] - Cached 'proprio' from '/scratch/user/tahaismail424/.stable_wm/datasets/friction_pusht/stock/pusht_v05_friction_stock_train.h5'
+[2026-10-27 13:55:05,203][root][INFO] - Cached 'state' from '/scratch/user/tahaismail424/.stable_wm/datasets/friction_pusht/stock/pusht_v05_friction_stock_train.h5'
+13:55:07 | INFO  | utils.py    | Created ViT-tiny from scratch with config: {'hidden_size': 192, 'num_hidden_layers': 12, 'num_attention_heads': 3, 'intermediate_size': 768, 'image_size': 224, 'patch_size': 14}
+2174 valid starting points found for evaluation.
+100 eval episodes
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/gymnasium/spaces/box.py:486: UserWarning: [33mWARN: Casting input x to numpy array.[0m
+  gym.logger.warn("Casting input x to numpy array.")
+CEM solve time: 224.3956 seconds
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/gymnasium/utils/passive_env_checker.py:243: UserWarning: [33mWARN: The infos returned by `reset` and the following `step` share an object, therefore, modifying one will modify the other. Environments should return new info data on every call as users commonly keep the data returned to them.[0m
+  logger.warn(
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/gymnasium/utils/passive_env_checker.py:243: UserWarning: [33mWARN: The infos returned by `step` and the following `step` share an object, therefore, modifying one will modify the other. Environments should return new info data on every call as users commonly keep the data returned to them.[0m
+  logger.warn(
+CEM solve time: 29.1980 seconds
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/lance/__init__.py:358: UserWarning: lance is not fork-safe. If you are using multiprocessing, use spawn or forkserver instead.
+  warnings.warn(
+chunk 1/1: 95/100 successes
+success_rate: 95.0% over 100 episodes
+env_id  success      name
+     0  95/100  95.0%  friction-stock
+by friction: stock 95/100

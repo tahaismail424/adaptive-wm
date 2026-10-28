@@ -1,0 +1,54 @@
+host=t001 job=20317648 gpus=0 cpus=8
+Tesla T4, 16384 MiB
+/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/stable_worldmodel/envs/__init__.py:215: UserWarning: ale-py not found; ALE/* envs are unavailable. Install with: pip install 'stable-worldmodel[env]' or pip install ale-py.
+  from stable_worldmodel.envs import ale  # noqa: F401
+10:04:06 | INFO  | atomic_chec~| [atomic_save] installed crash-safe checkpoint plugin (write to sibling .tmp + fsync + atomic rename)
+[2026-10-28 10:04:12,975][root][INFO] - Cached 'action' from '/scratch/user/tahaismail424/.stable_wm/datasets/friction_pusht/stock/pusht_v05_friction_stock_val.h5'
+[2026-10-28 10:04:14,280][root][INFO] - Cached 'proprio' from '/scratch/user/tahaismail424/.stable_wm/datasets/friction_pusht/stock/pusht_v05_friction_stock_val.h5'
+[2026-10-28 10:04:15,646][root][INFO] - Cached 'state' from '/scratch/user/tahaismail424/.stable_wm/datasets/friction_pusht/stock/pusht_v05_friction_stock_val.h5'
+normalization stats from: friction_pusht/mixed/pusht_v05_friction_mixed_train
+[2026-10-28 10:04:38,443][root][INFO] - Cached 'action' from '/scratch/user/tahaismail424/.stable_wm/datasets/friction_pusht/mixed/pusht_v05_friction_mixed_train.h5'
+[2026-10-28 10:05:05,068][root][INFO] - Cached 'proprio' from '/scratch/user/tahaismail424/.stable_wm/datasets/friction_pusht/mixed/pusht_v05_friction_mixed_train.h5'
+[2026-10-28 10:05:33,568][root][INFO] - Cached 'state' from '/scratch/user/tahaismail424/.stable_wm/datasets/friction_pusht/mixed/pusht_v05_friction_mixed_train.h5'
+subsample fraction={0: 0.5, 1: 0.5} seed=0: 2733060 clips
+  env 0: 99/198 demos, 9999/19998 episodes, 1477933 rows
+  env 1: 95/189 demos, 9595/19089 episodes, 1255127 rows
+10:05:36 | INFO  | utils.py    | Created ViT-tiny from scratch with config: {'hidden_size': 192, 'num_hidden_layers': 12, 'num_attention_heads': 3, 'intermediate_size': 768, 'image_size': 224, 'patch_size': 14}
+Error executing job with overrides: ['policy=lewm_pusht_friction_dr50/weights_epoch_10.pt']
+Traceback (most recent call last):
+  File "/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/eval.py", line 433, in run
+    policy = build_policy(cfg, process, transform)
+  File "/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/eval.py", line 308, in build_policy
+    model = model.to(cfg.solver.get("device", "cuda"))
+  File "/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1388, in to
+    return self._apply(convert)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    module._apply(fn)
+    ~~~~~~~~~~~~~^^^^
+  File "/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    module._apply(fn)
+    ~~~~~~~~~~~~~^^^^
+  File "/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    module._apply(fn)
+    ~~~~~~~~~~~~~^^^^
+  [Previous line repeated 1 more time]
+  File "/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 966, in _apply
+    param_applied = fn(param)
+  File "/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1374, in convert
+    return t.to(
+           ~~~~^
+        device,
+        ^^^^^^^
+        dtype if t.is_floating_point() or t.is_complex() else None,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        non_blocking,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "/scratch/user/tahaismail424/klab/c2_wm_proj/adaptive-wm/.venv/lib/python3.13/site-packages/torch/cuda/__init__.py", line 591, in _lazy_init
+    torch._C._cuda_init()
+    ~~~~~~~~~~~~~~~~~~~^^
+RuntimeError: No CUDA GPUs are available
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
